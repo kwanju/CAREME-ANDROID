@@ -1,7 +1,9 @@
-package zangdol.careme;
+package zangdol.careme.view;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import zangdol.careme.R;
 
 public class MainActivity extends AppCompatActivity {
 
