@@ -1,4 +1,4 @@
-package zangdol.careme.controller;
+package zangdol.careme.presenter;
 
 import android.content.Intent;
 
@@ -19,5 +19,9 @@ public class MainController {
     public void moveLogin() {
         Intent intent = new Intent(mainActivity, LoginActivity.class);
         mainActivity.startActivity(intent);
+    }
+
+    public void logout() {
+        mainModel.logout();
     }
 }

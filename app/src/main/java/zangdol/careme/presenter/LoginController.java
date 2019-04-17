@@ -1,4 +1,4 @@
-package zangdol.careme.controller;
+package zangdol.careme.presenter;
 
 
 import android.app.Activity;
@@ -19,6 +19,7 @@ public class LoginController {
     * 로그인 버튼 눌렸을 때 실행되는 과정
     * */
     public void login(String id, String pw) {
+
         loginModel.login(id, pw);
     }
 

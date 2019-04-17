@@ -1,5 +1,5 @@
 package zangdol.careme;
 
 public class Config {
-    public static final String SERVERIP = "http://172.30.1.50:3000/";
+    public static final String SERVERIP = "http://192.168.35.19:3000/";
 }

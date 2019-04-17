@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import zangdol.careme.R;
-import zangdol.careme.controller.LoginController;
+import zangdol.careme.presenter.LoginController;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 

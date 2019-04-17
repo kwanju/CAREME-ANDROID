@@ -6,8 +6,9 @@ import android.widget.Toast;
 
 import java.util.HashMap;
 
-import zangdol.careme.controller.LoginController;
+import zangdol.careme.presenter.LoginController;
 import zangdol.careme.restapi.RestFacade;
+import zangdol.careme.util.SaveSharedPreference;
 
 public class LoginModel implements RestAPIListener {
 
@@ -29,8 +30,10 @@ public class LoginModel implements RestAPIListener {
 
         final String message;
 
-        if (results.get("result").equals("1"))  // 성공일 때
+        if (results.get("result").equals("1")){// 성공일 때
             message = "로그인 성공";
+            SaveSharedPreference.setUser(results.get("id"),results.get("idx")); // 사용자 로그인정보 저장.
+        }
         else
             message = "로그인 실패";
 
