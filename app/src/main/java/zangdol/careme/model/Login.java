@@ -5,6 +5,7 @@ import android.util.Log;
 
 import java.util.HashMap;
 
+import zangdol.careme.restapi.RestAPIListener;
 import zangdol.careme.restapi.RestFacade;
 import zangdol.careme.util.SaveSharedPreference;
 

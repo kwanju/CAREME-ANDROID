@@ -20,7 +20,6 @@ import java.util.Iterator;
 import java.util.List;
 
 import zangdol.careme.Config;
-import zangdol.careme.model.RestAPIListener;
 
 public class Login {
     private RestAPIListener listener;

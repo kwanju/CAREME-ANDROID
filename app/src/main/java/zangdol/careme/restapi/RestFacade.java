@@ -1,6 +1,5 @@
 package zangdol.careme.restapi;
 
-import zangdol.careme.model.RestAPIListener;
 /*
 * Facade Controller, Singleton으로 구현
 *

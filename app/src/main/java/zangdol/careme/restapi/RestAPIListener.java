@@ -1,4 +1,4 @@
-package zangdol.careme.model;
+package zangdol.careme.restapi;
 
 import java.util.HashMap;
 
