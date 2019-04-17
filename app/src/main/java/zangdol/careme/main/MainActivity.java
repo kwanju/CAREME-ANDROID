@@ -3,6 +3,7 @@ package zangdol.careme.main;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -11,7 +12,7 @@ import android.widget.TextView;
 import zangdol.careme.R;
 import zangdol.careme.util.SaveSharedPreference;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, MainContract.View {
 
     public static Context contextOfApplication; // 공통의 정보를 저장하기 위해서.
     private MainPresenter mainPresenter;
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         contextOfApplication = getApplicationContext();
 
-        checkLogin();
+        mainPresenter.checkLogin();
     }
 
     private void setElements() {
@@ -51,14 +52,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bt_logout.setOnClickListener(this);
     }
 
-    private void checkLogin() {
-        if (SaveSharedPreference.getID().length() == 0) { // 로그인이 안되어있을 경우
-            layout_logout.setVisibility(View.GONE);
-        } else { // 로그인이 되어있을 경우
-            layout_login.setVisibility(View.GONE);
-            tv_id.setText(SaveSharedPreference.getID()+"님");
-        }
-    }
 
     public static Context getContextOfApplication() {
         return contextOfApplication;
@@ -76,4 +69,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
     }
+
+    @Override
+    public void changeLoginState(boolean isLogin) {
+        if (isLogin) { // 로그인이 되어있을 경우
+            layout_login.setVisibility(View.GONE);
+            tv_id.setText(SaveSharedPreference.getID() + "님");
+        } else { // 로그인이 안되어있을 경우
+            layout_logout.setVisibility(View.GONE);
+        }
+    }
+
+
 }
