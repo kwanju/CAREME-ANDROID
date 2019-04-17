@@ -1,4 +1,4 @@
-package zangdol.careme.view;
+package zangdol.careme.main;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -9,13 +9,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import zangdol.careme.R;
-import zangdol.careme.presenter.MainController;
 import zangdol.careme.util.SaveSharedPreference;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     public static Context contextOfApplication; // 공통의 정보를 저장하기 위해서.
-    private MainController mainController;
+    private MainPresenter mainPresenter;
 
     private Button bt_login;
     private Button bt_logout;
@@ -32,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         setElements();
         setListener();
-        mainController = new MainController(this);
+        mainPresenter = new MainPresenter(this);
 
         contextOfApplication = getApplicationContext();
 
@@ -69,11 +68,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button_login:
-                mainController.moveLogin();
+                mainPresenter.moveLogin();
                 break;
 
             case R.id.button_logout:
-                mainController.logout();
+                mainPresenter.logout();
                 break;
         }
     }

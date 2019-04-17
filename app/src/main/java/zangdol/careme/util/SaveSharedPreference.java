@@ -3,7 +3,7 @@ package zangdol.careme.util;
         import android.content.SharedPreferences;
         import android.preference.PreferenceManager;
 
-        import zangdol.careme.view.MainActivity;
+        import zangdol.careme.main.MainActivity;
 
 public class SaveSharedPreference {
 

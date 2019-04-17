@@ -1,16 +1,15 @@
-package zangdol.careme.presenter;
+package zangdol.careme.main;
 
 import android.content.Intent;
 
 import zangdol.careme.model.MainModel;
-import zangdol.careme.view.LoginActivity;
-import zangdol.careme.view.MainActivity;
+import zangdol.careme.login.LoginActivity;
 
-public class MainController {
+public class MainPresenter {
     private MainModel mainModel;
     private MainActivity mainActivity;
 
-    public MainController(MainActivity view) {
+    public MainPresenter(MainActivity view) {
         mainActivity = view;
         mainModel = new MainModel(this);
     }

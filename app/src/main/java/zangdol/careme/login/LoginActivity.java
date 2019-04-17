@@ -1,4 +1,4 @@
-package zangdol.careme.view;
+package zangdol.careme.login;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,7 +7,6 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import zangdol.careme.R;
-import zangdol.careme.presenter.LoginController;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -15,7 +14,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private EditText et_pw;
     private Button btn_login;
 
-    private LoginController loginController;
+    private LoginPresenter loginPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +22,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
         setElement();
         setListener();
-        loginController = new LoginController(this); // set Controller
+        loginPresenter = new LoginPresenter(this); // set Controller
     }
 
     private void setElement() {
@@ -41,7 +40,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.login_login:
-                loginController.login(et_id.getText().toString(), et_pw.getText().toString());
+                loginPresenter.login(et_id.getText().toString(), et_pw.getText().toString());
                 break;
         }
     }

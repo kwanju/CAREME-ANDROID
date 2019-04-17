@@ -6,7 +6,7 @@ import android.widget.Toast;
 
 import java.util.HashMap;
 
-import zangdol.careme.presenter.LoginController;
+import zangdol.careme.login.LoginPresenter;
 import zangdol.careme.restapi.RestFacade;
 import zangdol.careme.util.SaveSharedPreference;
 
@@ -14,10 +14,10 @@ public class LoginModel implements RestAPIListener {
 
     private final String TAG = "LoginModel";
 
-    private LoginController loginController; // LoginController
+    private LoginPresenter loginPresenter; // LoginPresenter
 
-    public LoginModel(LoginController lc) {
-        this.loginController = lc;
+    public LoginModel(LoginPresenter lc) {
+        this.loginPresenter = lc;
     }
 
     public void login(String id, String pw) {
@@ -37,10 +37,10 @@ public class LoginModel implements RestAPIListener {
         else
             message = "로그인 실패";
 
-        loginController.getActivity().runOnUiThread(new Runnable() { // Toast를 띄우기 위해서 runOnUiThead를 사용.
+        loginPresenter.getActivity().runOnUiThread(new Runnable() { // Toast를 띄우기 위해서 runOnUiThead를 사용.
             @Override
             public void run() {
-                Toast toast = Toast.makeText(loginController.getActivity(), message, Toast.LENGTH_LONG);
+                Toast toast = Toast.makeText(loginPresenter.getActivity(), message, Toast.LENGTH_LONG);
                 toast.show();
             }
         });

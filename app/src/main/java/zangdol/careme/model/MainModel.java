@@ -1,13 +1,13 @@
 package zangdol.careme.model;
 
-import zangdol.careme.presenter.MainController;
+import zangdol.careme.main.MainPresenter;
 import zangdol.careme.util.SaveSharedPreference;
 
 public class MainModel {
-    private MainController mainController;
+    private MainPresenter mainPresenter;
 
-    public MainModel(MainController mainController) {
-        this.mainController = mainController;
+    public MainModel(MainPresenter mainPresenter) {
+        this.mainPresenter = mainPresenter;
     }
 
     public void logout() {
