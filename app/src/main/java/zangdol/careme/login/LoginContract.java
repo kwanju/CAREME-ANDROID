@@ -6,6 +6,6 @@ public class LoginContract {
 
     }
     public interface View{
-
+        void moveMainActivity();
     }
 }

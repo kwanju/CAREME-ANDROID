@@ -1,8 +1,5 @@
 package zangdol.careme.main;
 
-import android.content.Intent;
-
-import zangdol.careme.login.LoginActivity;
 import zangdol.careme.model.Login;
 import zangdol.careme.util.SaveSharedPreference;
 
@@ -13,16 +10,10 @@ public class MainPresenter implements MainContract.Presenter {
         mainActivity = view;
     }
 
-
-    @Override
-    public void moveLogin() {
-        Intent intent = new Intent(mainActivity, LoginActivity.class);
-        mainActivity.startActivity(intent);
-    }
-
     @Override
     public void logout() {
         new Login().logout();
+        mainActivity.recreate(); // activity 초기화
     }
 
     @Override

@@ -1,6 +1,7 @@
 package zangdol.careme.main;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -10,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import zangdol.careme.R;
+import zangdol.careme.login.LoginActivity;
 import zangdol.careme.util.SaveSharedPreference;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, MainContract.View {
@@ -61,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button_login:
-                mainPresenter.moveLogin();
+                moveLoginActivity();
                 break;
 
             case R.id.button_logout:
@@ -79,6 +81,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             layout_logout.setVisibility(View.GONE);
         }
     }
+
+    @Override
+    public void moveLoginActivity() {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
+
 
 
 }

@@ -1,5 +1,6 @@
 package zangdol.careme.login;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -7,8 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import zangdol.careme.R;
+import zangdol.careme.main.MainActivity;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener,  LoginContract.View {
 
     private EditText et_id;
     private EditText et_pw;
@@ -43,5 +45,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 loginPresenter.login(et_id.getText().toString(), et_pw.getText().toString());
                 break;
         }
+    }
+
+    @Override
+    public void moveMainActivity() {
+        Intent intent = new Intent(this,MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        finish();
     }
 }

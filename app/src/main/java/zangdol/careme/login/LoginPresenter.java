@@ -1,7 +1,6 @@
 package zangdol.careme.login;
 
 
-import android.app.Activity;
 import android.widget.Toast;
 
 import zangdol.careme.model.Login;
@@ -41,6 +40,9 @@ public class LoginPresenter implements LoginContract.Presenter, Login.OnLoginLis
                 toast.show();
             }
         });
+
+        if(isSuccess)
+            loginActivity.moveMainActivity();
 
     }
 }
