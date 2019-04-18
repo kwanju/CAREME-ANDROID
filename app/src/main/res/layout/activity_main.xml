@@ -46,6 +46,15 @@
                 />
 
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/button_search_shelter"
+                android:text="보호소 찾기"/>
+        </LinearLayout>
     </LinearLayout>
 
 
