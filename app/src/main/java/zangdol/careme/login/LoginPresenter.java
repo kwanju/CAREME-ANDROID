@@ -3,16 +3,16 @@ package zangdol.careme.login;
 
 import android.widget.Toast;
 
-import zangdol.careme.model.Login;
+import zangdol.careme.model.User;
 
-public class LoginPresenter implements LoginContract.Presenter, Login.OnLoginListener {
-    private Login login;
+public class LoginPresenter implements LoginContract.Presenter, User.OnLoginListener {
+    private User user;
     private LoginActivity loginActivity;
 
     public LoginPresenter(LoginActivity view) {
         loginActivity = view;
-        login = new Login();
-        login.setLoginListener(this);
+        user = new User();
+        user.setLoginListener(this);
     }
 
     /*
@@ -20,7 +20,7 @@ public class LoginPresenter implements LoginContract.Presenter, Login.OnLoginLis
      * */
     @Override
     public void login(String id, String pw) {
-        login.login(id, pw);
+        user.login(id, pw);
     }
 
     @Override

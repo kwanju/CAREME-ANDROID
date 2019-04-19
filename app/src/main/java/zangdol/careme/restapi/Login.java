@@ -22,14 +22,17 @@ import java.util.List;
 import zangdol.careme.Config;
 
 public class Login {
-    private RestAPIListener listener;
+    public interface OnLoginListener{
+        void onLogin(HashMap<String, String> results);
+    }
+    private OnLoginListener listener;
     private String URL = Config.SERVERIP + "android/user/action/login"; // 로그인 POST URL
 
     public Login() {
 
     }
 
-    public boolean login(String id, String pw, final RestAPIListener listener) {
+    public boolean login(String id, String pw, final OnLoginListener listener) {
         this.listener = listener;
         final String input_id = id;
         final String input_pw = pw;
@@ -50,7 +53,7 @@ public class Login {
 
                     JSONObject result = new JSONObject(EntityUtils.toString(response.getEntity())); // JSON 형태의 결과값.
 
-                    listener.onResponse(json2map(result)); // 결과를 받았으니 subscriber에게 알려줌.
+                    listener.onLogin(json2map(result)); // 결과를 받았으니 subscriber에게 알려줌.
 
                 } catch (Exception e) {
                     Log.d("LoginError", "LoginError");

@@ -1,6 +1,6 @@
 package zangdol.careme.main;
 
-import zangdol.careme.model.Login;
+import zangdol.careme.model.User;
 import zangdol.careme.util.SaveSharedPreference;
 
 public class MainPresenter implements MainContract.Presenter {
@@ -12,7 +12,7 @@ public class MainPresenter implements MainContract.Presenter {
 
     @Override
     public void logout() {
-        new Login().logout();
+        new User().logout();
         mainActivity.recreate(); // activity 초기화
     }
 
