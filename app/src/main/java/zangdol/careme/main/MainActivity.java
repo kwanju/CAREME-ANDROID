@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import zangdol.careme.R;
 import zangdol.careme.SearchShelter.SearchShelterCategoryActivity;
+import zangdol.careme.TestActivity.TestActivity;
 import zangdol.careme.login.LoginActivity;
 import zangdol.careme.util.SaveSharedPreference;
 
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button bt_login;
     private Button bt_logout;
     private Button bt_searchSheter;
+    private Button bt_test;
 
     private TextView tv_id;
 
@@ -47,7 +49,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bt_login = (Button) findViewById(R.id.button_login);
         bt_logout = (Button) findViewById(R.id.button_logout);
         bt_searchSheter = (Button) findViewById(R.id.button_search_shelter);
+        bt_test = (Button) findViewById(R.id.button_test);
+
         tv_id = (TextView) findViewById(R.id.tv_id);
+
         layout_login = (LinearLayout) findViewById(R.id.layout_login);
         layout_logout = (LinearLayout) findViewById(R.id.layout_logout);
     }
@@ -56,6 +61,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bt_login.setOnClickListener(this);
         bt_logout.setOnClickListener(this);
         bt_searchSheter.setOnClickListener(this);
+        bt_test.setOnClickListener(this);
     }
 
 
@@ -77,6 +83,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.button_search_shelter:
                 Intent intent = new Intent(this, SearchShelterCategoryActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.button_test:
+                startActivity(new Intent(this,TestActivity.class));
                 break;
         }
     }

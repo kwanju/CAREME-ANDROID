@@ -18,10 +18,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".login.LoginActivity"></activity>
-        <activity android:name=".SearchShelter.SearchShelterCategoryActivity">
-
-        </activity>
+        <activity android:name=".login.LoginActivity" />
+        <activity android:name=".SearchShelter.SearchShelterCategoryActivity"></activity>
+        <activity android:name=".TestActivity.TestActivity"></activity>
     </application>
 
 </manifest>

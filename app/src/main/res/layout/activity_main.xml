@@ -55,6 +55,11 @@
                 android:id="@+id/button_search_shelter"
                 android:text="보호소 찾기"/>
         </LinearLayout>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="테스트"
+            android:id="@+id/button_test"/>
     </LinearLayout>
 
 
