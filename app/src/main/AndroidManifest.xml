@@ -19,8 +19,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".login.LoginActivity" />
-        <activity android:name=".SearchShelter.SearchShelterCategoryActivity"></activity>
-        <activity android:name=".TestActivity.TestActivity"></activity>
+        <activity android:name=".SearchShelter.SearchShelterCategoryActivity" />
+        <activity android:name=".TestActivity.TestActivity" />
+        <activity android:name=".SearchShelter.AnimalList.AnimalListActivity"></activity>
     </application>
 
 </manifest>

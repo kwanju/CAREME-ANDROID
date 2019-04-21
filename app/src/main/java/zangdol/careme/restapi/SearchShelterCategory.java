@@ -50,7 +50,7 @@ public class SearchShelterCategory implements RestUtil.OnRestApiListener{
 
             String result = results.getString("result");
 
-            if(results.equals("0")) // 결과가 실패했을 때
+            if(result.equals("0")) // 결과가 실패했을 때
                 return null;
 
             JSONArray lists = results.getJSONArray("list");

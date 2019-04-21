@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import zangdol.careme.R;
+import zangdol.careme.SearchShelter.AnimalList.AnimalListActivity;
 import zangdol.careme.SearchShelter.SearchShelterCategoryActivity;
 import zangdol.careme.TestActivity.TestActivity;
 import zangdol.careme.login.LoginActivity;
@@ -85,7 +86,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.button_test:
-                startActivity(new Intent(this,TestActivity.class));
+                startActivity(new Intent(this,AnimalListActivity.class));
                 break;
         }
     }
