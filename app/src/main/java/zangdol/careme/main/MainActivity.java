@@ -14,6 +14,7 @@ import zangdol.careme.R;
 import zangdol.careme.SearchShelter.AnimalList.AnimalListActivity;
 import zangdol.careme.SearchShelter.SearchShelterCategoryActivity;
 import zangdol.careme.TestActivity.TestActivity;
+import zangdol.careme.animal.AnimalInfoActivity;
 import zangdol.careme.login.LoginActivity;
 import zangdol.careme.util.SaveSharedPreference;
 

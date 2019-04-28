@@ -1,6 +1,7 @@
 package zangdol.careme.SearchShelter.AnimalList;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,12 +13,15 @@ import java.util.List;
 
 import zangdol.careme.R;
 import zangdol.careme.model.AnimalSummary;
+import zangdol.careme.util.ImageDownloader;
 
 // https://mailmail.tistory.com/6 참고
 
-public class AnimalListAdapter extends BaseAdapter {
+public class AnimalListAdapter extends BaseAdapter{
+
 
     private List<AnimalSummary> list;
+
 
     public AnimalListAdapter(List<AnimalSummary> list) {
         this.list = list;
@@ -61,12 +65,23 @@ public class AnimalListAdapter extends BaseAdapter {
 
         AnimalSummary animalSummary = getItem(position);
 
-        iv_dogImage.setImageResource(R.drawable.dog); // ImageURL로 바꿔주어야함 실제
+        //이미지 설정
+        Log.d("BEFORE",animalSummary.getIdx());
+        if(animalSummary.getImageURL().equals("null"))
+            iv_dogImage.setImageResource(R.drawable.no_image);
+        else
+            new ImageDownloader(animalSummary.getImageURL(), iv_dogImage,animalSummary.getIdx());
+
         tv_dogName.setText(animalSummary.getName());
         tv_species.setText(animalSummary.getSpeciesCode());
         tv_idx.setText(animalSummary.getIdx());
 
+
         return convertView;
     }
 
+
 }
+
+//https://stackoverflow.com/questions/33227025/cache-downloaded-image-in-listview
+// 이미지 재 다운로드 문제 해결
