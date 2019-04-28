@@ -2,14 +2,27 @@ package zangdol.careme.animal;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.Toast;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import zangdol.careme.R;
 import zangdol.careme.model.Animal;
+import zangdol.careme.util.NullChecker;
 
 public class AnimalInfoActivity extends AppCompatActivity implements AnimalInfoContract.View {
     private AnimalInfoPresenter presenter;
     private AnimalInfoActivity me;
+
+    private ImageView iv_image;
+
+    private TextView tv_idx;
+    private TextView tv_name;
+    private TextView tv_species;
+    private TextView tv_sex;
+    private TextView tv_discovered_spot;
+    private TextView tv_shelterIdx;
+    private TextView tv_description;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,25 +31,42 @@ public class AnimalInfoActivity extends AppCompatActivity implements AnimalInfoC
         me = this;
         presenter = new AnimalInfoPresenter(this);
         setElements();
-        presenter.getAnimalInfo();
+        presenter.getAnimalInfo(getIntent().getIntExtra("idx",0)); // 동물 정보를 가져옴
     }
 
     private void setElements() {
 
+        iv_image = (ImageView) findViewById(R.id.animal_info_image);
+
+        tv_idx = (TextView) findViewById(R.id.animal_info_idx);
+        tv_name = (TextView) findViewById(R.id.animal_info_name);
+        tv_species = (TextView) findViewById(R.id.animal_info_species);
+        tv_sex = (TextView) findViewById(R.id.animal_info_sex);
+        tv_discovered_spot = (TextView) findViewById(R.id.animal_info_discovered_spot);
+        tv_shelterIdx = (TextView) findViewById(R.id.animal_info_shelter_idx);
+        tv_description = (TextView) findViewById(R.id.animal_info_description);
     }
 
     @Override
     public void setAnimalInfo(final Animal animal) {
-
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                if (animal.getDiscoveredSpot().equals("null"))
-                    Toast.makeText(me, "null", Toast.LENGTH_LONG).show();
+                NullChecker.image(animal.getUrlPicture(), iv_image);
+                NullChecker.text(animal.getName(), tv_name);
+                NullChecker.text(animal.getSpeciesCode(), tv_species);
+                NullChecker.text(animal.getDiscoveredSpot(), tv_discovered_spot);
+                NullChecker.text(animal.getShelterIdx(), tv_shelterIdx);
+                NullChecker.text(animal.getDescription(), tv_description);
+                if (tv_sex.equals('M'))
+                    tv_sex.setText("남");
+                else if (tv_sex.equals('W'))
+                    tv_sex.setText("여");
                 else
-                    Toast.makeText(me, "not null", Toast.LENGTH_LONG).show();
-
+                    tv_sex.setText("입력안됨");
             }
         });
+
+
     }
 }

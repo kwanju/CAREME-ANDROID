@@ -12,8 +12,8 @@ public class AnimalInfoPresenter implements AnimalInfoContract.Presenter,GetAnim
     }
 
     @Override
-    public void getAnimalInfo() {
-        getAnimalInfo = new GetAnimalInfo("9",this);
+    public void getAnimalInfo(int idx) {
+        getAnimalInfo = new GetAnimalInfo(""+idx,this); // 동물 정보 가져오기
     }
 
     @Override

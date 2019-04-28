@@ -5,7 +5,7 @@ import zangdol.careme.model.Animal;
 public class AnimalInfoContract {
 
     public interface Presenter{
-        void getAnimalInfo();
+        void getAnimalInfo(int idx);
 
     }
     public interface View{

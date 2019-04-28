@@ -5,6 +5,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import zangdol.careme.Config;
@@ -45,8 +46,19 @@ public class GetAnimalInfo implements RestUtil.OnRestApiListener {
         try {
             JSONObject animalInfo = result.getJSONObject("animalInfo");
             animal.setDiscoveredSpot(animalInfo.getString("discover_idx"));
-            //animal.setEstimatedBirthAge(animalInfo.getString("estimated_birth_age"));
+            animal.setEstimatedBirthAge(animalInfo.getString("estimated_birth_age"));
             animal.setIdx(animalInfo.getString("idx"));
+            animal.setDescription(animalInfo.getString("description"));
+            animal.setName(animalInfo.getString("name"));
+
+            if(animalInfo.getString("sex").equals("null"))
+                animal.setSex('O');
+            else
+                animal.setSex(animalInfo.getString("sex").charAt(0));
+
+            animal.setShelterIdx(animalInfo.getString("shelter_idx"));
+            animal.setSpeciesCode(animalInfo.getString("species_code"));
+            animal.setUrlPicture(animalInfo.getString("url_picture"));
             return animal;
         } catch (Exception e) {
             e.printStackTrace();

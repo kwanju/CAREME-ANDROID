@@ -23,10 +23,15 @@ public class AnimalListAdapter extends BaseAdapter{
 
 
     private List<AnimalSummary> list;
+    private AdapterClickListener listener;
+    public interface AdapterClickListener{
+        void onAdapterClick(int idx);
+    }
 
 
-    public AnimalListAdapter(List<AnimalSummary> list) {
+    public AnimalListAdapter(List<AnimalSummary> list, AdapterClickListener listener) {
         this.list = list;
+        this.listener = listener;
     }
 
     @Override
@@ -65,7 +70,7 @@ public class AnimalListAdapter extends BaseAdapter{
         TextView tv_species = (TextView) convertView.findViewById(R.id.animal_list_item_species);
         TextView tv_idx = (TextView) convertView.findViewById(R.id.animal_list_item_idx);
 
-        AnimalSummary animalSummary = getItem(position);
+        final AnimalSummary animalSummary = getItem(position);
 
         //이미지 설정
         if(animalSummary.getImageURL().equals("null"))
@@ -78,7 +83,12 @@ public class AnimalListAdapter extends BaseAdapter{
         tv_species.setText(animalSummary.getSpeciesCode());
         tv_idx.setText(animalSummary.getIdx());
 
-
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onAdapterClick(Integer.parseInt(animalSummary.getIdx()));
+            }
+        });
         return convertView;
     }
 

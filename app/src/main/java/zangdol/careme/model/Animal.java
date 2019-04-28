@@ -14,7 +14,16 @@ public class Animal {
     private String discoveredSpot;
     private int state;
     private String shelterIdx;
-    
+    private String description;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public String getIdx() {
         return idx;
     }
