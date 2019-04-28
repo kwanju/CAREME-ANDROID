@@ -9,6 +9,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 import zangdol.careme.R;
@@ -66,11 +68,11 @@ public class AnimalListAdapter extends BaseAdapter{
         AnimalSummary animalSummary = getItem(position);
 
         //이미지 설정
-        Log.d("BEFORE",animalSummary.getIdx());
         if(animalSummary.getImageURL().equals("null"))
             iv_dogImage.setImageResource(R.drawable.no_image);
         else
-            new ImageDownloader(animalSummary.getImageURL(), iv_dogImage,animalSummary.getIdx());
+            Picasso.get().load(animalSummary.getImageURL()).into(iv_dogImage);
+            //new ImageDownloader(animalSummary.getImageURL(), iv_dogImage,animalSummary.getIdx());
 
         tv_dogName.setText(animalSummary.getName());
         tv_species.setText(animalSummary.getSpeciesCode());
