@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.beardedhen.androidbootstrap.BootstrapButton;
+
 import zangdol.careme.R;
 import zangdol.careme.model.Animal;
 import zangdol.careme.util.NullChecker;
@@ -26,7 +28,7 @@ public class AnimalInfoActivity extends AppCompatActivity implements AnimalInfoC
     private TextView tv_shelterIdx;
     private TextView tv_description;
 
-    private Button bt_applyVolunteer;
+    private BootstrapButton bt_applyVolunteer;
 
 
     @Override
@@ -51,7 +53,7 @@ public class AnimalInfoActivity extends AppCompatActivity implements AnimalInfoC
         tv_shelterIdx = (TextView) findViewById(R.id.animal_info_shelter_idx);
         tv_description = (TextView) findViewById(R.id.animal_info_description);
 
-        bt_applyVolunteer = (Button) findViewById(R.id.animal_info_apply_volunteer);
+        bt_applyVolunteer = (BootstrapButton) findViewById(R.id.animal_info_apply_volunteer);
         bt_applyVolunteer.setOnClickListener(this);
     }
 

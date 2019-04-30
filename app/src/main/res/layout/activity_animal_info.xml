@@ -8,10 +8,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        >
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="300dp"
+            android:scaleType="fitCenter"
             android:id="@+id/animal_info_image"/>
         <TextView
             android:layout_width="match_parent"
@@ -101,11 +104,12 @@
                 android:id="@+id/animal_info_description"/>
         </LinearLayout>
 
-        <Button
+        <com.beardedhen.androidbootstrap.BootstrapButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="봉사활동신청"
-            android:id="@+id/animal_info_apply_volunteer"/>
+            android:id="@+id/animal_info_apply_volunteer"
+            style="@style/PrimaryButton"/>
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

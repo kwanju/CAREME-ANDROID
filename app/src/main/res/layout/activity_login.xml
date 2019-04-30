@@ -29,11 +29,7 @@
             android:layout_height="wrap_content"
             android:text="로그인"
             android:id="@+id/login_login"
-            app:bootstrapBrand="primary"
-            app:bootstrapSize="lg"
-            app:buttonMode="regular"
-            app:showOutline="false"
-            app:roundedCorners="true"
+            style="@style/PrimaryButton"
             />
     </android.support.v7.widget.LinearLayoutCompat>
 
