@@ -22,7 +22,8 @@
         <activity android:name=".SearchShelter.SearchShelterCategoryActivity" />
         <activity android:name=".TestActivity.TestActivity" />
         <activity android:name=".SearchShelter.AnimalList.AnimalListActivity" />
-        <activity android:name=".animal.AnimalInfoActivity"></activity>
+        <activity android:name=".animal.AnimalInfoActivity" />
+        <activity android:name=".animal.applyVolunteer.ApplyVolunteerActivity"></activity>
     </application>
 
 </manifest>

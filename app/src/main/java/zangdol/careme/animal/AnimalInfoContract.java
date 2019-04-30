@@ -6,6 +6,7 @@ public class AnimalInfoContract {
 
     public interface Presenter{
         void getAnimalInfo(int idx);
+        void moveApplyVolunteer();
 
     }
     public interface View{
