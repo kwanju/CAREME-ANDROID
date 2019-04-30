@@ -13,6 +13,14 @@
         android:paddingLeft="72dp"
         android:paddingRight="72dp"
         >
+        <com.beardedhen.androidbootstrap.BootstrapLabel
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            app:bootstrapHeading="h1"
+            app:bootstrapBrand="secondary"
+            app:bootstrapText="CareMe 로그인"
+            />
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/login_id"
             android:layout_width="match_parent"
@@ -27,10 +35,23 @@
         <com.beardedhen.androidbootstrap.BootstrapButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="로그인"
+            app:bootstrapText="로그인"
             android:id="@+id/login_login"
             style="@style/PrimaryButton"
             />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_marginTop="10dp">
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:bootstrapText="회원가입"
+                style="@style/SmallSuccessButton"
+                android:id="@+id/login_registration"
+                />
+        </LinearLayout>
     </android.support.v7.widget.LinearLayoutCompat>
 
 

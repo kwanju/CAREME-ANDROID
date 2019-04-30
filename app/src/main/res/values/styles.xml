@@ -15,4 +15,12 @@
         <item name="showOutline">false</item>
         <item name="roundedCorners">true</item>
     </style>
+
+    <style name="SmallSuccessButton">
+        <item name="bootstrapBrand">success</item>
+        <item name="bootstrapSize">sm</item>
+        <item name="buttonMode">regular</item>
+        <item name="showOutline">false</item>
+        <item name="roundedCorners">true</item>
+    </style>
 </resources>

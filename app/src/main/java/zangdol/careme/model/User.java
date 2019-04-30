@@ -18,14 +18,9 @@ public class User implements zangdol.careme.restapi.Login.OnLoginListener {
     public void onLogin(HashMap<String, String> results) {
         if (results.get("result").equals("1")) {// 성공일 때
             loginListener.onLogin(true);
-            SaveSharedPreference.setUser(results.get("id"), results.get("idx")); // 사용자 로그인정보 저장.
+            setSession(results);
         } else
             loginListener.onLogin(false);
-
-
-        for (String key : results.keySet()) {
-            Log.d(TAG, "key : " + key + "/ value : " + results.get(key));
-        }
     }
 
 
@@ -48,6 +43,11 @@ public class User implements zangdol.careme.restapi.Login.OnLoginListener {
 
     public void setLoginListener(OnLoginListener loginListener) {
         this.loginListener = loginListener;
+    }
+
+    // 세션을 설정하는 함수.
+    public static void setSession(HashMap<String, String> results){
+        SaveSharedPreference.setUser(results.get("id"), results.get("idx"),results.get("nickname")); // 사용자 로그인정보 저장.
     }
 
 
