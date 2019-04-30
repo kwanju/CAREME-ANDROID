@@ -12,6 +12,9 @@
         android:numColumns="2"
         android:id="@+id/gridview_animal_list"
         android:horizontalSpacing="10dp"
-        android:verticalSpacing="10dp">
+        android:verticalSpacing="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        >
     </GridView>
 </android.support.constraint.ConstraintLayout>
