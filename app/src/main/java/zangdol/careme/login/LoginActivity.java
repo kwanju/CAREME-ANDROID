@@ -3,18 +3,22 @@ package zangdol.careme.login;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.beardedhen.androidbootstrap.BootstrapButton;
+import com.rengwuxian.materialedittext.MaterialEditText;
 
 import zangdol.careme.R;
 import zangdol.careme.main.MainActivity;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener,  LoginContract.View {
 
-    private EditText et_id;
-    private EditText et_pw;
-    private Button btn_login;
+    private MaterialEditText et_id;
+    private MaterialEditText et_pw;
+    private BootstrapButton btn_login;
 
     private LoginPresenter loginPresenter;
 
@@ -28,9 +32,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void setElement() {
-        et_id = (EditText) findViewById(R.id.login_id);
-        et_pw = (EditText) findViewById(R.id.login_pw);
-        btn_login = (Button) findViewById(R.id.login_login);
+        et_id = (MaterialEditText) findViewById(R.id.login_id);
+        et_pw = (MaterialEditText) findViewById(R.id.login_pw);
+        et_pw.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+
+        btn_login = (BootstrapButton) findViewById(R.id.login_login);
     }
 
     private void setListener() {
