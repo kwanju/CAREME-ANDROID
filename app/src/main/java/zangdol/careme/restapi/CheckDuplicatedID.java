@@ -19,7 +19,7 @@ public class CheckDuplicatedID implements RestUtil.OnRestApiListener {
 
     public CheckDuplicatedID(String id, OnCheckDupIDListener listener) {
         this.listener = listener;
-        RestUtil restUtil = RestUtil.getInstance();
+        RestUtil restUtil = new RestUtil();
         String url = Config.SERVERIP + "android/user/json/checkDupID";
 
         List<NameValuePair> params = new ArrayList<NameValuePair>(1);

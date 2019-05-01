@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.style.ForegroundColorSpan;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.CalendarMode;
@@ -17,6 +18,7 @@ import com.prolificinteractive.materialcalendarview.OnMonthChangedListener;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.HashSet;
 
 import zangdol.careme.R;
@@ -26,6 +28,10 @@ public class ApplyVolunteerActivity extends AppCompatActivity implements OnMonth
     private ApplyVolunteerPresenter presenter;
 
     private MaterialCalendarView materialCalendarView;
+
+    private TextView tv_volunteerInfo;
+    private TextView tv_volunteerStartTime;
+    private TextView tv_volunteerEndTime;
 
     private ApplyVolunteerActivity me;
 
@@ -41,6 +47,7 @@ public class ApplyVolunteerActivity extends AppCompatActivity implements OnMonth
 
         String[] dates = getSearchDate(getCurYear(), getCurMonth());
         presenter.getSchedule(dates[0], dates[1]);
+        presenter.getVolunteerShelterInfo();
 
     }
 
@@ -55,6 +62,10 @@ public class ApplyVolunteerActivity extends AppCompatActivity implements OnMonth
 
         materialCalendarView.setSelectionColor(Color.BLACK);
         materialCalendarView.setOnMonthChangedListener(this);
+
+        tv_volunteerInfo = (TextView) findViewById(R.id.apply_volunteer_info);
+        tv_volunteerStartTime = (TextView) findViewById(R.id.apply_volunteer_start_time);
+        tv_volunteerEndTime = (TextView) findViewById(R.id.apply_volunteer_end_time);
     }
 
     @Override
@@ -75,6 +86,19 @@ public class ApplyVolunteerActivity extends AppCompatActivity implements OnMonth
             }
         });
     }
+
+    @Override
+    public void setVolunteerInfo(final HashMap<String, String> volunteerInfo) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                tv_volunteerStartTime.setText(volunteerInfo.get("volunteer_start_time"));
+                tv_volunteerEndTime.setText(volunteerInfo.get("volunteer_end_time"));
+                tv_volunteerInfo.setText(volunteerInfo.get("volunteer_description"));
+            }
+        });
+    }
+
 
     private int getCurMonth() {
         Date curDate = Calendar.getInstance().getTime();

@@ -19,16 +19,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class RestUtil {
-    private static RestUtil instance;
 
-    private RestUtil() {
-    }
-
-    public static RestUtil getInstance() {
-        if (instance == null)
-            instance = new RestUtil();
-        return instance;
-    }
 
     public interface OnRestApiListener {
         void OnResult(JSONObject result);
@@ -67,7 +58,7 @@ public class RestUtil {
     }
 
     // JSON object를 MAP 클래스로 변환시켜주는 클래스
-    public HashMap<String, String> json2map(JSONObject res) {
+    public static HashMap<String, String> json2map(JSONObject res) {
         try {
             HashMap<String, String> map = new HashMap<String, String>();
 

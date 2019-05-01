@@ -28,7 +28,7 @@ public class GetAnimalSchedule implements RestUtil.OnRestApiListener {
     }
 
     public GetAnimalSchedule(String idx, String start_date, String end_date, OnAnimalScheduleListener listener) {
-        restUtil = RestUtil.getInstance();
+        restUtil = new RestUtil();
         this.listener = listener;
 
         List<NameValuePair> params = new ArrayList<NameValuePair>(3);

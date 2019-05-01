@@ -3,12 +3,14 @@ package zangdol.careme.animal.applyVolunteer;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
 import zangdol.careme.restapi.GetAnimalSchedule;
+import zangdol.careme.restapi.GetVolunteerShelterInfo;
 
-public class ApplyVolunteerPresenter implements ApplyVolunteerContract.Presenter, GetAnimalSchedule.OnAnimalScheduleListener {
+public class ApplyVolunteerPresenter implements ApplyVolunteerContract.Presenter, GetAnimalSchedule.OnAnimalScheduleListener, GetVolunteerShelterInfo.OnVolunteerInfoListener {
     private ApplyVolunteerActivity activity;
 
     private GetAnimalSchedule schedule;
@@ -31,7 +33,18 @@ public class ApplyVolunteerPresenter implements ApplyVolunteerContract.Presenter
     }
 
     @Override
+    public void getVolunteerShelterInfo() {
+        new GetVolunteerShelterInfo(animal_idx,this);
+    }
+
+    @Override
     public void onAnimalSchedule(HashSet<CalendarDay> list) {
         activity.setSchedule(list);
+    }
+
+
+    @Override
+    public void onVolunteerInfo(HashMap<String, String> volunteerInfo) {
+        activity.setVolunteerInfo(volunteerInfo);
     }
 }

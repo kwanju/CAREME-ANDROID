@@ -31,7 +31,7 @@ public class GetAnimalListSummaryInShelter implements RestUtil.OnRestApiListener
         params.add(new BasicNameValuePair("shelter_idx", shelterIdx));
         params.add(new BasicNameValuePair("state", state));
 
-        restUtil = RestUtil.getInstance();
+        restUtil = new RestUtil();
 
         restUtil.request(URL, params, this);
     }

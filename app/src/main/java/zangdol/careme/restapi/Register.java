@@ -17,7 +17,7 @@ public class Register implements RestUtil.OnRestApiListener {
     private RestUtil restUtil;
     public Register(String id,String pw,String nickname,String pnum, String email,OnRegisterListener listener) {
         this.listener = listener;
-        restUtil = RestUtil.getInstance();
+        restUtil = new RestUtil();
         String url = Config.SERVERIP+"android/user/action/registration";
 
         List<NameValuePair> params = new ArrayList<NameValuePair>(5);

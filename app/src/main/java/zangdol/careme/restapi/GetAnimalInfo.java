@@ -24,7 +24,7 @@ public class GetAnimalInfo implements RestUtil.OnRestApiListener {
 
     public GetAnimalInfo(String animalIdx, OnAnimalInfoListener listener) {
         this.listener = listener;
-        restUtil = RestUtil.getInstance();
+        restUtil = new RestUtil();
 
         List<NameValuePair> params = new ArrayList<NameValuePair>(2);
 

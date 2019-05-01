@@ -26,7 +26,7 @@ public class Login implements RestUtil.OnRestApiListener {
 
     public void login(String id, String pw, OnLoginListener listener) {
         this.listener = listener;
-        restUtil = RestUtil.getInstance();
+        restUtil = new RestUtil();
 
         String URL = Config.SERVERIP + "android/user/action/login"; // 로그인 POST URL
 

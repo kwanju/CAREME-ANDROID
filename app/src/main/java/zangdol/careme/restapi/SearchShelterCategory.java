@@ -37,7 +37,7 @@ public class SearchShelterCategory implements RestUtil.OnRestApiListener{
         params.add(new BasicNameValuePair("big", big));
         params.add(new BasicNameValuePair("small", small));
 
-        restUtil = RestUtil.getInstance();
+        restUtil = new RestUtil();
 
         restUtil.request(URL,params,this);
 
