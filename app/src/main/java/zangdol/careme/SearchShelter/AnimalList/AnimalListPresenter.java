@@ -14,12 +14,15 @@ public class AnimalListPresenter implements AnimalListContract.Presenter, GetAni
     private AnimalListActivity animalListActivity;
     private GetAnimalListSummaryInShelter getAnimalListSummaryInShelter;
 
+    private String shelterIdx;
+
     public AnimalListPresenter(AnimalListActivity animalListActivity) {
         this.animalListActivity = animalListActivity;
+        shelterIdx = animalListActivity.getIntent().getStringExtra("idx");
     }
 
     @Override
-    public void setAnimalList(String shelterIdx,String state) {
+    public void setAnimalList(String state) {
         // https://mailmail.tistory.com/6
         // gridView
         getAnimalListSummaryInShelter = new GetAnimalListSummaryInShelter();

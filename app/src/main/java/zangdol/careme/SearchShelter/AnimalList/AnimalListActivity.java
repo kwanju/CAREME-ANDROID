@@ -20,7 +20,7 @@ public class AnimalListActivity extends AppCompatActivity implements AnimalListC
 
         setElement();
 
-        animalListPresenter.setAnimalList("1", "1"); // ****나중에 activity에서 가져와야함.*****
+        animalListPresenter.setAnimalList( "1"); // ****나중에 activity에서 가져와야함.*****
     }
 
     private void setElement() {

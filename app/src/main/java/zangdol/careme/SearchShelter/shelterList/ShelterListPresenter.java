@@ -4,7 +4,7 @@ import android.content.Intent;
 
 import java.util.ArrayList;
 
-import zangdol.careme.SearchShelter.ShelterInfoActivity;
+import zangdol.careme.shelter.ShelterInfoActivity;
 import zangdol.careme.model.Shelter;
 
 public class ShelterListPresenter implements ShelterListContract.Presenter{

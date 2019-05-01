@@ -23,7 +23,7 @@
         <activity android:name=".login.LoginActivity" />
         <activity android:name=".SearchShelter.SearchShelterCategoryActivity" />
         <activity android:name=".SearchShelter.shelterList.ShelterListActivity" />
-        <activity android:name=".SearchShelter.ShelterInfoActivity" />
+        <activity android:name=".shelter.ShelterInfoActivity" />
         <activity android:name=".TestActivity.TestActivity" />
         <activity android:name=".SearchShelter.AnimalList.AnimalListActivity" />
         <activity android:name=".animal.AnimalInfoActivity" />
