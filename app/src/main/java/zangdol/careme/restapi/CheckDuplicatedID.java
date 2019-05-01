@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import zangdol.careme.Config;
+import zangdol.careme.restapi.core.Parameters;
+import zangdol.careme.restapi.core.RestFactory;
+import zangdol.careme.restapi.core.RestUtil;
 
 public class CheckDuplicatedID implements RestUtil.OnRestApiListener {
 
@@ -17,16 +20,22 @@ public class CheckDuplicatedID implements RestUtil.OnRestApiListener {
         void OnCheckDupID(boolean result);
     }
 
-    public CheckDuplicatedID(String id, OnCheckDupIDListener listener) {
+    public CheckDuplicatedID(final String id, OnCheckDupIDListener listener) {
         this.listener = listener;
-        RestUtil restUtil = new RestUtil();
+
         String url = Config.SERVERIP + "android/user/json/checkDupID";
 
-        List<NameValuePair> params = new ArrayList<NameValuePair>(1);
+        RestFactory.getInstance().request(url, this, new Parameters() {
+            @Override
+            public int getNumParams() {
+                return 1;
+            }
 
-        params.add(new BasicNameValuePair("id", id));
-
-        restUtil.request(url, params, this);
+            @Override
+            public void setParams() {
+                addParam("id", id);
+            }
+        });
     }
 
     @Override

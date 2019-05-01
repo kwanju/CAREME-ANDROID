@@ -1,4 +1,4 @@
-package zangdol.careme.restapi;
+package zangdol.careme.restapi.core;
 
 import android.os.AsyncTask;
 import android.util.Log;

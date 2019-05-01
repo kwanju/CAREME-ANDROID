@@ -1,41 +1,47 @@
 package zangdol.careme.restapi;
 
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
 
 import zangdol.careme.Config;
+import zangdol.careme.restapi.core.Parameters;
+import zangdol.careme.restapi.core.RestFactory;
+import zangdol.careme.restapi.core.RestUtil;
 
 public class Register implements RestUtil.OnRestApiListener {
 
     private OnRegisterListener listener;
-    private RestUtil restUtil;
-    public Register(String id,String pw,String nickname,String pnum, String email,OnRegisterListener listener) {
+
+    public Register(final String id, final String pw, final String nickname, final String pnum, final String email, OnRegisterListener listener) {
         this.listener = listener;
-        restUtil = new RestUtil();
-        String url = Config.SERVERIP+"android/user/action/registration";
 
-        List<NameValuePair> params = new ArrayList<NameValuePair>(5);
 
-        params.add(new BasicNameValuePair("id", id));
-        params.add(new BasicNameValuePair("pw", pw));
-        params.add(new BasicNameValuePair("nickname", nickname));
-        params.add(new BasicNameValuePair("pnum", pnum));
-        params.add(new BasicNameValuePair("email", email));
+        String url = Config.SERVERIP + "android/user/action/registration";
 
-        restUtil.request(url,params,this);
+        RestFactory.getInstance().request(url, this, new Parameters() {
+            @Override
+            public int getNumParams() {
+                return 5;
+            }
+
+            @Override
+            public void setParams() {
+                addParam("id", id);
+                addParam("pw", pw);
+                addParam("nickname", nickname);
+                addParam("pnum", pnum);
+                addParam("email", email);
+            }
+        });
     }
 
-    public interface OnRegisterListener{
+    public interface OnRegisterListener {
         void onResgiter(HashMap<String, String> results);
     }
+
     @Override
     public void OnResult(JSONObject result) {
-        listener.onResgiter(restUtil.json2map(result));
+        listener.onResgiter(RestUtil.json2map(result));
     }
 }
