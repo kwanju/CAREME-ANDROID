@@ -19,9 +19,9 @@ public class MainPresenter implements MainContract.Presenter {
     @Override
     public void checkLogin() {
         if (SaveSharedPreference.getID().length() == 0)  // 로그인이 안되어있을 경우
-            mainActivity.changeLoginState(false);
+        mainActivity.changeLoginState(false);
         else  // 로그인이 되어있을 경우
-            mainActivity.changeLoginState(true);
+        mainActivity.changeLoginState(true);
 
 
     }
