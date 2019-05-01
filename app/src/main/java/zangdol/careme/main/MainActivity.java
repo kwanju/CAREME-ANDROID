@@ -15,6 +15,7 @@ import zangdol.careme.SearchShelter.AnimalList.AnimalListActivity;
 import zangdol.careme.SearchShelter.SearchShelterCategoryActivity;
 import zangdol.careme.TestActivity.TestActivity;
 import zangdol.careme.animal.AnimalInfoActivity;
+import zangdol.careme.animal.applyVolunteer.ApplyVolunteerActivity;
 import zangdol.careme.login.LoginActivity;
 import zangdol.careme.util.SaveSharedPreference;
 
@@ -96,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void changeLoginState(boolean isLogin) {
         if (isLogin) { // 로그인이 되어있을 경우
             layout_login.setVisibility(View.GONE);
-            tv_id.setText(SaveSharedPreference.getID() + "님");
+            tv_id.setText(SaveSharedPreference.getNickname() + "님");
         } else { // 로그인이 안되어있을 경우
             layout_logout.setVisibility(View.GONE);
         }

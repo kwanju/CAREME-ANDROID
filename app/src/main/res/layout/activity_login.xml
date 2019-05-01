@@ -10,24 +10,48 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center"
+        android:paddingLeft="72dp"
+        android:paddingRight="72dp"
         >
-        <EditText
+        <com.beardedhen.androidbootstrap.BootstrapLabel
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            app:bootstrapHeading="h1"
+            app:bootstrapBrand="secondary"
+            app:bootstrapText="CareMe 로그인"
+            />
+        <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/login_id"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="ID"
-
             />
-        <EditText
-            android:layout_width="wrap_content"
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/login_pw"
             android:hint="PW"  />
-        <Button
+        <com.beardedhen.androidbootstrap.BootstrapButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="로그인"
-            android:id="@+id/login_login"/>
+            app:bootstrapText="로그인"
+            android:id="@+id/login_login"
+            style="@style/PrimaryButton"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_marginTop="10dp">
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:bootstrapText="회원가입"
+                style="@style/SmallSuccessButton"
+                android:id="@+id/login_registration"
+                />
+        </LinearLayout>
     </android.support.v7.widget.LinearLayoutCompat>
 
 

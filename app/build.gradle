@@ -36,4 +36,7 @@ dependencies {
 
     implementation 'org.apache.httpcomponents:httpclient:4.5'
     implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'com.prolificinteractive:material-calendarview:1.4.3'
+    implementation 'com.beardedhen:androidbootstrap:2.3.2'
+    implementation 'com.rengwuxian.materialedittext:library:2.1.4'
 }

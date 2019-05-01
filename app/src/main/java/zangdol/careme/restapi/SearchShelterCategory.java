@@ -1,7 +1,5 @@
 package zangdol.careme.restapi;
 
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -11,51 +9,58 @@ import java.util.List;
 
 import zangdol.careme.Config;
 import zangdol.careme.model.Shelter;
+import zangdol.careme.restapi.core.Parameters;
+import zangdol.careme.restapi.core.RestFactory;
+import zangdol.careme.restapi.core.RestUtil;
 
-public class SearchShelterCategory implements RestUtil.OnRestApiListener{
+public class SearchShelterCategory implements RestUtil.OnRestApiListener {
 
     private OnResponseListener listener;
 
-    private RestUtil restUtil;
     @Override
     public void OnResult(JSONObject result) {
         listener.onResponse(json2ListShelter(result));
     }
 
 
-    public interface OnResponseListener{
+    public interface OnResponseListener {
         void onResponse(List<Shelter> shelterList);
     }
 
-    public void request(String big, String small,OnResponseListener listener) {
-        String URL = Config.SERVERIP+"android/shelter/json/searchShelter";
+    public void request(final String big, final String small, OnResponseListener listener) {
+        String URL = Config.SERVERIP + "android/shelter/json/searchShelter";
 
         this.listener = listener;
 
-        List<NameValuePair> params = new ArrayList<NameValuePair>(2);
 
-        params.add(new BasicNameValuePair("big", big));
-        params.add(new BasicNameValuePair("small", small));
+        RestFactory.getInstance().request(URL, this, new Parameters() {
+            @Override
+            public int getNumParams() {
+                return 2;
+            }
 
-        restUtil = RestUtil.getInstance();
-
-        restUtil.request(URL,params,this);
+            @Override
+            public void setParams() {
+                addParam("big", big);
+                addParam("small", small);
+            }
+        });
 
     }
 
-    private List<Shelter> json2ListShelter(JSONObject results){
+    private List<Shelter> json2ListShelter(JSONObject results) {
 
         try {
             List<Shelter> shelterList = new ArrayList<>();
 
             String result = results.getString("result");
 
-            if(result.equals("0")) // 결과가 실패했을 때
+            if (result.equals("0")) // 결과가 실패했을 때
                 return null;
 
             JSONArray lists = results.getJSONArray("list");
 
-            for(int i=0;i<lists.length();i++){
+            for (int i = 0; i < lists.length(); i++) {
                 Shelter shelter = new Shelter();
                 shelter.setName(lists.getJSONObject(i).getString("name"));
                 shelterList.add(shelter);
@@ -66,7 +71,6 @@ public class SearchShelterCategory implements RestUtil.OnRestApiListener{
             e.printStackTrace();
             return null;
         }
-
 
 
     }

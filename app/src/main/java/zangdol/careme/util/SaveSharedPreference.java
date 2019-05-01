@@ -15,10 +15,11 @@ public class SaveSharedPreference {
     }
 
     //로그인 성공시 로그인 정보 저장
-    public static void setUser(String id, String idx) {
+    public static void setUser(String id, String idx,String nickname) {
         SharedPreferences.Editor editor = getSharedPreferences().edit();
         editor.putString("id", id);
         editor.putString("idx", idx);
+        editor.putString("nickname",nickname);
         editor.commit();
     }
 
@@ -30,6 +31,7 @@ public class SaveSharedPreference {
         return getSharedPreferences().getString("idx", "");
     }
 
+    public static String getNickname(){return getSharedPreferences().getString("nickname", "");}
     //모든 저장정보 삭제.
     public static void clear() {
         SharedPreferences.Editor editor = getSharedPreferences().edit();

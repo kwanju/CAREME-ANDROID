@@ -2,14 +2,19 @@ package zangdol.careme.animal;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.beardedhen.androidbootstrap.BootstrapButton;
 
 import zangdol.careme.R;
 import zangdol.careme.model.Animal;
 import zangdol.careme.util.NullChecker;
 
-public class AnimalInfoActivity extends AppCompatActivity implements AnimalInfoContract.View {
+public class AnimalInfoActivity extends AppCompatActivity implements AnimalInfoContract.View, View.OnClickListener {
     private AnimalInfoPresenter presenter;
     private AnimalInfoActivity me;
 
@@ -22,6 +27,8 @@ public class AnimalInfoActivity extends AppCompatActivity implements AnimalInfoC
     private TextView tv_discovered_spot;
     private TextView tv_shelterIdx;
     private TextView tv_description;
+
+    private BootstrapButton bt_applyVolunteer;
 
 
     @Override
@@ -45,10 +52,14 @@ public class AnimalInfoActivity extends AppCompatActivity implements AnimalInfoC
         tv_discovered_spot = (TextView) findViewById(R.id.animal_info_discovered_spot);
         tv_shelterIdx = (TextView) findViewById(R.id.animal_info_shelter_idx);
         tv_description = (TextView) findViewById(R.id.animal_info_description);
+
+        bt_applyVolunteer = (BootstrapButton) findViewById(R.id.animal_info_apply_volunteer);
+        bt_applyVolunteer.setOnClickListener(this);
     }
 
     @Override
     public void setAnimalInfo(final Animal animal) {
+
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -68,5 +79,14 @@ public class AnimalInfoActivity extends AppCompatActivity implements AnimalInfoC
         });
 
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.animal_info_apply_volunteer:
+                presenter.moveApplyVolunteer();
+                break;
+        }
     }
 }

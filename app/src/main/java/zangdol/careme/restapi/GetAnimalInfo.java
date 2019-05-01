@@ -1,15 +1,12 @@
 package zangdol.careme.restapi;
 
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 import zangdol.careme.Config;
 import zangdol.careme.model.Animal;
+import zangdol.careme.restapi.core.Parameters;
+import zangdol.careme.restapi.core.RestFactory;
+import zangdol.careme.restapi.core.RestUtil;
 
 public class GetAnimalInfo implements RestUtil.OnRestApiListener {
 
@@ -22,16 +19,20 @@ public class GetAnimalInfo implements RestUtil.OnRestApiListener {
         void OnAnimalInfo(Animal animal);
     }
 
-    public GetAnimalInfo(String animalIdx, OnAnimalInfoListener listener) {
+    public GetAnimalInfo(final String animalIdx, OnAnimalInfoListener listener) {
         this.listener = listener;
-        restUtil = RestUtil.getInstance();
 
-        List<NameValuePair> params = new ArrayList<NameValuePair>(2);
+        RestFactory.getInstance().request(URL, this, new Parameters() {
+            @Override
+            public int getNumParams() {
+                return 2;
+            }
 
-        params.add(new BasicNameValuePair("animal_idx", animalIdx));
-
-        restUtil.request(URL, params, this);
-
+            @Override
+            public void setParams() {
+                addParam("animal_idx", animalIdx);
+            }
+        });
     }
 
     @Override
@@ -51,7 +52,7 @@ public class GetAnimalInfo implements RestUtil.OnRestApiListener {
             animal.setDescription(animalInfo.getString("description"));
             animal.setName(animalInfo.getString("name"));
 
-            if(animalInfo.getString("sex").equals("null"))
+            if (animalInfo.getString("sex").equals("null"))
                 animal.setSex('O');
             else
                 animal.setSex(animalInfo.getString("sex").charAt(0));

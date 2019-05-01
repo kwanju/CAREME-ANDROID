@@ -1,8 +1,10 @@
 package zangdol.careme.login;
 
 
+import android.content.Intent;
 import android.widget.Toast;
 
+import zangdol.careme.login.register.RegisterActivity;
 import zangdol.careme.model.User;
 
 public class LoginPresenter implements LoginContract.Presenter, User.OnLoginListener {
@@ -24,6 +26,11 @@ public class LoginPresenter implements LoginContract.Presenter, User.OnLoginList
     }
 
     @Override
+    public void register() {
+        loginActivity.startActivity(new Intent(loginActivity, RegisterActivity.class));
+    }
+
+    @Override
     public void onLogin(boolean isSuccess) {
 
         final String message;
@@ -41,7 +48,7 @@ public class LoginPresenter implements LoginContract.Presenter, User.OnLoginList
             }
         });
 
-        if(isSuccess)
+        if (isSuccess)
             loginActivity.moveMainActivity();
 
     }
