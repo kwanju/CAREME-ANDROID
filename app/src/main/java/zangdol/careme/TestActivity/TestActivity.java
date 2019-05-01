@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import zangdol.careme.R;
@@ -31,7 +32,7 @@ public class TestActivity extends AppCompatActivity implements SearchShelterCate
 
 
     @Override
-    public void onResponse(List<Shelter> shelterList) {
-        test_name.setText(shelterList.get(0).getName());
+    public void onResponse(ArrayList<Shelter> shelterList) {
+
     }
 }

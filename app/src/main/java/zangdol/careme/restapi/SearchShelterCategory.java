@@ -1,5 +1,7 @@
 package zangdol.careme.restapi;
 
+import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,7 +26,7 @@ public class SearchShelterCategory implements RestUtil.OnRestApiListener {
 
 
     public interface OnResponseListener {
-        void onResponse(List<Shelter> shelterList);
+        void onResponse(ArrayList<Shelter> shelterList);
     }
 
     public void request(final String big, final String small, OnResponseListener listener) {
@@ -48,10 +50,10 @@ public class SearchShelterCategory implements RestUtil.OnRestApiListener {
 
     }
 
-    private List<Shelter> json2ListShelter(JSONObject results) {
+    private ArrayList<Shelter> json2ListShelter(JSONObject results) {
 
         try {
-            List<Shelter> shelterList = new ArrayList<>();
+            ArrayList<Shelter> shelterList = new ArrayList<>();
 
             String result = results.getString("result");
 
@@ -63,6 +65,11 @@ public class SearchShelterCategory implements RestUtil.OnRestApiListener {
             for (int i = 0; i < lists.length(); i++) {
                 Shelter shelter = new Shelter();
                 shelter.setName(lists.getJSONObject(i).getString("name"));
+                shelter.setIdx(lists.getJSONObject(i).getString("idx"));
+                shelter.setPosition(lists.getJSONObject(i).getString("position"));
+                shelter.setPnum(lists.getJSONObject(i).getString("phone_number"));
+
+                Log.d("Test",shelter.getName()+" / "+lists.getJSONObject(i).getString("name"));
                 shelterList.add(shelter);
             }
 
