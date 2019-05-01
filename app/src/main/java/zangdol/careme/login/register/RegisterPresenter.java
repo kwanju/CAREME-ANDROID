@@ -10,6 +10,7 @@ import zangdol.careme.main.MainActivity;
 import zangdol.careme.model.User;
 import zangdol.careme.restapi.CheckDuplicatedID;
 import zangdol.careme.restapi.Register;
+import zangdol.careme.util.AlarmManager;
 
 
 public class RegisterPresenter implements RegisterContract.Presenter, CheckDuplicatedID.OnCheckDupIDListener, Register.OnRegisterListener {
@@ -66,11 +67,7 @@ public class RegisterPresenter implements RegisterContract.Presenter, CheckDupli
 
     // 알람을 부르는 함수.
     private void alarm(String message) {
-        AlertDialog.Builder alert = new AlertDialog.Builder(activity);
-        alert.setTitle("알림");
-        alert.setMessage(message);
-        alert.setPositiveButton("확인", null);
-        alert.show();
+        AlarmManager.alarm(message,activity);
     }
 
     // 폼의 데이터들이 정상인지 체크( 빈칸인지 주로 체크)

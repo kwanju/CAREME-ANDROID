@@ -4,16 +4,20 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.style.ForegroundColorSpan;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
+import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.CalendarMode;
 import com.prolificinteractive.materialcalendarview.DayViewDecorator;
 import com.prolificinteractive.materialcalendarview.DayViewFacade;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
+import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 import com.prolificinteractive.materialcalendarview.OnMonthChangedListener;
 
 import java.util.Calendar;
@@ -23,7 +27,7 @@ import java.util.HashSet;
 
 import zangdol.careme.R;
 
-public class ApplyVolunteerActivity extends AppCompatActivity implements OnMonthChangedListener, ApplyVolunteerContract.View {
+public class ApplyVolunteerActivity extends AppCompatActivity implements OnMonthChangedListener, ApplyVolunteerContract.View, OnDateSelectedListener, View.OnClickListener {
 
     private ApplyVolunteerPresenter presenter;
 
@@ -32,6 +36,8 @@ public class ApplyVolunteerActivity extends AppCompatActivity implements OnMonth
     private TextView tv_volunteerInfo;
     private TextView tv_volunteerStartTime;
     private TextView tv_volunteerEndTime;
+
+    private BootstrapButton bt_apply;
 
     private ApplyVolunteerActivity me;
 
@@ -62,10 +68,14 @@ public class ApplyVolunteerActivity extends AppCompatActivity implements OnMonth
 
         materialCalendarView.setSelectionColor(Color.BLACK);
         materialCalendarView.setOnMonthChangedListener(this);
+        materialCalendarView.setOnDateChangedListener(this);
 
         tv_volunteerInfo = (TextView) findViewById(R.id.apply_volunteer_info);
         tv_volunteerStartTime = (TextView) findViewById(R.id.apply_volunteer_start_time);
         tv_volunteerEndTime = (TextView) findViewById(R.id.apply_volunteer_end_time);
+
+        bt_apply = (BootstrapButton) findViewById(R.id.apply_volunteer_apply);
+        bt_apply.setOnClickListener(this);
     }
 
     @Override
@@ -123,6 +133,20 @@ public class ApplyVolunteerActivity extends AppCompatActivity implements OnMonth
 
         return dates;
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.apply_volunteer_apply:
+                presenter.apply();
+                break;
+        }
+    }
+
+    @Override
+    public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
+        presenter.setDate(date);
     }
 
 
