@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "155084152218",
+    "firebase_url": "https://zangdol-12bc7.firebaseio.com",
+    "project_id": "zangdol-12bc7",
+    "storage_bucket": "zangdol-12bc7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:155084152218:android:f54db97b8e44b6ad",
+        "android_client_info": {
+          "package_name": "zangdol.careme"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "155084152218-p9jaofgstrpjheec8cnrc0oh2ftsfil4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAB-KjcSYvBRFcSFvRCmx_OWQBpRN5GuCM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "155084152218-p9jaofgstrpjheec8cnrc0oh2ftsfil4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

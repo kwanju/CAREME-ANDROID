@@ -9,6 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import zangdol.careme.R;
 import zangdol.careme.SearchShelter.AnimalList.AnimalListActivity;
@@ -46,6 +49,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         contextOfApplication = getApplicationContext();
 
         mainPresenter.checkLogin();
+
+        Log.d("MAINTEST","googoo");
+        Log.d("MAINTEST",SaveSharedPreference.getToken());
     }
 
     private void setElements() {
@@ -88,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.button_test:
-                startActivity(new Intent(this,AnimalListActivity.class));
+                Toast.makeText(this,SaveSharedPreference.getToken(),Toast.LENGTH_SHORT).show();
                 break;
         }
     }

@@ -6,6 +6,7 @@ import android.widget.Toast;
 
 import zangdol.careme.login.register.RegisterActivity;
 import zangdol.careme.model.User;
+import zangdol.careme.util.SaveSharedPreference;
 
 public class LoginPresenter implements LoginContract.Presenter, User.OnLoginListener {
     private User user;
@@ -22,7 +23,8 @@ public class LoginPresenter implements LoginContract.Presenter, User.OnLoginList
      * */
     @Override
     public void login(String id, String pw) {
-        user.login(id, pw);
+        String token = SaveSharedPreference.getToken();
+        user.login(id, pw,token);
     }
 
     @Override

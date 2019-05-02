@@ -13,7 +13,7 @@ public class Register implements RestUtil.OnRestApiListener {
 
     private OnRegisterListener listener;
 
-    public Register(final String id, final String pw, final String nickname, final String pnum, final String email, OnRegisterListener listener) {
+    public Register(final String id, final String pw, final String nickname, final String pnum, final String email, final String token, OnRegisterListener listener) {
         this.listener = listener;
 
 
@@ -22,7 +22,7 @@ public class Register implements RestUtil.OnRestApiListener {
         RestFactory.getInstance().request(url, this, new Parameters() {
             @Override
             public int getNumParams() {
-                return 5;
+                return 6;
             }
 
             @Override
@@ -32,6 +32,7 @@ public class Register implements RestUtil.OnRestApiListener {
                 addParam("nickname", nickname);
                 addParam("pnum", pnum);
                 addParam("email", email);
+                addParam("token",token);
             }
         });
     }
