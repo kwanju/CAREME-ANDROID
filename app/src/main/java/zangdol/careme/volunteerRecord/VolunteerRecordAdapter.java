@@ -80,7 +80,6 @@ public class VolunteerRecordAdapter extends ArrayAdapter<VolunteerRecord> implem
             viewHolder.shelter = (ImageView) convertView.findViewById(R.id.shelterImg);
             viewHolder.dog = (ImageView) convertView.findViewById(R.id.dogImg);
 
-            result=convertView;
 
             convertView.setTag(viewHolder);
         } else
@@ -89,8 +88,6 @@ public class VolunteerRecordAdapter extends ArrayAdapter<VolunteerRecord> implem
                 result=convertView;
             }
 
-        Animation animation = AnimationUtils.loadAnimation(mContext, (position > lastPosition) ? R.anim.up_from_bottom : R.anim.down_from_top);
-        result.startAnimation(animation);
         lastPosition = position;
 
         ///////////
