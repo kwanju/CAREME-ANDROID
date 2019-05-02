@@ -22,13 +22,14 @@ public class Login implements RestUtil.OnRestApiListener {
     }
 
 
-    public void login(String id, String pw, OnLoginListener listener) {
+    public void login(String id, String pw, String token, OnLoginListener listener) {
         this.listener = listener;
 
         String URL = Config.SERVERIP + "android/user/action/login"; // 로그인 POST URL
 
         final String input_id = id;
         final String input_pw = pw;
+        final String input_token = token;
 
 
         RestFactory restFactory = RestFactory.getInstance();
@@ -36,13 +37,14 @@ public class Login implements RestUtil.OnRestApiListener {
         restFactory.request(URL, this, new Parameters() {
             @Override
             public int getNumParams() {
-                return 2;
+                return 3;
             }
 
             @Override
             public void setParams() {
                 addParam("id", input_id);
                 addParam("pw", input_pw);
+                addParam("token",input_token);
             }
         });
     }

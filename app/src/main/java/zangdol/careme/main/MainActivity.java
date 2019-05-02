@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.iid.FirebaseInstanceId;
 
@@ -93,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.button_test:
-                startActivity(new Intent(this,AnimalListActivity.class));
+                Toast.makeText(this,SaveSharedPreference.getToken(),Toast.LENGTH_SHORT).show();
                 break;
         }
     }

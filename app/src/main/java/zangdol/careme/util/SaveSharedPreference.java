@@ -29,7 +29,7 @@ public class SaveSharedPreference {
 
     public static String getIdx() {
         return getSharedPreferences().getString("idx", "");
-}
+    }
 
     public static String getNickname() {
         return getSharedPreferences().getString("nickname", "");
@@ -37,9 +37,11 @@ public class SaveSharedPreference {
 
     //모든 저장정보 삭제.
     public static void clear() {
+        String token = getToken();
         SharedPreferences.Editor editor = getSharedPreferences().edit();
         editor.clear();
         editor.commit();
+        setToken(token);
     }
 
     public static boolean isLogin() {

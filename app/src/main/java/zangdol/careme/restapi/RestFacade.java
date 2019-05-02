@@ -19,8 +19,8 @@ public class RestFacade {
     }
 
     // 로그인 관련  RESTAPI 기능을 수행.
-    public void login(String id, String pw, Login.OnLoginListener listener) {
-        new Login().login(id, pw, listener);
+    public void login(String id, String pw, String token, Login.OnLoginListener listener) {
+        new Login().login(id, pw,token, listener);
     }
 
 

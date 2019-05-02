@@ -30,9 +30,9 @@ public class User implements zangdol.careme.restapi.Login.OnLoginListener {
     }
 
     //로그인 기능 부분
-    public void login(String id, String pw) {
+    public void login(String id, String pw, String token) {
         RestFacade restFacade = RestFacade.getInstance();
-        restFacade.login(id, pw, this);
+        restFacade.login(id, pw,token, this);
     }
 
     //로그아웃 부분

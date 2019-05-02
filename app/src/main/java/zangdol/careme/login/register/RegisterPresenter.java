@@ -11,6 +11,7 @@ import zangdol.careme.model.User;
 import zangdol.careme.restapi.CheckDuplicatedID;
 import zangdol.careme.restapi.Register;
 import zangdol.careme.util.AlarmManager;
+import zangdol.careme.util.SaveSharedPreference;
 
 
 public class RegisterPresenter implements RegisterContract.Presenter, CheckDuplicatedID.OnCheckDupIDListener, Register.OnRegisterListener {
@@ -38,7 +39,8 @@ public class RegisterPresenter implements RegisterContract.Presenter, CheckDupli
         }
         if (!checkForm(pw, nickname, pnum, email))
             return;
-        new Register(id, pw, nickname, pnum, email, this);
+        String token = SaveSharedPreference.getToken();
+        new Register(id, pw, nickname, pnum, email,token, this);
     }
 
     @Override
