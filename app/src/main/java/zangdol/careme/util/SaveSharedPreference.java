@@ -29,7 +29,7 @@ public class SaveSharedPreference {
 
     public static String getIdx() {
         return getSharedPreferences().getString("idx", "");
-    }
+}
 
     public static String getNickname() {
         return getSharedPreferences().getString("nickname", "");
@@ -46,5 +46,14 @@ public class SaveSharedPreference {
         return SaveSharedPreference.getID().length() != 0;
     }
 
+    public static void setToken(String token) {
+        SharedPreferences.Editor editor = getSharedPreferences().edit();
+        editor.putString("token", token);
+        editor.commit();
+    }
+
+    public static String getToken() {
+        return getSharedPreferences().getString("token", "");
+    }
 
 }

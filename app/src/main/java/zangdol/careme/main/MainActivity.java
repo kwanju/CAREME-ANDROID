@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.firebase.iid.FirebaseInstanceId;
+
 import zangdol.careme.R;
 import zangdol.careme.SearchShelter.AnimalList.AnimalListActivity;
 import zangdol.careme.SearchShelter.SearchShelterCategoryActivity;
@@ -46,6 +48,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         contextOfApplication = getApplicationContext();
 
         mainPresenter.checkLogin();
+
+        Log.d("MAINTEST","googoo");
+        Log.d("MAINTEST",SaveSharedPreference.getToken());
     }
 
     private void setElements() {
