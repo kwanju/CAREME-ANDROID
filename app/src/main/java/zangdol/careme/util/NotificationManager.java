@@ -11,11 +11,12 @@ import android.support.v4.app.NotificationCompat;
 
 import zangdol.careme.R;
 import zangdol.careme.main.MainActivity;
+import zangdol.careme.restapi.SearchShelterCategory;
 
 public class NotificationManager {
 
     public static void notification(Context context, String title, String messageBody) {
-        Intent intent = new Intent(context, MainActivity.class);
+        Intent intent = new Intent(context, SearchShelterCategory.class);
 
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
