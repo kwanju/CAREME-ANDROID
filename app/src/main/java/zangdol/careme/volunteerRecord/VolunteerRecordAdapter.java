@@ -25,7 +25,7 @@ public class VolunteerRecordAdapter extends ArrayAdapter<VolunteerRecord> implem
         TextView tv_shelterName;
         TextView tv_dogName;
         TextView tv_date;
-        ImageView shelter;
+        TextView tv_permission;
         ImageView dog;
     }
 
@@ -45,7 +45,7 @@ public class VolunteerRecordAdapter extends ArrayAdapter<VolunteerRecord> implem
 
         Toast.makeText( mContext, volunteerRecord.getShelterName()
                 + " " +volunteerRecord.getDogName() + " "+ volunteerRecord.getDate(), Toast.LENGTH_LONG).show();
-        /////////////////////////////////Toast getApplicatinoContext()부분.////////////////
+        /////////////////////////////////Toast getApplicationContext()부분.////////////////
 
     }
 
@@ -67,7 +67,7 @@ public class VolunteerRecordAdapter extends ArrayAdapter<VolunteerRecord> implem
            // TextView tv_shelterName;
            // TextView tv_dogName;
            // TextView tv_date;
-           // ImageView shelter;
+            //TextView tv_permission;
            // ImageView dog;
             //////////////////
 
@@ -77,7 +77,7 @@ public class VolunteerRecordAdapter extends ArrayAdapter<VolunteerRecord> implem
             viewHolder.tv_shelterName = (TextView) convertView.findViewById(R.id.shelterName);
             viewHolder.tv_dogName = (TextView) convertView.findViewById(R.id.dogName);
             viewHolder.tv_date = (TextView) convertView.findViewById(R.id.date);
-            viewHolder.shelter = (ImageView) convertView.findViewById(R.id.shelterImg);
+            viewHolder.tv_permission = (TextView) convertView.findViewById(R.id.permission);
             viewHolder.dog = (ImageView) convertView.findViewById(R.id.dogImg);
 
 
@@ -85,7 +85,7 @@ public class VolunteerRecordAdapter extends ArrayAdapter<VolunteerRecord> implem
         } else
             {
                 viewHolder = (ViewHolder) convertView.getTag();
-                result=convertView;
+
             }
 
         lastPosition = position;
@@ -94,13 +94,13 @@ public class VolunteerRecordAdapter extends ArrayAdapter<VolunteerRecord> implem
         // TextView tv_shelterName;
         // TextView tv_dogName;
         // TextView tv_date;
-        // ImageView shelter;
         // ImageView dog;
         //////////////////
 
         viewHolder.tv_shelterName.setText(volunteerRecord.getShelterName());
         viewHolder.tv_dogName.setText(volunteerRecord.getDogName());
         viewHolder.tv_date.setText(volunteerRecord.getDate());
+        viewHolder.tv_date.setText(volunteerRecord.getPermission());
         viewHolder.dog.setOnClickListener(this);
         viewHolder.dog.setTag(position);
         // Return the completed view to render on screen

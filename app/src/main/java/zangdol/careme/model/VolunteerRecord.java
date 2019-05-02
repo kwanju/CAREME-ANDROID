@@ -5,12 +5,14 @@ public class VolunteerRecord
     private String shelter_name;
     private String dog_name;
     private String date;
+    private String permission;
 
-    public VolunteerRecord( String shelter_name, String dog_name, String date )
+    public VolunteerRecord( String shelter_name, String dog_name, String date, String permission )
     {
         this.shelter_name = shelter_name;
         this.dog_name = dog_name;
         this.date = date;
+        this.permission = permission;
     }
     public String getShelterName()
     {
@@ -23,5 +25,9 @@ public class VolunteerRecord
     public String getDate()
     {
         return date;
+    }
+    public String getPermission()
+    {
+        return permission;
     }
 }
