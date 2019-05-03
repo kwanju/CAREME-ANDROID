@@ -30,6 +30,7 @@
         <activity android:name=".animal.AnimalInfoActivity" />
         <activity android:name=".animal.applyVolunteer.ApplyVolunteerActivity" />
         <activity android:name=".login.register.RegisterActivity"></activity>
+        <activity android:name=".volunteerRecord.VolunteerRecordActivity"></activity>
 
         <service
 

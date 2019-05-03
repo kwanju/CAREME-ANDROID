@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.google.firebase.iid.FirebaseInstanceId;
 
 import zangdol.careme.R;
@@ -21,6 +22,7 @@ import zangdol.careme.animal.AnimalInfoActivity;
 import zangdol.careme.animal.applyVolunteer.ApplyVolunteerActivity;
 import zangdol.careme.login.LoginActivity;
 import zangdol.careme.util.SaveSharedPreference;
+import zangdol.careme.volunteerRecord.VolunteerRecordActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, MainContract.View {
 
@@ -31,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button bt_logout;
     private Button bt_searchSheter;
     private Button bt_test;
+    private BootstrapButton bt_volunteerRecord;
 
     private TextView tv_id;
 
@@ -59,6 +62,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bt_logout = (Button) findViewById(R.id.button_logout);
         bt_searchSheter = (Button) findViewById(R.id.button_search_shelter);
         bt_test = (Button) findViewById(R.id.button_test);
+        bt_volunteerRecord = (BootstrapButton) findViewById(R.id.button_volunteer_record);
 
         tv_id = (TextView) findViewById(R.id.tv_id);
 
@@ -71,6 +75,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bt_logout.setOnClickListener(this);
         bt_searchSheter.setOnClickListener(this);
         bt_test.setOnClickListener(this);
+        bt_volunteerRecord.setOnClickListener(this);
     }
 
 
@@ -94,7 +99,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.button_test:
-                Toast.makeText(this,SaveSharedPreference.getToken(),Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.button_volunteer_record:
+                startActivity(new Intent(this,VolunteerRecordActivity.class));
                 break;
         }
     }

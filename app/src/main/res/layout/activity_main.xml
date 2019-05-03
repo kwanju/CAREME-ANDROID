@@ -59,6 +59,12 @@
                 android:id="@+id/button_search_shelter"
                 android:text="보호소 찾기"/>
         </LinearLayout>
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            style="@style/PrimaryButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:bootstrapText="봉사 목록"
+            android:id="@+id/button_volunteer_record"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

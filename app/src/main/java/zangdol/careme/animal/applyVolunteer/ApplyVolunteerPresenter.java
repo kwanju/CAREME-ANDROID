@@ -1,5 +1,7 @@
 package zangdol.careme.animal.applyVolunteer;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -15,6 +17,7 @@ import zangdol.careme.restapi.GetAnimalSchedule;
 import zangdol.careme.restapi.GetVolunteerShelterInfo;
 import zangdol.careme.util.AlarmManager;
 import zangdol.careme.util.SaveSharedPreference;
+import zangdol.careme.volunteerRecord.VolunteerRecordActivity;
 
 public class ApplyVolunteerPresenter implements ApplyVolunteerContract.Presenter,ApplySchedule.OnApplyScheduleListener, GetAnimalSchedule.OnAnimalScheduleListener, GetVolunteerShelterInfo.OnVolunteerInfoListener {
     private ApplyVolunteerActivity activity;
@@ -85,7 +88,12 @@ public class ApplyVolunteerPresenter implements ApplyVolunteerContract.Presenter
                 Toast.makeText(activity,"봉사 신청 성공",Toast.LENGTH_SHORT).show();
 
                 AlarmManager.alarmYesNo("신청이 완료되었습니다. 신청목록을 확인하시겠습니까?",
-                        activity,null);
+                        activity, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                activity.startActivity(new Intent(activity,VolunteerRecordActivity.class));
+                            }
+                        });
             }
         });
     }
