@@ -4,20 +4,18 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 import zangdol.careme.R;
 import zangdol.careme.model.VolunteerRecord;
 
-public class VolunteerRecordAdapter extends ArrayAdapter<VolunteerRecord> implements View.OnClickListener
-{
+public class VolunteerRecordAdapter extends ArrayAdapter<VolunteerRecord> {
     private ArrayList<VolunteerRecord> dataSet;
     Context mContext;
 
@@ -32,28 +30,15 @@ public class VolunteerRecordAdapter extends ArrayAdapter<VolunteerRecord> implem
     public VolunteerRecordAdapter(ArrayList<VolunteerRecord> data, Context context) {
         super(context, R.layout.volunteer_listitem, data);
         this.dataSet = data;
-        this.mContext=context;
+        this.mContext = context;
 
     }
 
-    @Override
-    public void onClick(View v)
-    {
-        int position=(Integer) v.getTag();
-        Object object= getItem(position);
-        VolunteerRecord volunteerRecord=(VolunteerRecord)object;
-
-        Toast.makeText( mContext, volunteerRecord.getShelterName()
-                + " " +volunteerRecord.getDogName() + " "+ volunteerRecord.getDate(), Toast.LENGTH_LONG).show();
-        /////////////////////////////////Toast getApplicationContext()부분.////////////////
-
-    }
 
     private int lastPosition = -1;
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent)
-    {
+    public View getView(int position, View convertView, ViewGroup parent) {
         // Get the data item for this position
         VolunteerRecord volunteerRecord = getItem(position);
         // Check if an existing view is being reused, otherwise inflate the view
@@ -61,14 +46,13 @@ public class VolunteerRecordAdapter extends ArrayAdapter<VolunteerRecord> implem
 
         final View result;
 
-        if ( convertView == null)
-        {
+        if (convertView == null) {
             ///////////
-           // TextView tv_shelterName;
-           // TextView tv_dogName;
-           // TextView tv_date;
+            // TextView tv_shelterName;
+            // TextView tv_dogName;
+            // TextView tv_date;
             //TextView tv_permission;
-           // ImageView dog;
+            // ImageView dog;
             //////////////////
 
             viewHolder = new ViewHolder();
@@ -82,11 +66,9 @@ public class VolunteerRecordAdapter extends ArrayAdapter<VolunteerRecord> implem
 
 
             convertView.setTag(viewHolder);
-        } else
-            {
-                viewHolder = (ViewHolder) convertView.getTag();
-
-            }
+        } else {
+            viewHolder = (ViewHolder) convertView.getTag();
+        }
 
         lastPosition = position;
 
@@ -100,9 +82,15 @@ public class VolunteerRecordAdapter extends ArrayAdapter<VolunteerRecord> implem
         viewHolder.tv_shelterName.setText(volunteerRecord.getShelterName());
         viewHolder.tv_dogName.setText(volunteerRecord.getDogName());
         viewHolder.tv_date.setText(volunteerRecord.getDate());
-        viewHolder.tv_date.setText(volunteerRecord.getPermission());
-        viewHolder.dog.setOnClickListener(this);
-        viewHolder.dog.setTag(position);
+        viewHolder.tv_permission.setText(volunteerRecord.getPermission());
+
+
+        if (volunteerRecord.getImageUrl().equals("null"))
+            viewHolder.dog.setImageResource(R.drawable.no_image);
+        else
+            Picasso.get().load(volunteerRecord.getImageUrl()).into(viewHolder.dog);
+
+
         // Return the completed view to render on screen
         return convertView;
     }
