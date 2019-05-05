@@ -9,6 +9,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/test_name"/>
-    W
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/test_test_test"/>
 
 </android.support.constraint.ConstraintLayout>

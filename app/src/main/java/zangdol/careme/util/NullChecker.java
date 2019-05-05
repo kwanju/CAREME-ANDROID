@@ -13,7 +13,7 @@ public class NullChecker {
         if(url.equals("null"))
             iv.setImageResource(R.drawable.no_image);
         else
-            Picasso.get().load(url).into(iv);
+            Picasso.get().load(ConvertManager.url(url)).into(iv);
     }
     public static void text(String text, TextView tv){
         if(text.equals("null"))

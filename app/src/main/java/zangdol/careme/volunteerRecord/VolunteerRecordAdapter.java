@@ -14,6 +14,8 @@ import java.util.ArrayList;
 
 import zangdol.careme.R;
 import zangdol.careme.model.VolunteerRecord;
+import zangdol.careme.util.ConvertManager;
+import zangdol.careme.util.NullChecker;
 
 public class VolunteerRecordAdapter extends ArrayAdapter<VolunteerRecord> {
     private ArrayList<VolunteerRecord> dataSet;
@@ -84,11 +86,7 @@ public class VolunteerRecordAdapter extends ArrayAdapter<VolunteerRecord> {
         viewHolder.tv_date.setText(volunteerRecord.getDate());
         viewHolder.tv_permission.setText(volunteerRecord.getPermission());
 
-
-        if (volunteerRecord.getImageUrl().equals("null"))
-            viewHolder.dog.setImageResource(R.drawable.no_image);
-        else
-            Picasso.get().load(volunteerRecord.getImageUrl()).into(viewHolder.dog);
+        NullChecker.image(volunteerRecord.getImageUrl(),viewHolder.dog);
 
 
         // Return the completed view to render on screen

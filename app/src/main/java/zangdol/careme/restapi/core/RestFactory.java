@@ -21,4 +21,8 @@ public class RestFactory {
     public void request(final String URL, final RestUtil.OnRestApiListener listener, final Parameters param) {
         new RestUtil().request(URL, param.getParams(), listener);
     }
+
+    public void uploadImage(final String URL,final ImageParameters imageParameters){
+        new RestUtil().uploadImage(URL,imageParameters.getBuilder());
+    }
 }
