@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="발견한 유기견"
+        android:hint="유기견을 발견한 날짜와 시간"
         android:inputType="textPersonName"
         android:text="Name" />
 </LinearLayout>

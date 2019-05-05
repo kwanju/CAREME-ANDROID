@@ -20,6 +20,7 @@ import zangdol.careme.SearchShelter.SearchShelterCategoryActivity;
 import zangdol.careme.TestActivity.TestActivity;
 import zangdol.careme.animal.AnimalInfoActivity;
 import zangdol.careme.animal.applyVolunteer.ApplyVolunteerActivity;
+import zangdol.careme.dogEnrollment.DogEnrollmentActivity;
 import zangdol.careme.login.LoginActivity;
 import zangdol.careme.util.SaveSharedPreference;
 import zangdol.careme.volunteerRecord.VolunteerRecordActivity;
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button bt_test;
     private BootstrapButton bt_volunteerRecord;
     private Button bt_myPage;
+    private Button bt_test2;
 
     private TextView tv_id;
 
@@ -65,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bt_test = (Button) findViewById(R.id.button_test);
         bt_volunteerRecord = (BootstrapButton) findViewById(R.id.button_volunteer_record);
         bt_myPage = (Button) findViewById( R.id.mypage );
+        bt_test2 = (Button)findViewById(R.id.testtest);
 
         tv_id = (TextView) findViewById(R.id.tv_id);
 
@@ -78,6 +81,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bt_searchSheter.setOnClickListener(this);
         bt_test.setOnClickListener(this);
         bt_volunteerRecord.setOnClickListener(this);
+        bt_test2.setOnClickListener(this);
     }
 
 
@@ -104,6 +108,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.button_volunteer_record:
                 startActivity(new Intent(this,VolunteerRecordActivity.class));
+                break;
+            case R.id.testtest:
+                startActivity(new Intent(this, DogEnrollmentActivity.class));
                 break;
         }
     }

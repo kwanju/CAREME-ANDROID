@@ -27,6 +27,7 @@
         <activity android:name=".shelter.ShelterInfoActivity" />
         <activity android:name=".shelter.ShelterListActivity" />
         <activity android:name=".TestActivity.TestActivity" />
+        <activity android:name=".dogEnrollment.DogEnrollmentActivity" />
         <activity android:name=".SearchShelter.AnimalList.AnimalListActivity" />
         <activity android:name=".animal.AnimalInfoActivity" />
         <activity android:name=".animal.applyVolunteer.ApplyVolunteerActivity" />
