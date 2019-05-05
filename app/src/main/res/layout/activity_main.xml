@@ -15,61 +15,81 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
         android:orientation="vertical"
-        android:gravity="center">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
         <LinearLayout
+            android:id="@+id/layout_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:id="@+id/layout_login">
+            android:orientation="vertical">
+
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:id="@+id/button_login"
-                android:text="로그인"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="로그인" />
         </LinearLayout>
+
         <LinearLayout
+            android:id="@+id/layout_logout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:id="@+id/layout_logout">
+            android:orientation="horizontal">
+
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:id="@+id/button_logout"
-                android:text="로그아웃"/>
-            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="로그아웃" />
+
+            <TextView
                 android:id="@+id/tv_id"
-                />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
+
             <Button
+                android:id="@+id/button_search_shelter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/button_search_shelter"
-                android:text="보호소 찾기"/>
+                android:text="보호소 찾기" />
         </LinearLayout>
+
         <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/button_volunteer_record"
             style="@style/PrimaryButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:bootstrapText="봉사 목록"
-            android:id="@+id/button_volunteer_record"/>
+            app:bootstrapText="봉사 목록" />
+
         <Button
+            android:id="@+id/button_test"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="테스트"
-            android:id="@+id/button_test"/>
+            android:text="테스트" />
+
+        <Button
+            android:id="@+id/mypage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="마이페이지" />
     </LinearLayout>
 
 

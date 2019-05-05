@@ -47,7 +47,7 @@ public class ShelterListActivity extends AppCompatActivity
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 ShelterData shelterData = shelterDatas.get(position);
-
+/////////////////////
                  Toast.makeText( getApplicationContext(), shelterData.getShelterName()
                          + " " +shelterData.getAddress() + " "+ shelterData.getPhone(), Toast.LENGTH_LONG).show();
 
