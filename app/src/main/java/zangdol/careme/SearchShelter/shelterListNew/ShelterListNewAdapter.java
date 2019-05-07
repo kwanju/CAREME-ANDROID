@@ -1,4 +1,4 @@
-package zangdol.careme.shelter;
+package zangdol.careme.SearchShelter.shelterListNew;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,12 +12,14 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import zangdol.careme.R;
+import zangdol.careme.model.Shelter;
 import zangdol.careme.model.ShelterData;
+import zangdol.careme.util.NullChecker;
 
 
-public class ShelterListAdapter extends ArrayAdapter<ShelterData>
+public class ShelterListNewAdapter extends ArrayAdapter<Shelter>
 {
-    private ArrayList<ShelterData> dataSet;
+    private ArrayList<Shelter> dataSet;
     Context mContext;
 
     private static class ViewHolder {
@@ -27,7 +29,7 @@ public class ShelterListAdapter extends ArrayAdapter<ShelterData>
         ImageView shelterPic;
     }
 
-    public ShelterListAdapter(ArrayList<ShelterData> data, Context context) {
+    public ShelterListNewAdapter(ArrayList<Shelter> data, Context context) {
         super(context, R.layout.shelter_listitem, data);
         this.dataSet = data;
         this.mContext=context;
@@ -42,7 +44,7 @@ public class ShelterListAdapter extends ArrayAdapter<ShelterData>
     public View getView(int position, View convertView, ViewGroup parent)
     {
         // Get the data item for this position
-        ShelterData shelterData = getItem(position);
+        Shelter shelter = getItem(position);
         // Check if an existing view is being reused, otherwise inflate the view
         ViewHolder viewHolder; // view lookup cache stored in tag
 
@@ -83,10 +85,10 @@ public class ShelterListAdapter extends ArrayAdapter<ShelterData>
         //ImageView shelterPic;
         //////////////////
 
-        viewHolder.tv_shelterName.setText(shelterData.getShelterName());
-        viewHolder.tv_address.setText(shelterData.getAddress());
-        viewHolder.tv_phone.setText(shelterData.getPhone());
-        viewHolder.shelterPic.setTag(position);
+        viewHolder.tv_shelterName.setText(shelter.getName());
+        viewHolder.tv_address.setText(shelter.getPosition());
+        viewHolder.tv_phone.setText(shelter.getPnum());
+        NullChecker.image("null",viewHolder.shelterPic); // 현재 보호소 이미지가 구현되어있지 않기 떄문에 일단 노 이미지로 해놓음
         // Return the completed view to render on screen
         return convertView;
     }

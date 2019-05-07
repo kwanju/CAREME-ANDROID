@@ -4,7 +4,8 @@
     package="zangdol.careme">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -25,7 +26,7 @@
         <activity android:name=".SearchShelter.SearchShelterCategoryActivity" />
         <activity android:name=".SearchShelter.shelterList.ShelterListActivity" />
         <activity android:name=".shelter.ShelterInfoActivity" />
-        <activity android:name=".shelter.ShelterListActivity" />
+        <activity android:name=".SearchShelter.shelterListNew.ShelterListNewActivity" />
         <activity android:name=".TestActivity.TestActivity" />
         <activity android:name=".dogEnrollment.DogEnrollmentActivity" />
         <activity android:name=".SearchShelter.AnimalList.AnimalListActivity" />

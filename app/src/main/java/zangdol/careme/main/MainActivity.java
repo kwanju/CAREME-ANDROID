@@ -9,13 +9,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
-import com.google.firebase.iid.FirebaseInstanceId;
 
 import zangdol.careme.R;
-import zangdol.careme.SearchShelter.AnimalList.AnimalListActivity;
 import zangdol.careme.SearchShelter.SearchShelterCategoryActivity;
 import zangdol.careme.TestActivity.TestActivity;
 import zangdol.careme.animal.AnimalInfoActivity;
@@ -56,8 +53,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mainPresenter.checkLogin();
 
-        Log.d("MAINTEST","googoo");
-        Log.d("MAINTEST",SaveSharedPreference.getToken());
+        Log.d("MAINTEST", "googoo");
+        Log.d("MAINTEST", SaveSharedPreference.getToken());
     }
 
     private void setElements() {
@@ -105,9 +102,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.button_test:
+                startActivity(new Intent(this, TestActivity.class));
                 break;
             case R.id.button_volunteer_record:
-                startActivity(new Intent(this,VolunteerRecordActivity.class));
+                startActivity(new Intent(this, VolunteerRecordActivity.class));
                 break;
             case R.id.testtest:
                 startActivity(new Intent(this, DogEnrollmentActivity.class));
@@ -130,7 +128,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
-
 
 
 }

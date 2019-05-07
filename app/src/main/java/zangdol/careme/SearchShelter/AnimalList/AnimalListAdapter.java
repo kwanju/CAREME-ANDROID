@@ -15,7 +15,9 @@ import java.util.List;
 
 import zangdol.careme.R;
 import zangdol.careme.model.AnimalSummary;
+import zangdol.careme.util.ConvertManager;
 import zangdol.careme.util.ImageDownloader;
+import zangdol.careme.util.NullChecker;
 
 // https://mailmail.tistory.com/6 참고
 
@@ -73,10 +75,7 @@ public class AnimalListAdapter extends BaseAdapter{
         final AnimalSummary animalSummary = getItem(position);
 
         //이미지 설정
-        if(animalSummary.getImageURL().equals("null"))
-            iv_dogImage.setImageResource(R.drawable.no_image);
-        else
-            Picasso.get().load(animalSummary.getImageURL()).into(iv_dogImage);
+        NullChecker.image(animalSummary.getImageURL(),iv_dogImage);
             //new ImageDownloader(animalSummary.getImageURL(), iv_dogImage,animalSummary.getIdx());
 
         tv_dogName.setText(animalSummary.getName());
