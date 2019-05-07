@@ -7,11 +7,73 @@
     android:orientation = "vertical">
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/datetime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="유기견을 발견한 날짜와 시간"
+        android:hint="유기견을 발견한 날짜와 시간을 입력"
         android:inputType="textPersonName"
-        android:text="Name" />
+        android:padding="5dp"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/place"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="지도에서 장소를 선택하면 주소가 입렵됨"
+        android:padding="5dp"
+        android:singleLine="false"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="지도에서 주소 뽑아오기" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="유기동물의 특징 기입"
+        android:inputType="textPersonName"
+        android:padding="5dp" />
+
+    <EditText
+        android:id="@+id/editText3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="견종코드를 입력하세요"
+        android:inputType="textPersonName"
+        android:padding="5dp" />
+
+    <EditText
+        android:id="@+id/editText5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="유기동물의 성별을 입력하세요"
+        android:inputType="textPersonName"
+        android:padding="5dp" />
+
+    <ImageView
+        android:id="@+id/dogImage"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="#000000" />
+
+    <Button
+        android:id="@+id/imgbutton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#4374D9"
+        android:text="사진불러오기" />
+
 </LinearLayout>
