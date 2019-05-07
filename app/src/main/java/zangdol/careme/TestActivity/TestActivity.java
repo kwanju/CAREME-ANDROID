@@ -5,7 +5,6 @@ import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -19,30 +18,53 @@ import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
 
-import java.io.File;
+import net.daum.mf.map.api.MapPOIItem;
+import net.daum.mf.map.api.MapPoint;
+import net.daum.mf.map.api.MapView;
+
 import java.io.FileDescriptor;
 import java.io.IOException;
+
 
 import zangdol.careme.R;
 import zangdol.careme.restapi.core.ImageParameters;
 import zangdol.careme.restapi.core.RestFactory;
-import zangdol.careme.restapi.core.RestUtil;
 
 
 public class TestActivity extends AppCompatActivity {
 
     private ImageView iv;
 
+    private MapView mapView;
+
+    private ViewGroup mapViewContainer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
+
+        mapView = new MapView(this);
+        mapViewContainer = (ViewGroup) findViewById(R.id.map_view);
+        mapViewContainer.addView(mapView);
+
+
+
+
+        MapPOIItem marker = new MapPOIItem();
+        marker.setItemName("Default Marker");
+        marker.setTag(0);
+        marker.setMapPoint(MapPoint.mapPointWithScreenLocation(60,60));
+        marker.setMarkerType(MapPOIItem.MarkerType.BluePin); // 기본으로 제공하는 BluePin 마커 모양.
+        marker.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin); // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
+
+        mapView.addPOIItem(marker);
         //versionTest();
-        iv = (ImageView) findViewById(R.id.test_test_test);
-        test();
+        //iv = (ImageView) findViewById(R.id.test_test_test);
+        //test();
 
     }
 
@@ -116,8 +138,8 @@ public class TestActivity extends AppCompatActivity {
         RestFactory.getInstance().uploadImage("http://192.168.35.19:3000/erp/animal/action/android", new ImageParameters(this) {
             @Override
             public void addParams() {
-                addTextParam("test","test");
-                addImageParam("animalImage",uri);
+                addTextParam("test", "test");
+                addImageParam("animalImage", uri);
             }
         });
 
