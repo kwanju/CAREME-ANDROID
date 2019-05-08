@@ -17,6 +17,7 @@ import zangdol.careme.SearchShelter.SearchShelterCategoryActivity;
 import zangdol.careme.TestActivity.TestActivity;
 import zangdol.careme.animal.AnimalInfoActivity;
 import zangdol.careme.animal.applyVolunteer.ApplyVolunteerActivity;
+import zangdol.careme.bulletinBoard.BulletinActivity;
 import zangdol.careme.dogEnrollment.DogEnrollmentActivity;
 import zangdol.careme.login.LoginActivity;
 import zangdol.careme.util.SaveSharedPreference;
@@ -108,7 +109,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(new Intent(this, VolunteerRecordActivity.class));
                 break;
             case R.id.testtest:
-                startActivity(new Intent(this, DogEnrollmentActivity.class));
+                startActivity(new Intent(this, BulletinActivity.class));
                 break;
         }
     }
