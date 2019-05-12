@@ -21,47 +21,63 @@ import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import net.daum.mf.map.api.MapPOIItem;
-import net.daum.mf.map.api.MapPoint;
-import net.daum.mf.map.api.MapView;
+
+import org.json.JSONObject;
 
 import java.io.FileDescriptor;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 
 import zangdol.careme.R;
+import zangdol.careme.restapi.core.Headers;
 import zangdol.careme.restapi.core.ImageParameters;
+import zangdol.careme.restapi.core.Parameters;
 import zangdol.careme.restapi.core.RestFactory;
+import zangdol.careme.restapi.core.RestUtil;
 
 
-public class TestActivity extends AppCompatActivity {
+public class TestActivity extends AppCompatActivity implements RestUtil.OnRestApiListener {
 
     private ImageView iv;
 
-    private MapView mapView;
 
-    private ViewGroup mapViewContainer;
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
 
-        mapView = new MapView(this);
-        mapViewContainer = (ViewGroup) findViewById(R.id.map_view);
-        mapViewContainer.addView(mapView);
+        RestFactory.getInstance().get("http://192.168.4.138:3000/erp/animal/action/getTest", new Headers() {
+                    @Override
+                    public void setHeaders() {
+                        addHeader("a", "B");
+                        addHeader("c", "d");
+                        addHeader("X-NCP-APIGW-API-KEY-ID", "3055hkch3h");
+                        addHeader("X-NCP-APIGW-API-KEY", "7yjvlQQitsGrqq7rVyarBr3U79hpBgPFTd3tmMA1");
+                    }
+                },
+                new Parameters() {
+                    @Override
+                    public int getNumParams() {
+                        return 1;
+                    }
 
+                    @Override
+                    public void setParams() {
+                        try {
+                            addParam("coords","128.12345,37.98776");
+                            addParam("key",
+                                    URLEncoder.encode("안녕하세요 반갑습니다 오랜만이에요","UTF-8"));
+                        } catch (UnsupportedEncodingException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                this
+        );
 
-
-
-        MapPOIItem marker = new MapPOIItem();
-        marker.setItemName("Default Marker");
-        marker.setTag(0);
-        marker.setMapPoint(MapPoint.mapPointWithScreenLocation(60,60));
-        marker.setMarkerType(MapPOIItem.MarkerType.BluePin); // 기본으로 제공하는 BluePin 마커 모양.
-        marker.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin); // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
-
-        mapView.addPOIItem(marker);
         //versionTest();
         //iv = (ImageView) findViewById(R.id.test_test_test);
         //test();
@@ -135,14 +151,14 @@ public class TestActivity extends AppCompatActivity {
     }
 
     public void sendHTTP(final Uri uri) {
-        RestFactory.getInstance().uploadImage("http://192.168.35.19:3000/erp/animal/action/android", new ImageParameters(this) {
+       /* RestFactory.getInstance().uploadImage("http://192.168.35.19:3000/erp/animal/action/android", new ImageParameters(this) {
             @Override
             public void addParams() {
                 addTextParam("test", "test");
                 addImageParam("animalImage", uri);
             }
         });
-
+*/
     }
 
     private Bitmap getBitmapFromUri(Uri uri) throws IOException {
@@ -379,6 +395,11 @@ public class TestActivity extends AppCompatActivity {
                 cursor.close();
             }
         }
+    }
+
+    @Override
+    public void OnResult(JSONObject result) {
+
     }
 }
 

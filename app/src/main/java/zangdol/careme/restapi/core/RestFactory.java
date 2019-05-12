@@ -22,7 +22,11 @@ public class RestFactory {
         new RestUtil().request(URL, param.getParams(), listener);
     }
 
-    public void uploadImage(final String URL,final ImageParameters imageParameters){
-        new RestUtil().uploadImage(URL,imageParameters.getBuilder());
+    public void uploadImage(final String URL,final RestUtil.OnRestApiListener listener,final ImageParameters imageParameters){
+        new RestUtil().uploadImage(URL,imageParameters.getBuilder(),listener);
+    }
+
+    public void get(final String URL,final Headers headers, final Parameters params,final RestUtil.OnRestApiListener listener){
+        new RestUtil().get(URL,headers.getHeaders(),params.getParams(),listener);
     }
 }
