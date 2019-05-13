@@ -38,6 +38,7 @@
         <activity android:name=".SearchShelter.AnimalList.AnimalListActivity" />
         <activity android:name=".animal.AnimalInfoActivity" />
         <activity android:name=".bulletinBoard.BulletinActivity" />
+        <activity android:name=".bulletinBoard.PostActivity" />
         <activity android:name=".animal.applyVolunteer.ApplyVolunteerActivity" />
         <activity android:name=".login.register.RegisterActivity"></activity>
         <activity android:name=".volunteerRecord.VolunteerRecordActivity"></activity>
