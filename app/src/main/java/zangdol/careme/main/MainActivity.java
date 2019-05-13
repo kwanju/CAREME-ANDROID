@@ -14,11 +14,8 @@ import com.beardedhen.androidbootstrap.BootstrapButton;
 
 import zangdol.careme.R;
 import zangdol.careme.SearchShelter.SearchShelterCategoryActivity;
-import zangdol.careme.TestActivity.TestActivity;
-import zangdol.careme.animal.AnimalInfoActivity;
-import zangdol.careme.animal.applyVolunteer.ApplyVolunteerActivity;
 import zangdol.careme.bulletinBoard.BulletinActivity;
-import zangdol.careme.dogEnrollment.DogEnrollmentActivity;
+import zangdol.careme.registerDiscover.RegisterDiscoverActivity;
 import zangdol.careme.login.LoginActivity;
 import zangdol.careme.util.SaveSharedPreference;
 import zangdol.careme.volunteerRecord.VolunteerRecordActivity;
@@ -35,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private BootstrapButton bt_volunteerRecord;
     private Button bt_myPage;
     private Button bt_test2;
+    private BootstrapButton bt_registerDiscover;
 
     private TextView tv_id;
 
@@ -66,6 +64,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bt_volunteerRecord = (BootstrapButton) findViewById(R.id.button_volunteer_record);
         bt_myPage = (Button) findViewById( R.id.mypage );
         bt_test2 = (Button)findViewById(R.id.testtest);
+        bt_registerDiscover = (BootstrapButton) findViewById(R.id.button_register_discover);
 
         tv_id = (TextView) findViewById(R.id.tv_id);
 
@@ -80,6 +79,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bt_test.setOnClickListener(this);
         bt_volunteerRecord.setOnClickListener(this);
         bt_test2.setOnClickListener(this);
+        bt_registerDiscover.setOnClickListener(this);
     }
 
 
@@ -103,13 +103,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.button_test:
-                startActivity(new Intent(this, TestActivity.class));
+                startActivity(new Intent(this, RegisterDiscoverActivity.class));
                 break;
             case R.id.button_volunteer_record:
                 startActivity(new Intent(this, VolunteerRecordActivity.class));
                 break;
             case R.id.testtest:
                 startActivity(new Intent(this, BulletinActivity.class));
+                break;
+            case R.id.button_register_discover:
+                startActivity(new Intent(this,RegisterDiscoverActivity.class));
                 break;
         }
     }

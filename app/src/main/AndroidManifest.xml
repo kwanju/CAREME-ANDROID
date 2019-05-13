@@ -8,7 +8,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
-    
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,7 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon,android:label">
-        <meta-data android:name="com.kakao.sdk.AppKey" android:value="6e41e1abc3704ad9044aab9cd44ae4d9"/>
+        <meta-data
+            android:name="com.naver.maps.map.CLIENT_ID"
+            android:value="3055hkch3h" />
 
         <activity android:name=".main.MainActivity">
             <intent-filter>
@@ -32,13 +34,14 @@
         <activity android:name=".shelter.ShelterInfoActivity" />
         <activity android:name=".SearchShelter.shelterListNew.ShelterListNewActivity" />
         <activity android:name=".TestActivity.TestActivity" />
-        <activity android:name=".dogEnrollment.DogEnrollmentActivity" />
+        <activity android:name=".registerDiscover.RegisterDiscoverActivity" />
         <activity android:name=".SearchShelter.AnimalList.AnimalListActivity" />
         <activity android:name=".animal.AnimalInfoActivity" />
         <activity android:name=".bulletinBoard.BulletinActivity" />
         <activity android:name=".animal.applyVolunteer.ApplyVolunteerActivity" />
         <activity android:name=".login.register.RegisterActivity"></activity>
         <activity android:name=".volunteerRecord.VolunteerRecordActivity"></activity>
+        <activity android:name=".map.MapViewActivity"></activity>
 
         <service
 

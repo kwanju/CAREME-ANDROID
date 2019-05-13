@@ -1,10 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <RelativeLayout
-        android:id="@+id/map_view"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:id="@+id/map_view_layout">
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/map"
+            android:name="com.naver.maps.map.MapFragment"
+            android:layout_gravity="bottom" />
+    </LinearLayout>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/map_view_center_marker"
+        android:layout_gravity="top"
+        android:src="@drawable/center_marker"/>
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        style="@style/PrimaryButton"
+        app:bootstrapText="위치 설정하기"
+        android:layout_gravity="top"
+        android:id="@+id/map_view_btn_set_position"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
 
 </RelativeLayout>

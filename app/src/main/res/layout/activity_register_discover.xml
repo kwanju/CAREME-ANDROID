@@ -2,47 +2,46 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation = "vertical">
 
-    <EditText
-        android:id="@+id/datetime"
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/register_discover_datetime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="유기견을 발견한 날짜와 시간을 입력"
-        android:inputType="textPersonName"
-        android:padding="5dp"
-        android:textSize="25sp" />
+        android:hint="유기견을 발견한 날짜와 시간"
+        android:clickable="false"
+        android:cursorVisible="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        app:met_floatingLabel="normal"/>
 
-    <TextView
-        android:id="@+id/place"
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/register_discover_address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="지도에서 장소를 선택하면 주소가 입렵됨"
-        android:padding="5dp"
-        android:singleLine="false"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        android:hint="유기견 발견한 주소"
+        android:clickable="false"
+        android:cursorVisible="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        app:met_floatingLabel="normal"
+        />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="지도에서 주소 뽑아오기" />
 
-    <EditText
-        android:id="@+id/editText2"
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/register_discover_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="유기동물의 특징 기입"
-        android:inputType="textPersonName"
-        android:padding="5dp" />
+        android:hint="발견 동물 상세 정보"
+        app:met_floatingLabel="normal" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/register_discover_species_code"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -51,7 +50,7 @@
         android:padding="5dp" />
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/register_discover_sex"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -60,20 +59,21 @@
         android:padding="5dp" />
 
     <ImageView
-        android:id="@+id/dogImage"
+        android:id="@+id/register_discover_dogImage"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:background="#000000" />
+
+        android:src="@drawable/image_add_button" />
 
     <Button
-        android:id="@+id/imgbutton"
+        android:id="@+id/register_discover_btn_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#4374D9"
-        android:text="사진불러오기" />
+        android:text="등록하기" />
 
 </LinearLayout>
