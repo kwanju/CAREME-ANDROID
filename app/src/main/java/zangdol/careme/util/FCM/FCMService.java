@@ -19,7 +19,7 @@ public class FCMService extends FirebaseMessagingService {
         Log.d(TAG, "From: " + remoteMessage.getFrom());
 
         if (remoteMessage.getData().size() > 0) {
-            sendNotification(remoteMessage.getData().get("go"));
+            sendNotification(remoteMessage.getData().get("body"));
 
         }
 
