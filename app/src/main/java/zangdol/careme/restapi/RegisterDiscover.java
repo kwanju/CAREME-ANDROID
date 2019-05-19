@@ -34,6 +34,8 @@ public class RegisterDiscover implements RestUtil.OnRestApiListener {
                 addTextParam("species_code", data.get("species_code"));
                 addTextParam("animal_sex", data.get("sex"));
                 addTextParam("user_idx", data.get("user_idx")); // 이 부분은 따로 세팅해야함.
+                addTextParam("latitude", data.get("latitude"));
+                addTextParam("longitude",data.get("longitude"));
 
                 if (uri != null)
                     addImageParam("animalImage", uri);
