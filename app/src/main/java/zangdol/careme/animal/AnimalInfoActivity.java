@@ -69,9 +69,9 @@ public class AnimalInfoActivity extends AppCompatActivity implements AnimalInfoC
                 NullChecker.text(animal.getDiscoveredSpot(), tv_discovered_spot);
                 NullChecker.text(animal.getShelterIdx(), tv_shelterIdx);
                 NullChecker.text(animal.getDescription(), tv_description);
-                if (tv_sex.equals('M'))
+                if (animal.getSex()=='m')
                     tv_sex.setText("남");
-                else if (tv_sex.equals('W'))
+                else if (animal.getSex()=='w')
                     tv_sex.setText("여");
                 else
                     tv_sex.setText("입력안됨");

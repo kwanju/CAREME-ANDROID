@@ -3,6 +3,7 @@ package zangdol.careme.restapi;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 
@@ -19,7 +20,7 @@ public class SearchShelterCategoryTest implements SearchShelterCategory.OnRespon
     public void setup(){
         signal = new CountDownLatch(1);
         ssc = new SearchShelterCategory();
-        ssc.request("경기","안산시",this);
+        ssc.request("경기","종로구",this);
     }
 
     @Test
@@ -33,9 +34,10 @@ public class SearchShelterCategoryTest implements SearchShelterCategory.OnRespon
     }
 
     @Override
-    public void onResponse(List<Shelter> shelterList) {
-        Shelter shelter = shelterList.get(0);
-        this.name = shelter.getName();
-        signal.countDown();
-    }
+    public void onResponse(ArrayList<Shelter> shelterList) {
+            Shelter shelter = shelterList.get(0);
+            this.name = shelter.getName();
+            signal.countDown();
+        }
+
 }

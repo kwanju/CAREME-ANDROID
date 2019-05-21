@@ -5,9 +5,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
 
     <application
         android:allowBackup="true"
@@ -45,34 +44,22 @@
         <activity android:name=".adoption.AdoptionActivity" />
         <activity android:name=".searchFilterDogs.SearchFilterDogsActivity" />
         <activity android:name=".animal.applyVolunteer.ApplyVolunteerActivity" />
-        <activity android:name=".login.register.RegisterActivity"></activity>
-        <activity android:name=".volunteerRecord.VolunteerRecordActivity"></activity>
-        <activity android:name=".map.MapViewActivity"></activity>
+        <activity android:name=".login.register.RegisterActivity" />
+        <activity android:name=".volunteerRecord.VolunteerRecordActivity" />
+        <activity android:name=".map.MapViewActivity" />
 
-        <service
-
-            android:name=".util.FCM.FCMService">
-
+        <service android:name=".util.FCM.FCMService">
             <intent-filter>
-
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
-
             </intent-filter>
-
         </service>
-
-        <service
-
-            android:name=".util.FCM.FirebaseInstanceService">
-
+        <service android:name=".util.FCM.FirebaseInstanceService">
             <intent-filter>
-
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
-
             </intent-filter>
-
         </service>
 
+        <activity android:name=".discoverRecord.DiscoverRecordActivity"></activity>
     </application>
 
 </manifest>

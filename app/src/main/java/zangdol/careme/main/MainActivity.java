@@ -15,6 +15,7 @@ import com.beardedhen.androidbootstrap.BootstrapButton;
 import zangdol.careme.R;
 import zangdol.careme.SearchShelter.SearchShelterCategoryActivity;
 import zangdol.careme.bulletinBoard.PostActivity;
+import zangdol.careme.discoverRecord.DiscoverRecordActivity;
 import zangdol.careme.lostFound.DogFoundLostGridActivity;
 import zangdol.careme.lostFound.DogInformationActivity;
 import zangdol.careme.lostFound.ReportLostActivity;
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button bt_myPage;
     private Button bt_test2;
     private BootstrapButton bt_registerDiscover;
+    private BootstrapButton bt_discoverRecord;
 
     private TextView tv_id;
 
@@ -70,6 +72,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bt_myPage = (Button) findViewById( R.id.mypage );
         bt_test2 = (Button)findViewById(R.id.testtest);
         bt_registerDiscover = (BootstrapButton) findViewById(R.id.button_register_discover);
+        bt_discoverRecord = (BootstrapButton) findViewById(R.id.button_discover_record);
 
         tv_id = (TextView) findViewById(R.id.tv_id);
 
@@ -85,6 +88,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bt_volunteerRecord.setOnClickListener(this);
         bt_test2.setOnClickListener(this);
         bt_registerDiscover.setOnClickListener(this);
+        bt_discoverRecord.setOnClickListener(this);
     }
 
 
@@ -108,7 +112,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.button_test:
-                startActivity(new Intent(this, RegisterDiscoverActivity.class));
+                startActivity(new Intent(this, DiscoverRecordActivity.class));
                 break;
             case R.id.button_volunteer_record:
                 startActivity(new Intent(this, VolunteerRecordActivity.class));
@@ -118,6 +122,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.button_register_discover:
                 startActivity(new Intent(this,RegisterDiscoverActivity.class));
+                break;
+            case R.id.button_discover_record:
+                startActivity(new Intent(this,DiscoverRecordActivity.class));
                 break;
         }
     }

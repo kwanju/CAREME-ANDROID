@@ -41,6 +41,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     androidTestImplementation 'com.android.support.test:rules:1.0.2'
+    testImplementation 'org.mockito:mockito-android:2.7.22'
     implementation 'org.apache.httpcomponents:httpclient:4.3'
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'com.prolificinteractive:material-calendarview:1.4.3'
@@ -50,7 +51,6 @@ dependencies {
     implementation files('libs/httpmime-4.3.jar')
     implementation 'com.naver.maps:map-sdk:3.3.0'
     implementation 'com.jzxiang.pickerview:TimePickerDialog:1.0.1'
-
+    implementation 'de.hdodenhof:circleimageview:3.0.0'
 }
 apply plugin: 'com.google.gms.google-services'
-

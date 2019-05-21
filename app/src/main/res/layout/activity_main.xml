@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".main.MainActivity">
+    tools:context=".main.MainActivity"
+    >
 
     <TextView
         android:layout_width="wrap_content"
@@ -79,12 +80,17 @@
             app:bootstrapText="봉사 목록" />
 
         <com.beardedhen.androidbootstrap.BootstrapButton
-            android:id="@+id/button_register_discover"
-            style="@style/PrimaryButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:bootstrapText="발견했어요 등록" />
-
+            android:id="@+id/button_register_discover"
+            app:bootstrapText="발견했어요 등록"
+            style="@style/PrimaryButton"/>
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_discover_record"
+            app:bootstrapText="나의 발견했어요 등록 목록"
+            style="@style/PrimaryButton"/>
         <Button
             android:id="@+id/button_test"
             android:layout_width="wrap_content"
