@@ -11,7 +11,7 @@ public class RegisterDiscoverContract {
     public interface Presenter {
         void setData(String key, String value);
 
-        void register();
+        void register(RegisterDiscoverActivity.RegisterType registerType);
 
         void setImageUri(Uri uri);
     }

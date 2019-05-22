@@ -8,9 +8,10 @@ import java.util.HashMap;
 
 import zangdol.careme.main.MainActivity;
 import zangdol.careme.restapi.RegisterDiscover;
+import zangdol.careme.restapi.RegisterFind;
 import zangdol.careme.util.SaveSharedPreference;
 
-public class RegisterDiscoverPresenter implements RegisterDiscoverContract.Presenter, RegisterDiscover.OnRegisterDiscoverListener {
+public class RegisterDiscoverPresenter implements RegisterDiscoverContract.Presenter, RegisterDiscover.OnRegisterDiscoverListener, RegisterFind.OnRegisterFindListener {
     private RegisterDiscoverContract.View view;
     private HashMap<String, String> data;
     private Uri imgUri = null;
@@ -27,14 +28,19 @@ public class RegisterDiscoverPresenter implements RegisterDiscoverContract.Prese
     }
 
     @Override
-    public void register() {
+    public void register(RegisterDiscoverActivity.RegisterType registerType) {
         if (!SaveSharedPreference.isLogin()) {
-            Toast.makeText(view.getActivity(),"로그인이 필요합니다.",Toast.LENGTH_SHORT);
+            Toast.makeText(view.getActivity(), "로그인이 필요합니다.", Toast.LENGTH_SHORT);
             return;
         }
 
         data.put("user_idx", SaveSharedPreference.getIdx());
-        new RegisterDiscover(this, data, imgUri, view.getActivity());
+
+        if (registerType == RegisterDiscoverActivity.RegisterType.DISCOVER)
+            new RegisterDiscover(this, data, imgUri, view.getActivity());
+        else
+            new RegisterFind(this, data, imgUri, view.getActivity());
+
     }
 
     @Override
@@ -44,6 +50,15 @@ public class RegisterDiscoverPresenter implements RegisterDiscoverContract.Prese
 
     @Override
     public void OnRegisterDiscover() {
+        onResultRegister();
+    }
+
+    @Override
+    public void OnRegisterFind() {
+        onResultRegister();
+    }
+
+    private void onResultRegister(){
         view.getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
