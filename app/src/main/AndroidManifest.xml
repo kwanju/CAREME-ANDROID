@@ -41,7 +41,6 @@
         <activity android:name=".lostFound.ReportLostActivity" />
         <activity android:name=".bulletinBoard.BulletinActivity" />
         <activity android:name=".bulletinBoard.PostActivity" />
-        <activity android:name=".adoption.AdoptionActivity" />
         <activity android:name=".searchFilterDogs.SearchFilterDogsActivity" />
         <activity android:name=".animal.applyVolunteer.ApplyVolunteerActivity" />
         <activity android:name=".login.register.RegisterActivity" />

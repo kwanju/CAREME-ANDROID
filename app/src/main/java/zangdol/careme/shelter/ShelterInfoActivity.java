@@ -19,7 +19,7 @@ public class ShelterInfoActivity extends AppCompatActivity implements ShelterInf
 
     private Button enrollFavoriteBt;
     private Button animalListBt;
-    private Button goForAdoption;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +49,6 @@ public class ShelterInfoActivity extends AppCompatActivity implements ShelterInf
         description = (TextView)findViewById(R.id.textView35);
 
         enrollFavoriteBt = (Button) findViewById(R.id.enrollFavoriteBt);
-        goForAdoption = (Button)findViewById(R.id.goForAdoption);
         animalListBt = (Button) findViewById(R.id.animalListBt);
 
         animalListBt.setOnClickListener(this);
