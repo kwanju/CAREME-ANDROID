@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(new Intent(this, VolunteerRecordActivity.class));
                 break;
             case R.id.testtest:
-                startActivity(new Intent(this, ShelterInfoActivity.class));
+                startActivity(new Intent(this, RegisterDiscoverActivity.class));
                 break;
             case R.id.button_register_discover:
                 startActivity(new Intent(this,RegisterDiscoverActivity.class));
