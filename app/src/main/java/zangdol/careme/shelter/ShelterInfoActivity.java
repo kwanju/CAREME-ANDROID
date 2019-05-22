@@ -14,9 +14,12 @@ public class ShelterInfoActivity extends AppCompatActivity implements ShelterInf
     private TextView name;
     private TextView address;
     private TextView phoneNumber;
+    private TextView workingHours;
+    private TextView description;
 
     private Button enrollFavoriteBt;
     private Button animalListBt;
+    private Button goForAdoption;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +45,11 @@ public class ShelterInfoActivity extends AppCompatActivity implements ShelterInf
         name = (TextView) findViewById(R.id.name);
         address = (TextView) findViewById(R.id.address);
         phoneNumber = (TextView) findViewById(R.id.phoneNumber);
+        workingHours = (TextView)findViewById(R.id.textView33);
+        description = (TextView)findViewById(R.id.textView35);
 
         enrollFavoriteBt = (Button) findViewById(R.id.enrollFavoriteBt);
+        goForAdoption = (Button)findViewById(R.id.goForAdoption);
         animalListBt = (Button) findViewById(R.id.animalListBt);
 
         animalListBt.setOnClickListener(this);
