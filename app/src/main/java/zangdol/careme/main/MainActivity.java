@@ -14,15 +14,10 @@ import com.beardedhen.androidbootstrap.BootstrapButton;
 
 import zangdol.careme.R;
 import zangdol.careme.SearchShelter.SearchShelterCategoryActivity;
-import zangdol.careme.bulletinBoard.PostActivity;
+import zangdol.careme.bulletinBoardDiscoverFind.BulletinBoardDiscoverFindActivity;
 import zangdol.careme.discoverRecord.DiscoverRecordActivity;
-import zangdol.careme.lostFound.DogFoundLostGridActivity;
-import zangdol.careme.lostFound.DogInformationActivity;
-import zangdol.careme.lostFound.ReportLostActivity;
 import zangdol.careme.registerDiscover.RegisterDiscoverActivity;
 import zangdol.careme.login.LoginActivity;
-import zangdol.careme.searchFilterDogs.SearchFilterDogsActivity;
-import zangdol.careme.shelter.ShelterInfoActivity;
 import zangdol.careme.util.SaveSharedPreference;
 import zangdol.careme.volunteerRecord.VolunteerRecordActivity;
 
@@ -112,7 +107,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.button_test:
-                startActivity(new Intent(this, DiscoverRecordActivity.class));
+                startActivity(new Intent(this, BulletinBoardDiscoverFindActivity.class));
                 break;
             case R.id.button_volunteer_record:
                 startActivity(new Intent(this, VolunteerRecordActivity.class));
