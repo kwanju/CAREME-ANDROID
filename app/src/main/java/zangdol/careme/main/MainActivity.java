@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private BootstrapButton bt_volunteerRecord;
     private Button bt_myPage;
     private Button bt_test2;
-    private BootstrapButton bt_registerDiscover;
+    private BootstrapButton bt_BulletinBoardDiscoverFind;
     private BootstrapButton bt_discoverRecord;
 
     private TextView tv_id;
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bt_volunteerRecord = (BootstrapButton) findViewById(R.id.button_volunteer_record);
         bt_myPage = (Button) findViewById( R.id.mypage );
         bt_test2 = (Button)findViewById(R.id.testtest);
-        bt_registerDiscover = (BootstrapButton) findViewById(R.id.button_register_discover);
+        bt_BulletinBoardDiscoverFind = (BootstrapButton) findViewById(R.id.button_discover_find_bulletin_board);
         bt_discoverRecord = (BootstrapButton) findViewById(R.id.button_discover_record);
 
         tv_id = (TextView) findViewById(R.id.tv_id);
@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bt_test.setOnClickListener(this);
         bt_volunteerRecord.setOnClickListener(this);
         bt_test2.setOnClickListener(this);
-        bt_registerDiscover.setOnClickListener(this);
+        bt_BulletinBoardDiscoverFind.setOnClickListener(this);
         bt_discoverRecord.setOnClickListener(this);
     }
 
@@ -115,8 +115,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.testtest:
                 startActivity(new Intent(this, RegisterDiscoverActivity.class));
                 break;
-            case R.id.button_register_discover:
-                startActivity(new Intent(this,RegisterDiscoverActivity.class));
+            case R.id.button_discover_find_bulletin_board:
+                startActivity(new Intent(this,BulletinBoardDiscoverFindActivity.class));
                 break;
             case R.id.button_discover_record:
                 startActivity(new Intent(this,DiscoverRecordActivity.class));

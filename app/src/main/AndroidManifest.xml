@@ -37,7 +37,7 @@
         <activity android:name=".SearchShelter.AnimalList.AnimalListActivity" />
         <activity android:name=".animal.AnimalInfoActivity" />
         <activity android:name=".bulletinBoardDiscoverFind.BulletinBoardDiscoverFindActivity" />
-        <activity android:name=".bulletinBoardDiscoverFind.DogInformationActivity" />
+        <activity android:name=".bulletinBoardDiscoverFind.discoverFind.DiscoverFindActivity" />
         <activity android:name=".bulletinBoardDiscoverFind.ReportLostActivity" />
         <activity android:name=".bulletinBoard.BulletinActivity" />
         <activity android:name=".bulletinBoard.PostActivity" />

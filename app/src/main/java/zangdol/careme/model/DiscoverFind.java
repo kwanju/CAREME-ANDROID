@@ -10,6 +10,11 @@ public class DiscoverFind {
     private String url_picture;
     private String registerDateTime;
     private String userIdx;
+    private String latitude;
+    private String longitude;
+
+    private String registerNickname;
+    private String registerPhoneNumber;
     public String getIdx() {
         return idx;
     }
@@ -80,5 +85,37 @@ public class DiscoverFind {
 
     public void setUserIdx(String userIdx) {
         this.userIdx = userIdx;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
+    public String getRegisterNickname() {
+        return registerNickname;
+    }
+
+    public void setRegisterNickname(String registerNickname) {
+        this.registerNickname = registerNickname;
+    }
+
+    public String getRegisterPhoneNumber() {
+        return registerPhoneNumber;
+    }
+
+    public void setRegisterPhoneNumber(String registerPhoneNumber) {
+        this.registerPhoneNumber = registerPhoneNumber;
     }
 }

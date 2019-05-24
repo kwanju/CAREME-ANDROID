@@ -43,12 +43,14 @@ public class BulletinBoardDiscoverFindItem extends LinearLayout {
 
         setStatus(discoverFind);
         NullChecker.image(discoverFind.getUrl_picture(), doggyImg);
+
+
     }
 
     private void setStatus(DiscoverFind discoverFind) {
         if (Discover.class.isInstance(discoverFind)) {
             tv_status.setText("발견했어요");
-            tv_status.setBackgroundColor(0x90FFFF00);
+            tv_status.setBackgroundColor(0x6A5ACD00);
         } else {
             tv_status.setText("찾아요");
             tv_status.setBackgroundColor(0x90FFA500);
