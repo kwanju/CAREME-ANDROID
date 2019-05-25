@@ -1,4 +1,4 @@
-package zangdol.careme.registerDiscover;
+package zangdol.careme.registerDiscoverFind;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -28,9 +28,9 @@ import java.util.List;
 import zangdol.careme.R;
 import zangdol.careme.map.MapViewActivity;
 
-public class RegisterDiscoverActivity extends AppCompatActivity implements RegisterDiscoverContract.View, View.OnClickListener, OnDateSetListener {
+public class RegisterDiscoverFindActivity extends AppCompatActivity implements RegisterDiscoverFindContract.View, View.OnClickListener, OnDateSetListener {
 
-    private RegisterDiscoverContract.Presenter presenter;
+    private RegisterDiscoverFindContract.Presenter presenter;
 
     private Button bt_register;
     private ImageView dogImage;
@@ -61,7 +61,7 @@ public class RegisterDiscoverActivity extends AppCompatActivity implements Regis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_discover);
 
-        presenter = new RegisterDiscoverPresenter(this);
+        presenter = new RegisterDiscoverFindPresenter(this);
 
         setItem();
         setDateTimePicker();

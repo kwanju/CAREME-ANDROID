@@ -3,6 +3,7 @@ package zangdol.careme.restapi;
 import android.content.Context;
 import android.net.Uri;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -19,7 +20,7 @@ public class RegisterDiscover implements RestUtil.OnRestApiListener {
     private final static String URL = Config.SERVERIP + "android/discover/action/registerDiscover";
 
     public interface OnRegisterDiscoverListener {
-        void OnRegisterDiscover();
+        void OnRegisterDiscover(String idx);
     }
 
     public RegisterDiscover(OnRegisterDiscoverListener listener, final HashMap<String, String> data, final Uri uri, Context context) {
@@ -45,6 +46,16 @@ public class RegisterDiscover implements RestUtil.OnRestApiListener {
 
     @Override
     public void OnResult(JSONObject result) {
-        listener.OnRegisterDiscover();
+        listener.OnRegisterDiscover(json2idx(result));
     }
+
+    private String json2idx(JSONObject result){
+        try {
+            return result.getString("idx");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }

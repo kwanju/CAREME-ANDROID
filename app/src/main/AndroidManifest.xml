@@ -33,7 +33,7 @@
         <activity android:name=".shelter.ShelterInfoActivity" />
         <activity android:name=".SearchShelter.shelterListNew.ShelterListNewActivity" />
         <activity android:name=".TestActivity.TestActivity" />
-        <activity android:name=".registerDiscover.RegisterDiscoverActivity" />
+        <activity android:name=".registerDiscoverFind.RegisterDiscoverFindActivity" />
         <activity android:name=".SearchShelter.AnimalList.AnimalListActivity" />
         <activity android:name=".animal.AnimalInfoActivity" />
         <activity android:name=".bulletinBoardDiscoverFind.BulletinBoardDiscoverFindActivity" />

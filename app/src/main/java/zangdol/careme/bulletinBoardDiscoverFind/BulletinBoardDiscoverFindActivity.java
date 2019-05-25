@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.GridView;
 
 import zangdol.careme.R;
-import zangdol.careme.registerDiscover.RegisterDiscoverActivity;
+import zangdol.careme.registerDiscoverFind.RegisterDiscoverFindActivity;
 
 public class BulletinBoardDiscoverFindActivity extends AppCompatActivity implements BulletinBoardDiscoverFindContract.View, View.OnClickListener {
     private GridView gv;
@@ -25,21 +25,12 @@ public class BulletinBoardDiscoverFindActivity extends AppCompatActivity impleme
 
         setItem();
         presenter = new BulletinBoardDiscoverFindPresenter(this);
-        presenter.getData();
-/*
-        gv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+    }
 
-                DogReport dogReport = dogReports.get(position);
-////////////////////////////dogReport에 있는 필요한 정보를 추출해서 서버에 보낸다.///////////////////////////////////
-                Toast.makeText(getApplicationContext(), dogReport.getStatus()
-                        + " " + dogReport.getType() + " " + dogReport.getDescription()
-                        + " " + dogReport.getDate() + " " + dogReport.getPlace(), Toast.LENGTH_LONG).show();
-////////////////////////////////////////////intent써서 DogInformationActivity를 연다////////////////////////////////////////////////////////////////////
-                startActivity(new Intent(BulletinBoardDiscoverFindActivity.this, DiscoverFindActivity.class));
-            }
-        });*/
+    @Override
+    protected void onResume() {
+        super.onResume();
+        presenter.getData();
     }
 
     private void setItem() {
@@ -68,7 +59,7 @@ public class BulletinBoardDiscoverFindActivity extends AppCompatActivity impleme
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.bulletin_board_discover_find_write:
-                Intent intent = new Intent(this, RegisterDiscoverActivity.class);
+                Intent intent = new Intent(this, RegisterDiscoverFindActivity.class);
                 startActivity(intent);
                 break;
         }

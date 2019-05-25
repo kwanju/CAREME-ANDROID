@@ -1,5 +1,7 @@
 package zangdol.careme.restapi;
 
+import android.util.Log;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -41,7 +43,6 @@ public class GetDiscover implements RestUtil.OnRestApiListener {
 
     private Discover json2discover(JSONObject result) {
         Discover discover = new Discover();
-
         try {
             JSONObject jsonDiscover = result.getJSONObject("discover");
             discover.setIdx(jsonDiscover.getString("idx"));

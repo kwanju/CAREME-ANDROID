@@ -16,7 +16,7 @@ import zangdol.careme.R;
 import zangdol.careme.SearchShelter.SearchShelterCategoryActivity;
 import zangdol.careme.bulletinBoardDiscoverFind.BulletinBoardDiscoverFindActivity;
 import zangdol.careme.discoverRecord.DiscoverRecordActivity;
-import zangdol.careme.registerDiscover.RegisterDiscoverActivity;
+import zangdol.careme.registerDiscoverFind.RegisterDiscoverFindActivity;
 import zangdol.careme.login.LoginActivity;
 import zangdol.careme.util.SaveSharedPreference;
 import zangdol.careme.volunteerRecord.VolunteerRecordActivity;
@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(new Intent(this, VolunteerRecordActivity.class));
                 break;
             case R.id.testtest:
-                startActivity(new Intent(this, RegisterDiscoverActivity.class));
+                startActivity(new Intent(this, RegisterDiscoverFindActivity.class));
                 break;
             case R.id.button_discover_find_bulletin_board:
                 startActivity(new Intent(this,BulletinBoardDiscoverFindActivity.class));
