@@ -14,16 +14,10 @@ import com.beardedhen.androidbootstrap.BootstrapButton;
 
 import zangdol.careme.R;
 import zangdol.careme.SearchShelter.SearchShelterCategoryActivity;
-import zangdol.careme.bulletinBoard.PostActivity;
+import zangdol.careme.bulletinBoardDiscoverFind.BulletinBoardDiscoverFindActivity;
 import zangdol.careme.discoverRecord.DiscoverRecordActivity;
-import zangdol.careme.lostFound.DogFoundLostGridActivity;
-import zangdol.careme.lostFound.DogInformationActivity;
-import zangdol.careme.lostFound.ReportLostActivity;
-import zangdol.careme.myPage.MyPageActivity;
-import zangdol.careme.registerDiscover.RegisterDiscoverActivity;
+import zangdol.careme.registerDiscoverFind.RegisterDiscoverFindActivity;
 import zangdol.careme.login.LoginActivity;
-import zangdol.careme.searchFilterDogs.SearchFilterDogsActivity;
-import zangdol.careme.shelter.ShelterInfoActivity;
 import zangdol.careme.util.SaveSharedPreference;
 import zangdol.careme.volunteerRecord.VolunteerRecordActivity;
 
@@ -39,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private BootstrapButton bt_volunteerRecord;
     private Button bt_myPage;
     private Button bt_test2;
-    private BootstrapButton bt_registerDiscover;
+    private BootstrapButton bt_BulletinBoardDiscoverFind;
     private BootstrapButton bt_discoverRecord;
 
     private TextView tv_id;
@@ -72,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bt_volunteerRecord = (BootstrapButton) findViewById(R.id.button_volunteer_record);
         bt_myPage = (Button) findViewById( R.id.mypage );
         bt_test2 = (Button)findViewById(R.id.testtest);
-        bt_registerDiscover = (BootstrapButton) findViewById(R.id.button_register_discover);
+        bt_BulletinBoardDiscoverFind = (BootstrapButton) findViewById(R.id.button_discover_find_bulletin_board);
         bt_discoverRecord = (BootstrapButton) findViewById(R.id.button_discover_record);
 
         tv_id = (TextView) findViewById(R.id.tv_id);
@@ -88,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bt_test.setOnClickListener(this);
         bt_volunteerRecord.setOnClickListener(this);
         bt_test2.setOnClickListener(this);
-        bt_registerDiscover.setOnClickListener(this);
+        bt_BulletinBoardDiscoverFind.setOnClickListener(this);
         bt_discoverRecord.setOnClickListener(this);
     }
 
@@ -113,16 +107,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.button_test:
-                startActivity(new Intent(this, DiscoverRecordActivity.class));
+                startActivity(new Intent(this, BulletinBoardDiscoverFindActivity.class));
                 break;
             case R.id.button_volunteer_record:
                 startActivity(new Intent(this, VolunteerRecordActivity.class));
                 break;
             case R.id.testtest:
-                startActivity(new Intent(this, MyPageActivity.class));
+                startActivity(new Intent(this, RegisterDiscoverFindActivity.class));
                 break;
-            case R.id.button_register_discover:
-                startActivity(new Intent(this,RegisterDiscoverActivity.class));
+            case R.id.button_discover_find_bulletin_board:
+                startActivity(new Intent(this,BulletinBoardDiscoverFindActivity.class));
                 break;
             case R.id.button_discover_record:
                 startActivity(new Intent(this,DiscoverRecordActivity.class));

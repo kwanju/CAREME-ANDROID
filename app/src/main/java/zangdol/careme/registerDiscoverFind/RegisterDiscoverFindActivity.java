@@ -1,4 +1,4 @@
-package zangdol.careme.registerDiscover;
+package zangdol.careme.registerDiscoverFind;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -7,37 +7,43 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.jzxiang.pickerview.TimePickerDialog;
 import com.jzxiang.pickerview.data.Type;
 import com.jzxiang.pickerview.listener.OnDateSetListener;
 
+import org.angmarch.views.NiceSpinner;
+
 import java.io.InputStream;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 
 import zangdol.careme.R;
 import zangdol.careme.map.MapViewActivity;
 
-public class RegisterDiscoverActivity extends AppCompatActivity implements RegisterDiscoverContract.View, View.OnClickListener, OnDateSetListener {
+public class RegisterDiscoverFindActivity extends AppCompatActivity implements RegisterDiscoverFindContract.View, View.OnClickListener, OnDateSetListener {
 
-    private RegisterDiscoverContract.Presenter presenter;
+    private RegisterDiscoverFindContract.Presenter presenter;
 
     private Button bt_register;
     private ImageView dogImage;
 
     private Bitmap dogImageUploaded;
 
-    private TextView tv_address;
-    private TextView tv_datetime;
-    private TextView tv_des;
-    private TextView tv_sex;
-    private TextView tv_species;
+    private EditText tv_address;
+    private EditText tv_datetime;
+    private EditText tv_des;
+    private EditText tv_sex;
+    private EditText tv_species;
+
+    private NiceSpinner ns_distinguish;
 
     private TimePickerDialog mDialogAll;
 
@@ -46,12 +52,16 @@ public class RegisterDiscoverActivity extends AppCompatActivity implements Regis
 
     private SimpleDateFormat simpleDateFormat;
 
+    public enum RegisterType {
+        DISCOVER, FIND
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_discover);
 
-        presenter = new RegisterDiscoverPresenter(this);
+        presenter = new RegisterDiscoverFindPresenter(this);
 
         setItem();
         setDateTimePicker();
@@ -62,16 +72,22 @@ public class RegisterDiscoverActivity extends AppCompatActivity implements Regis
         bt_register = (Button) findViewById(R.id.register_discover_btn_register);
         dogImage = (ImageView) findViewById(R.id.register_discover_dogImage);
 
-        tv_address = (TextView) findViewById(R.id.register_discover_address);
-        tv_datetime = (TextView) findViewById(R.id.register_discover_datetime);
-        tv_des = (TextView) findViewById(R.id.register_discover_description);
-        tv_sex = (TextView) findViewById(R.id.register_discover_sex);
-        tv_species = (TextView) findViewById(R.id.register_discover_species_code);
+        tv_address = (EditText) findViewById(R.id.register_discover_address);
+        tv_datetime = (EditText) findViewById(R.id.register_discover_datetime);
+        tv_des = (EditText) findViewById(R.id.register_discover_description);
+        tv_sex = (EditText) findViewById(R.id.register_discover_sex);
+        tv_species = (EditText) findViewById(R.id.register_discover_species_code);
+
+        ns_distinguish = (NiceSpinner) findViewById(R.id.register_discover_distinguish);
 
         dogImage.setOnClickListener(this);
         tv_address.setOnClickListener(this);
         tv_datetime.setOnClickListener(this);
         bt_register.setOnClickListener(this);
+
+
+        List<String> dataset = new LinkedList<>(Arrays.asList("발견했어요", "찾아요"));
+        ns_distinguish.attachDataSource(dataset);
     }
 
     private void setDateTimePicker() {
@@ -148,14 +164,17 @@ public class RegisterDiscoverActivity extends AppCompatActivity implements Regis
                 startActivityForResult(mapIntent, ADDRESS);
                 break;
             case R.id.register_discover_datetime: // 날짜선택을 눌렀을 때
-                Log.d("TEST", "IN");
                 mDialogAll.show(getSupportFragmentManager(), "all");
                 break;
             case R.id.register_discover_btn_register: // 등록버튼을 눌렀을 때.
                 presenter.setData("description", tv_des.getText().toString());
                 presenter.setData("sex", tv_sex.getText().toString());
                 presenter.setData("species_code", tv_species.getText().toString());
-                presenter.register();
+
+                if(isDiscover())
+                    presenter.register(RegisterType.DISCOVER);
+                else
+                    presenter.register(RegisterType.FIND);
                 break;
         }
     }
@@ -170,5 +189,12 @@ public class RegisterDiscoverActivity extends AppCompatActivity implements Regis
     @Override
     public Activity getActivity() {
         return this;
+    }
+
+    private boolean isDiscover(){
+        if(ns_distinguish.getSelectedItem().equals("발견했어요"))
+            return true;
+        else
+            return false;
     }
 }

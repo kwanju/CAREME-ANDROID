@@ -54,8 +54,8 @@ public class GetDiscoverRecord implements RestUtil.OnRestApiListener {
                 Discover discover = new Discover();
                 discover.setAnimalSex(jsonDiscover.getString("animal_sex"));
                 discover.setDescription(jsonDiscover.getString("description"));
-                discover.setDiscoverDateTime(jsonDiscover.getString("discover_datetime"));
-                discover.setDiscoveredSpot(jsonDiscover.getString("discovered_spot"));
+                discover.setEventDateTime(jsonDiscover.getString("discover_datetime"));
+                discover.setEventSpot(jsonDiscover.getString("discovered_spot"));
                 discover.setIdx(jsonDiscover.getString("idx"));
                 discover.setMatchingShelterIdx(jsonDiscover.getString("matching_shelter_idx"));
                 discover.setRegisterDateTime(jsonDiscover.getString("register_datetime"));

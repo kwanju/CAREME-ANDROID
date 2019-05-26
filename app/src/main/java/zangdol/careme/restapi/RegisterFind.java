@@ -13,24 +13,24 @@ import zangdol.careme.restapi.core.ImageParameters;
 import zangdol.careme.restapi.core.RestFactory;
 import zangdol.careme.restapi.core.RestUtil;
 
-public class RegisterDiscover implements RestUtil.OnRestApiListener {
+public class RegisterFind implements RestUtil.OnRestApiListener{
 
-    private OnRegisterDiscoverListener listener;
+    private OnRegisterFindListener listener;
 
-    private final static String URL = Config.SERVERIP + "android/discover/action/registerDiscover";
+    private final static String URL = Config.SERVERIP + "android/find/action/registerFind";
 
-    public interface OnRegisterDiscoverListener {
-        void OnRegisterDiscover(String idx);
+    public interface OnRegisterFindListener {
+        void OnRegisterFind(String idx);
     }
 
-    public RegisterDiscover(OnRegisterDiscoverListener listener, final HashMap<String, String> data, final Uri uri, Context context) {
+    public RegisterFind(OnRegisterFindListener listener, final HashMap<String, String> data, final Uri uri, Context context) {
         this.listener = listener;
 
         RestFactory.getInstance().uploadImage(URL, this, new ImageParameters(context) {
             @Override
             public void addParams() {
-                addTextParam("discover_datetime", data.get("datetime"));
-                addTextParam("discover_spot", data.get("address"));
+                addTextParam("lost_datetime", data.get("datetime"));
+                addTextParam("lost_spot", data.get("address"));
                 addTextParam("description", data.get("description"));
                 addTextParam("species_code", data.get("species_code"));
                 addTextParam("animal_sex", data.get("sex"));
@@ -46,7 +46,7 @@ public class RegisterDiscover implements RestUtil.OnRestApiListener {
 
     @Override
     public void OnResult(JSONObject result) {
-        listener.OnRegisterDiscover(json2idx(result));
+        listener.OnRegisterFind(json2idx(result));
     }
 
     private String json2idx(JSONObject result){

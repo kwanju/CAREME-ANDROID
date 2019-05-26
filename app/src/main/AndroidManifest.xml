@@ -33,12 +33,12 @@
         <activity android:name=".shelter.ShelterInfoActivity" />
         <activity android:name=".SearchShelter.shelterListNew.ShelterListNewActivity" />
         <activity android:name=".TestActivity.TestActivity" />
-        <activity android:name=".registerDiscover.RegisterDiscoverActivity" />
+        <activity android:name=".registerDiscoverFind.RegisterDiscoverFindActivity" />
         <activity android:name=".SearchShelter.AnimalList.AnimalListActivity" />
         <activity android:name=".animal.AnimalInfoActivity" />
-        <activity android:name=".lostFound.DogFoundLostGridActivity" />
-        <activity android:name=".lostFound.DogInformationActivity" />
-        <activity android:name=".lostFound.ReportLostActivity" />
+        <activity android:name=".bulletinBoardDiscoverFind.BulletinBoardDiscoverFindActivity" />
+        <activity android:name=".bulletinBoardDiscoverFind.discoverFind.DiscoverFindActivity" />
+        <activity android:name=".bulletinBoardDiscoverFind.ReportLostActivity" />
         <activity android:name=".bulletinBoard.BulletinActivity" />
         <activity android:name=".bulletinBoard.PostActivity" />
         <activity android:name=".myPage.MyPageActivity" />

@@ -47,8 +47,8 @@ public class DiscoverRecordAdapter extends ArrayAdapter<Discover> {
 
 
         NullChecker.image(discover.getUrl_picture(), viewHolder.iv_image);
-        viewHolder.tv_datetime.setText(discover.getDiscoverDateTime());
-        viewHolder.tv_spot.setText(discover.getDiscoveredSpot());
+        viewHolder.tv_datetime.setText(discover.getEventDateTime());
+        viewHolder.tv_spot.setText(discover.getEventSpot());
         NullChecker.text(discover.getShelterName(), viewHolder.tv_matching, "매칭중");
 
         return convertView;
