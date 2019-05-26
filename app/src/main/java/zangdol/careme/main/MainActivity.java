@@ -19,6 +19,7 @@ import zangdol.careme.discoverRecord.DiscoverRecordActivity;
 import zangdol.careme.lostFound.DogFoundLostGridActivity;
 import zangdol.careme.lostFound.DogInformationActivity;
 import zangdol.careme.lostFound.ReportLostActivity;
+import zangdol.careme.myPage.MyPageActivity;
 import zangdol.careme.registerDiscover.RegisterDiscoverActivity;
 import zangdol.careme.login.LoginActivity;
 import zangdol.careme.searchFilterDogs.SearchFilterDogsActivity;
@@ -118,7 +119,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(new Intent(this, VolunteerRecordActivity.class));
                 break;
             case R.id.testtest:
-                startActivity(new Intent(this, RegisterDiscoverActivity.class));
+                startActivity(new Intent(this, MyPageActivity.class));
                 break;
             case R.id.button_register_discover:
                 startActivity(new Intent(this,RegisterDiscoverActivity.class));
