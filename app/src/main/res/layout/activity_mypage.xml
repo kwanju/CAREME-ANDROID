@@ -60,7 +60,7 @@
                     android:layout_height="100dp"
                     android:layout_gravity="center"
                     android:keepScreenOn="false"
-                    app:srcCompat="@drawable/profileimg" />
+                    app:srcCompat="@drawable/profile_img" />
 
                 <Button
                     android:id="@+id/bt_profile_edit"
@@ -78,7 +78,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="fitXY"
-                    app:srcCompat="@drawable/profiledefaultimage" />
+                    app:srcCompat="@drawable/profile_default_image" />
             </FrameLayout>
 
             <android.support.constraint.ConstraintLayout

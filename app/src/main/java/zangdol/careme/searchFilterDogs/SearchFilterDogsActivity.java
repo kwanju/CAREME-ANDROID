@@ -1,6 +1,8 @@
 package zangdol.careme.searchFilterDogs;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -14,12 +16,17 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import zangdol.careme.R;
-import zangdol.careme.model.DogInfoFiltered;
+import zangdol.careme.map.MapViewActivity;
 
-public class SearchFilterDogsActivity extends AppCompatActivity
-{
+public class SearchFilterDogsActivity extends AppCompatActivity implements SearchFilterDogsContract.View, View.OnClickListener {
+    private SearchFilterDogsContract.Presenter presenter;
+
+    private final static int ADDRESS = 0;
+
+    private Spinner spinner_distance;
     private Button bt_start;
     private Button bt_end;
     private CheckBox cb_period_doncare;
@@ -27,7 +34,7 @@ public class SearchFilterDogsActivity extends AppCompatActivity
     private EditText et_dogtype;
     private CheckBox cb_type_doncare;
 
-    private Spinner spinner_region;
+    private EditText et_address;
     private ArrayList<String> arrayList;
     private ArrayAdapter<String> arrayAdapter;
 
@@ -35,74 +42,61 @@ public class SearchFilterDogsActivity extends AppCompatActivity
     private RadioButton rb_female;
     private RadioButton rb_sex_doncare;
 
-    private EditText et_age_start;
-    private EditText et_age_end;
-    private CheckBox cb_age_doncare;
-
-    private EditText et_weight_start;
-    private EditText et_weight_end;
-    private CheckBox cb_weight_doncare;
 
     private Button bt_filter;
 
     private ListView lv_filtered_dogs;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filter_dogs_abandoned);
-
+        presenter = new SearchFilterDogsPresenter(this);
         setItem();
 
     }
-    public void setItem()
-    {
-        bt_start = (Button)findViewById( R.id.period_start );
-        bt_end = (Button)findViewById( R.id.period_end );
-        cb_period_doncare = (CheckBox)findViewById(R.id.checkBox1);
 
-        et_dogtype = (EditText)findViewById(R.id.et_dog_typecode);
-        cb_type_doncare = (CheckBox)findViewById(R.id.type_checkbox);
+    public void setItem() {
+        bt_start = (Button) findViewById(R.id.period_start);
+        bt_end = (Button) findViewById(R.id.period_end);
+        cb_period_doncare = (CheckBox) findViewById(R.id.checkBox1);
 
-        spinner_region = (Spinner)findViewById(R.id.spinner_region);
+        et_dogtype = (EditText) findViewById(R.id.et_dog_typecode);
+        cb_type_doncare = (CheckBox) findViewById(R.id.type_checkbox);
+
+        spinner_distance = (Spinner) findViewById(R.id.spinner_distance);
         arrayList = new ArrayList<>();
-        arrayList.add( "전체" );
-        arrayList.add( "서울" ); arrayList.add( "경기" ); arrayList.add( "인천" ); arrayList.add( "강원" );
-        arrayList.add( "충북" ); arrayList.add( "충남" ); arrayList.add( "대전" ); arrayList.add( "전북" );
-        arrayList.add( "전남" ); arrayList.add( "광주" ); arrayList.add( "경북" ); arrayList.add( "경남" );
-        arrayList.add( "대구" ); arrayList.add( "울산" ); arrayList.add( "부산" ); arrayList.add( "제주특별자치도" );
-        arrayList.add( "세종특별자치시" );
+        arrayList.add("1km 이내");
+        arrayList.add("5km 이내");
+        arrayList.add("10km 이내");
         arrayAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, arrayList);
-        spinner_region.setAdapter( arrayAdapter );
+        spinner_distance.setAdapter(arrayAdapter);
 
-        rb_male = (RadioButton)findViewById( R.id.radioButton10 );
-        rb_female = (RadioButton)findViewById( R.id.radioButton11 );
-        rb_sex_doncare = (RadioButton)findViewById( R.id.radioButton12 );
+        rb_male = (RadioButton) findViewById(R.id.radioButton10);
+        rb_female = (RadioButton) findViewById(R.id.radioButton11);
+        rb_sex_doncare = (RadioButton) findViewById(R.id.radioButton12);
 
-        et_age_start = (EditText)findViewById( R.id.et_start_age);
-        et_age_end = (EditText)findViewById( R.id.et_end_age);
-        cb_age_doncare = (CheckBox)findViewById( R.id.age_checkbox );
 
-        et_weight_start = (EditText)findViewById(R.id.editText6);
-        et_weight_end = (EditText)findViewById(R.id.editText7);
-        cb_weight_doncare = (CheckBox)findViewById( R.id.weight_checkbox );
+        bt_filter = (Button) findViewById(R.id.filterButton);
 
-        bt_filter = (Button)findViewById(R.id.filterButton);
+        lv_filtered_dogs = (ListView) findViewById(R.id.doggy_abandoned_filteredlistview);
 
-        lv_filtered_dogs = (ListView)findViewById(R.id.doggy_abandoned_filteredlistview);
+        et_address = (EditText) findViewById(R.id.fd_address);
+
+        bt_filter.setOnClickListener(this);
+        et_address.setOnClickListener(this);
 
     }
 
-/////////////////////////////////////// 이 사이에 검색조건을 모두 입력받는다. 서버에 보내 강아지 리스트를 받아온다.//////////////////////////////////////
-    public void onButtonFilterClick(View view)
-    {
+
+    /////////////////////////////////////// 이 사이에 검색조건을 모두 입력받는다. 서버에 보내 강아지 리스트를 받아온다.//////////////////////////////////////
+    public void onButtonFilterClick() {
         String date_start = null;   // 시작일
         String date_end = null;   // 종료일
         boolean date_care = true;  // 날짜 상관이 있는지
         String dogType = null;  //견종
         boolean type_care = true;  //견종이 상관 있는지
-        String region = null;  //지역(시도 단위)
+        String distance = null;  //지역(시도 단위)
         String sex = null;  //성별
         int age_start;   //시작 나이
         int age_end;  //종료 나이
@@ -119,59 +113,64 @@ public class SearchFilterDogsActivity extends AppCompatActivity
         dogType = (String) et_dogtype.getText().toString();
         type_care = !(cb_type_doncare.isChecked());
 
-        region = spinner_region.getSelectedItem().toString();
-
-        if(rb_male.isChecked())
-            sex = "male";
-        else if(rb_female.isChecked())
-            sex = "female";
+        switch (spinner_distance.getSelectedItemPosition()){
+            case 0:
+                distance="1";
+                break;
+            case 1:
+                distance="5";
+                break;
+            case 2:
+                distance="10";
+                break;
+        }
+        if (rb_male.isChecked())
+            sex = "m";
+        else if (rb_female.isChecked())
+            sex = "w";
         else
             sex = null;
 
-        age_start = Integer.parseInt(et_age_start.getText().toString());
-        age_end = Integer.parseInt(et_age_end.getText().toString());
-        age_care = !( cb_age_doncare.isChecked());
-
-        weight_start = Integer.parseInt(et_weight_start.getText().toString());
-        weight_end = Integer.parseInt(et_weight_end.getText().toString());
-        weight_care = !( cb_weight_doncare.isChecked());
-
-//////////////////////////////////////////////////이 변수들을 서버에 보내 해당되는 유기견들 리스트를 받아온다.
-
-        ArrayList<DogInfoFiltered> dogDatas;
-        dogDatas = new ArrayList<>();
-        DogFilterAdapter adapter;
-        adapter= new DogFilterAdapter( dogDatas,getApplicationContext());
-        lv_filtered_dogs.setAdapter(adapter);
-        /////////여기서는 임의의 리스트를 쓰겠다.
-        dogDatas.add(new DogInfoFiltered("말티즈", "2019-05-21", "경남 창원", "의창구 명서동 11507번지 옥상"));
-        dogDatas.add(new DogInfoFiltered("치와와", "2019-05-20", "경남 창원", "의창구 명서동 11507번지 옥상"));
-        dogDatas.add(new DogInfoFiltered("믹스견", "2019-05-19", "경남 창원", "의창구 명서동 11507번지 옥상"));
 
 
+        presenter.setData("start_date", date_start);
+        presenter.setData("end_date", date_end);
+        presenter.setData("species_code",dogType);
+        presenter.setData("sex",sex);
+        presenter.setData("distance",distance);
+
+        presenter.search();
     }
-////////////////////////////////////////이 사이에 검색조건을 모두 입력받는다. 서버에 보내 강아지 리스트를 받아온다. /////////////////////////////////////////////
-    public void onButtonClick1( View view )
-    {
-        DatePickerDialog dialog = new DatePickerDialog(this, listener1, 2019, 5, 31);
+
+    ////////////////////////////////////////이 사이에 검색조건을 모두 입력받는다. 서버에 보내 강아지 리스트를 받아온다. /////////////////////////////////////////////
+    public void onButtonClick1(View view) {
+        Calendar c = Calendar.getInstance();
+        int mYear = c.get(Calendar.YEAR);
+        int mMonth = c.get(Calendar.MONTH);
+        int mDay = c.get(Calendar.DAY_OF_MONTH);
+        DatePickerDialog dialog = new DatePickerDialog(this, listener1, mYear, mMonth, mDay);
 
         dialog.show();
     }
-    public void onButtonClick2( View view )
-    {
-        DatePickerDialog dialog = new DatePickerDialog(this, listener2, 2019, 5, 31);
+
+    public void onButtonClick2(View view) {
+        Calendar c = Calendar.getInstance();
+        int mYear = c.get(Calendar.YEAR);
+        int mMonth = c.get(Calendar.MONTH);
+        int mDay = c.get(Calendar.DAY_OF_MONTH);
+        DatePickerDialog dialog = new DatePickerDialog(this, listener2, mYear, mMonth, mDay);
 
         dialog.show();
     }
+
     private DatePickerDialog.OnDateSetListener listener1 = new DatePickerDialog.OnDateSetListener() {
 
         @Override
 
-        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth)
-        {
-            monthOfYear = monthOfYear +1;
+        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+            monthOfYear = monthOfYear + 1;
 
-            bt_start.setText( year + "-" + monthOfYear +"-" + dayOfMonth );
+            bt_start.setText(year + "-" + monthOfYear + "-" + dayOfMonth);
         }
 
     };
@@ -179,14 +178,56 @@ public class SearchFilterDogsActivity extends AppCompatActivity
 
         @Override
 
-        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth)
-        {
-            monthOfYear = monthOfYear +1;
+        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+            monthOfYear = monthOfYear + 1;
 
-            bt_end.setText( year + "-" + monthOfYear +"-" + dayOfMonth );
+            bt_end.setText(year + "-" + monthOfYear + "-" + dayOfMonth);
         }
 
     };
 
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.filterButton:
+                onButtonFilterClick();
+                break;
+            case R.id.fd_address:
+                Intent mapIntent = new Intent(this, MapViewActivity.class);
+                startActivityForResult(mapIntent, ADDRESS);
+                break;
+        }
+    }
+
+    @Override
+    public void setAdapter(final DogFilterAdapter adapter) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                lv_filtered_dogs.setAdapter(adapter);
+            }
+        });
+    }
+
+    @Override
+    public Activity getActivity() {
+        return this;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // Check which request we're responding to
+        switch (requestCode) {
+            case ADDRESS:
+                if (resultCode == RESULT_OK) {
+                    String addr = data.getStringExtra("address");
+                    presenter.setData("latitude", "" + data.getDoubleExtra("latitude", 0));
+                    presenter.setData("longitude", "" + data.getDoubleExtra("longitude", 0));
+                    et_address.setText(addr);
+                }
+                break;
+        }
+
+    }
 }
