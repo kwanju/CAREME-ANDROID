@@ -1,10 +1,14 @@
 package zangdol.careme.main;
 
+import java.util.HashMap;
+
 import zangdol.careme.model.User;
+import zangdol.careme.restapi.GetSpeciesCode;
 import zangdol.careme.restapi.Logout;
+import zangdol.careme.util.ConvertManager;
 import zangdol.careme.util.SaveSharedPreference;
 
-public class MainPresenter implements MainContract.Presenter, Logout.OnLogoutListener {
+public class MainPresenter implements MainContract.Presenter, Logout.OnLogoutListener, GetSpeciesCode.OnGetSpeciesCodeListener {
     private MainActivity mainActivity;
 
     public MainPresenter(MainActivity view) {
@@ -29,6 +33,11 @@ public class MainPresenter implements MainContract.Presenter, Logout.OnLogoutLis
     }
 
     @Override
+    public void getSpeciesCode() {
+        new GetSpeciesCode(this);
+    }
+
+    @Override
     public void onLogout() {
         mainActivity.runOnUiThread(new Runnable() {
             @Override
@@ -37,5 +46,10 @@ public class MainPresenter implements MainContract.Presenter, Logout.OnLogoutLis
             }
         });
 
+    }
+
+    @Override
+    public void onGetSpeciesCode(HashMap<String, String> speciesCodes) {
+        ConvertManager.species_code = speciesCodes;
     }
 }

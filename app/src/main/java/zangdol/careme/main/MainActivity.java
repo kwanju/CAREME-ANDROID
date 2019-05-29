@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
 
@@ -20,6 +21,7 @@ import zangdol.careme.registerDiscoverFind.RegisterDiscoverFindActivity;
 import zangdol.careme.login.LoginActivity;
 import zangdol.careme.searchFilterDogs.SearchFilterDogsActivity;
 import zangdol.careme.util.SaveSharedPreference;
+import zangdol.careme.util.speciesCodeInputDialog.SpeciesCodeInputDialog;
 import zangdol.careme.volunteerRecord.VolunteerRecordActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, MainContract.View {
@@ -55,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         contextOfApplication = getApplicationContext();
 
         mainPresenter.checkLogin();
-
+        mainPresenter.getSpeciesCode();
         Log.d("MAINTEST", "googoo");
         Log.d("MAINTEST", SaveSharedPreference.getToken());
     }
@@ -110,7 +112,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.button_test:
-                startActivity(new Intent(this, SearchFilterDogsActivity.class));
+                new SpeciesCodeInputDialog(this, new SpeciesCodeInputDialog.OnSpeciesCodeSelectListener() {
+                    @Override
+                    public void onSpeciesCode(String[] result) {
+                        Toast.makeText(MainActivity.this, result[0]+" / "+result[1], Toast.LENGTH_SHORT).show();
+                    }
+                }).showDialog();
                 break;
             case R.id.button_volunteer_record:
                 startActivity(new Intent(this, VolunteerRecordActivity.class));
