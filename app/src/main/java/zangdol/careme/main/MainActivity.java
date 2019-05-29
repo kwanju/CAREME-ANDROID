@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button bt_test2;
     private BootstrapButton bt_BulletinBoardDiscoverFind;
     private BootstrapButton bt_discoverRecord;
+    private BootstrapButton bt_findAnimal;
 
     private TextView tv_id;
 
@@ -69,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bt_test2 = (Button)findViewById(R.id.testtest);
         bt_BulletinBoardDiscoverFind = (BootstrapButton) findViewById(R.id.button_discover_find_bulletin_board);
         bt_discoverRecord = (BootstrapButton) findViewById(R.id.button_discover_record);
-
+        bt_findAnimal = (BootstrapButton) findViewById(R.id.button_find_animal);
         tv_id = (TextView) findViewById(R.id.tv_id);
 
         layout_login = (LinearLayout) findViewById(R.id.layout_login);
@@ -85,6 +86,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bt_test2.setOnClickListener(this);
         bt_BulletinBoardDiscoverFind.setOnClickListener(this);
         bt_discoverRecord.setOnClickListener(this);
+        bt_findAnimal.setOnClickListener(this);
     }
 
 
@@ -121,6 +123,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.button_discover_record:
                 startActivity(new Intent(this,DiscoverRecordActivity.class));
+                break;
+            case R.id.button_find_animal:
+                startActivity(new Intent(this,SearchFilterDogsActivity.class));
                 break;
         }
     }

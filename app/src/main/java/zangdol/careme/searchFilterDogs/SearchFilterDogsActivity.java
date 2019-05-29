@@ -45,7 +45,7 @@ public class SearchFilterDogsActivity extends AppCompatActivity implements Searc
 
     private Button bt_filter;
 
-    private ListView lv_filtered_dogs;
+    private CustomListView lv_filtered_dogs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +79,7 @@ public class SearchFilterDogsActivity extends AppCompatActivity implements Searc
 
         bt_filter = (Button) findViewById(R.id.filterButton);
 
-        lv_filtered_dogs = (ListView) findViewById(R.id.doggy_abandoned_filteredlistview);
+        lv_filtered_dogs = (CustomListView) findViewById(R.id.doggy_abandoned_filteredlistview);
 
         et_address = (EditText) findViewById(R.id.fd_address);
 
