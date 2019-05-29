@@ -16,6 +16,7 @@ import zangdol.careme.animal.AnimalInfoActivity;
 import zangdol.careme.bulletinBoardDiscoverFind.discoverFind.DiscoverFindActivity;
 import zangdol.careme.bulletinBoardDiscoverFind.discoverFind.DiscoverFindPresenter;
 import zangdol.careme.model.FoundAnimal;
+import zangdol.careme.util.ConvertManager;
 import zangdol.careme.util.NullChecker;
 
 public class DogFilterAdapter extends ArrayAdapter<FoundAnimal> {
@@ -86,7 +87,7 @@ public class DogFilterAdapter extends ArrayAdapter<FoundAnimal> {
         //////////////////
 
         viewHolder.tv_species_code.setText(foundAnimal.getSpecies_code());
-        viewHolder.tv_date.setText(foundAnimal.getDate());
+        viewHolder.tv_date.setText(ConvertManager.date(foundAnimal.getDate(),ConvertManager.DATETIME));
         viewHolder.tv_discoredSpot.setText(foundAnimal.getSpot());
         NullChecker.image(foundAnimal.getPicture(), viewHolder.dogImg);
         viewHolder.tv_sex.setText(foundAnimal.getSex().equals("null") ? "알수없음" : foundAnimal.getSex().equals("w") ? "여" : "남");

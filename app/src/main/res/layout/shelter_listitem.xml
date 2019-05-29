@@ -23,38 +23,64 @@
         android:layout_weight="2"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/shelterName"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_weight="1"
-            android:gravity="center_horizontal|center_vertical"
-            android:text="TextView"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textStyle="bold" />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="27dp"
+                android:layout_marginStart="16dp"
+                app:srcCompat="@drawable/shelter_icon" />
+            <TextView
+                android:id="@+id/shelterName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:layout_marginTop="5dp"
+                android:textColor="#000000"
+                android:textStyle="bold" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/address"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_weight="1"
-            android:gravity="center_horizontal|center_vertical"
-            android:text="TextView"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textStyle="bold" />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="22dp"
+                android:layout_marginStart="16dp"
+                app:srcCompat="@drawable/center_marker" />
+            <TextView
+                android:id="@+id/address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:layout_marginTop="2dp"
+                android:textColor="#000000"
+                android:textStyle="bold" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/phone"
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_weight="1"
-            android:gravity="center_horizontal|center_vertical"
-            android:text="TextView"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textStyle="bold" />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="22dp"
+                android:layout_marginStart="16dp"
+                app:srcCompat="@drawable/phone_icon" />
+            <TextView
+                android:id="@+id/phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:layout_marginTop="2dp"
+                android:textColor="#000000"
+                android:textStyle="bold" />
+        </LinearLayout>
+
     </LinearLayout>
 
 </LinearLayout>

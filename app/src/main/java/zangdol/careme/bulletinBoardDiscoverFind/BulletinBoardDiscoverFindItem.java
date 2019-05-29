@@ -10,6 +10,7 @@ import android.widget.TextView;
 import zangdol.careme.R;
 import zangdol.careme.model.Discover;
 import zangdol.careme.model.DiscoverFind;
+import zangdol.careme.util.ConvertManager;
 import zangdol.careme.util.NullChecker;
 
 public class BulletinBoardDiscoverFindItem extends LinearLayout {
@@ -37,8 +38,8 @@ public class BulletinBoardDiscoverFindItem extends LinearLayout {
 
     public void setData(DiscoverFind discoverFind) {
         tv_type.setText(discoverFind.getSpeciesCode());
-        tv_sex.setText(discoverFind.getAnimalSex());
-        tv_date_found_lost.setText(discoverFind.getEventDateTime());
+        tv_sex.setText(discoverFind.getAnimalSex().equals("")?"성별 입력안됨":discoverFind.getAnimalSex().equals("w")?"여자":"남자");
+        tv_date_found_lost.setText(ConvertManager.date(discoverFind.getEventDateTime(), ConvertManager.DATETIME));
         tv_place.setText(discoverFind.getEventSpot());
 
         setStatus(discoverFind);

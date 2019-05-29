@@ -12,6 +12,7 @@ import java.util.List;
 import de.hdodenhof.circleimageview.CircleImageView;
 import zangdol.careme.R;
 import zangdol.careme.model.Discover;
+import zangdol.careme.util.ConvertManager;
 import zangdol.careme.util.NullChecker;
 
 public class DiscoverRecordAdapter extends ArrayAdapter<Discover> {
@@ -47,7 +48,7 @@ public class DiscoverRecordAdapter extends ArrayAdapter<Discover> {
 
 
         NullChecker.image(discover.getUrl_picture(), viewHolder.iv_image);
-        viewHolder.tv_datetime.setText(discover.getEventDateTime());
+        viewHolder.tv_datetime.setText(ConvertManager.date(discover.getEventDateTime(), ConvertManager.DATETIME));
         viewHolder.tv_spot.setText(discover.getEventSpot());
         NullChecker.text(discover.getShelterName(), viewHolder.tv_matching, "매칭중");
 

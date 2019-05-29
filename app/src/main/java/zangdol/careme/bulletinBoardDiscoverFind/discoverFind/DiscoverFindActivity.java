@@ -8,6 +8,7 @@ import android.widget.TextView;
 import zangdol.careme.R;
 import zangdol.careme.model.Discover;
 import zangdol.careme.model.Find;
+import zangdol.careme.util.ConvertManager;
 import zangdol.careme.util.NullChecker;
 
 public class DiscoverFindActivity extends AppCompatActivity implements DiscoverFindContract.View {
@@ -63,13 +64,15 @@ public class DiscoverFindActivity extends AppCompatActivity implements DiscoverF
                 NullChecker.image(discover.getUrl_picture(), doggyImage);
                 NullChecker.text(discover.getSpeciesCode(), type);
 
-                if (discover.getAnimalSex().equals("w"))
+                if(discover.getAnimalSex().equals(""))
+                    sex.setText("성별 입력안됨");
+                else if (discover.getAnimalSex().equals("w"))
                     sex.setText("암컷");
                 else
                     sex.setText("수컷");
 
                 NullChecker.text(discover.getDescription(), detailDescription);
-                NullChecker.text(discover.getEventDateTime(), lostDate);
+                lostDate.setText(ConvertManager.date(discover.getEventDateTime(),ConvertManager.DATETIME));
                 NullChecker.text(discover.getEventSpot(), lostPlace);
                 NullChecker.text(discover.getRegisterNickname(),id);
                 NullChecker.text(discover.getRegisterPhoneNumber(),phoneNumber);
@@ -89,13 +92,15 @@ public class DiscoverFindActivity extends AppCompatActivity implements DiscoverF
                 NullChecker.image(find.getUrl_picture(), doggyImage);
                 NullChecker.text(find.getSpeciesCode(), type);
 
-                if (find.getAnimalSex().equals("w"))
+                if(find.getAnimalSex().equals(""))
+                    sex.setText("성별 입력안됨");
+                else if (find.getAnimalSex().equals("w"))
                     sex.setText("암컷");
                 else
                     sex.setText("수컷");
 
                 NullChecker.text(find.getDescription(), detailDescription);
-                NullChecker.text(find.getEventDateTime(), lostDate);
+                lostDate.setText(ConvertManager.date(find.getEventDateTime(),ConvertManager.DATETIME));
                 NullChecker.text(find.getEventSpot(), lostPlace);
                 NullChecker.text(find.getRegisterNickname(),id);
                 NullChecker.text(find.getRegisterPhoneNumber(),phoneNumber);
