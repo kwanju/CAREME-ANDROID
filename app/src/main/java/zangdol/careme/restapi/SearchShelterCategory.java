@@ -68,6 +68,8 @@ public class SearchShelterCategory implements RestUtil.OnRestApiListener {
                 shelter.setIdx(lists.getJSONObject(i).getString("idx"));
                 shelter.setPosition(lists.getJSONObject(i).getString("position"));
                 shelter.setPnum(lists.getJSONObject(i).getString("phone_number"));
+                shelter.setUrl_picture(lists.getJSONObject(i).getString("url_picture"));
+
 
                 Log.d("Test",shelter.getName()+" / "+lists.getJSONObject(i).getString("name"));
                 shelterList.add(shelter);

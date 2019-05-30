@@ -88,7 +88,7 @@ public class ShelterListNewAdapter extends ArrayAdapter<Shelter>
         viewHolder.tv_shelterName.setText(shelter.getName());
         viewHolder.tv_address.setText(shelter.getPosition());
         viewHolder.tv_phone.setText(shelter.getPnum());
-        NullChecker.image("null",viewHolder.shelterPic); // 현재 보호소 이미지가 구현되어있지 않기 떄문에 일단 노 이미지로 해놓음
+        NullChecker.image(shelter.getUrl_picture(),viewHolder.shelterPic); // 현재 보호소 이미지가 구현되어있지 않기 떄문에 일단 노 이미지로 해놓음
         // Return the completed view to render on screen
         return convertView;
     }

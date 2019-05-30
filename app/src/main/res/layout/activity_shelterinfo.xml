@@ -51,7 +51,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/dogImage"
+                    app:layout_constraintTop_toBottomOf="@+id/si_sf_shelter_image"
                     app:srcCompat="@drawable/shelter_icon" />
 
                 <ImageView
@@ -88,7 +88,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/address" />
 
                 <ImageView
-                    android:id="@+id/dogImage"
+                    android:id="@+id/si_sf_shelter_image"
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
                     android:layout_marginStart="8dp"
@@ -167,7 +167,7 @@
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toEndOf="@+id/imageView11"
-                    app:layout_constraintTop_toBottomOf="@+id/dogImage" />
+                    app:layout_constraintTop_toBottomOf="@+id/si_sf_shelter_image" />
 
                 <TextView
                     android:id="@+id/phoneNumber"
@@ -211,7 +211,7 @@
                     android:background="#6496ed"
                     android:text="유기견보러가기"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/dogImage" />
+                    app:layout_constraintTop_toBottomOf="@+id/si_sf_shelter_image" />
 
                 <TextView
                     android:id="@+id/address"

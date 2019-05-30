@@ -1,13 +1,16 @@
 package zangdol.careme.shelter;
 
+import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import zangdol.careme.R;
 import zangdol.careme.model.Shelter;
+import zangdol.careme.util.NullChecker;
 
 public class ShelterInfoActivity extends AppCompatActivity implements ShelterInfoContract.View, View.OnClickListener {
     private ShelterInfoPresenter presenter;
@@ -19,6 +22,9 @@ public class ShelterInfoActivity extends AppCompatActivity implements ShelterInf
 
     private Button enrollFavoriteBt;
     private Button animalListBt;
+
+    private ImageView iv_shelterImage;
+
 
 
     @Override
@@ -51,6 +57,7 @@ public class ShelterInfoActivity extends AppCompatActivity implements ShelterInf
         enrollFavoriteBt = (Button) findViewById(R.id.enrollFavoriteBt);
         animalListBt = (Button) findViewById(R.id.animalListBt);
 
+        iv_shelterImage = (ImageView) findViewById(R.id.si_sf_shelter_image);
         animalListBt.setOnClickListener(this);
     }
 
@@ -62,6 +69,7 @@ public class ShelterInfoActivity extends AppCompatActivity implements ShelterInf
                 name.setText(shelter.getName());
                 address.setText(shelter.getPosition());
                 phoneNumber.setText(shelter.getPnum());
+                NullChecker.image(shelter.getUrl_picture(),iv_shelterImage);
             }
         });
     }

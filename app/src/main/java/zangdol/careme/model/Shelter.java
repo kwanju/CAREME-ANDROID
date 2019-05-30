@@ -14,6 +14,15 @@ public class Shelter implements Serializable {
     private String endTime;
     private String description;
 
+    private String url_picture;
+
+    public String getUrl_picture() {
+        return url_picture;
+    }
+
+    public void setUrl_picture(String url_picture) {
+        this.url_picture = url_picture;
+    }
 
     public String getStartTime() {
         return startTime;
