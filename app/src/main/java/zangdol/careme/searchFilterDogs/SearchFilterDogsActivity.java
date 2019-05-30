@@ -20,6 +20,7 @@ import java.util.Calendar;
 
 import zangdol.careme.R;
 import zangdol.careme.map.MapViewActivity;
+import zangdol.careme.util.speciesCodeInputDialog.SpeciesCodeInputDialog;
 
 public class SearchFilterDogsActivity extends AppCompatActivity implements SearchFilterDogsContract.View, View.OnClickListener {
     private SearchFilterDogsContract.Presenter presenter;
@@ -29,10 +30,9 @@ public class SearchFilterDogsActivity extends AppCompatActivity implements Searc
     private Spinner spinner_distance;
     private Button bt_start;
     private Button bt_end;
-    private CheckBox cb_period_doncare;
 
+    private EditText et_dogTypecode;
     private EditText et_dogtype;
-    private CheckBox cb_type_doncare;
 
     private EditText et_address;
     private ArrayList<String> arrayList;
@@ -40,7 +40,6 @@ public class SearchFilterDogsActivity extends AppCompatActivity implements Searc
 
     private RadioButton rb_male;
     private RadioButton rb_female;
-    private RadioButton rb_sex_doncare;
 
 
     private Button bt_filter;
@@ -59,10 +58,9 @@ public class SearchFilterDogsActivity extends AppCompatActivity implements Searc
     public void setItem() {
         bt_start = (Button) findViewById(R.id.period_start);
         bt_end = (Button) findViewById(R.id.period_end);
-        cb_period_doncare = (CheckBox) findViewById(R.id.checkBox1);
 
+        et_dogTypecode = (EditText) findViewById(R.id.fd_et_dog_typecode);
         et_dogtype = (EditText) findViewById(R.id.et_dog_typecode);
-        cb_type_doncare = (CheckBox) findViewById(R.id.type_checkbox);
 
         spinner_distance = (Spinner) findViewById(R.id.spinner_distance);
         arrayList = new ArrayList<>();
@@ -74,7 +72,6 @@ public class SearchFilterDogsActivity extends AppCompatActivity implements Searc
 
         rb_male = (RadioButton) findViewById(R.id.radioButton10);
         rb_female = (RadioButton) findViewById(R.id.radioButton11);
-        rb_sex_doncare = (RadioButton) findViewById(R.id.radioButton12);
 
 
         bt_filter = (Button) findViewById(R.id.filterButton);
@@ -85,6 +82,7 @@ public class SearchFilterDogsActivity extends AppCompatActivity implements Searc
 
         bt_filter.setOnClickListener(this);
         et_address.setOnClickListener(this);
+        et_dogtype.setOnClickListener(this);
 
     }
 
@@ -93,25 +91,11 @@ public class SearchFilterDogsActivity extends AppCompatActivity implements Searc
     public void onButtonFilterClick() {
         String date_start = null;   // 시작일
         String date_end = null;   // 종료일
-        boolean date_care = true;  // 날짜 상관이 있는지
-        String dogType = null;  //견종
-        boolean type_care = true;  //견종이 상관 있는지
         String distance = null;  //지역(시도 단위)
         String sex = null;  //성별
-        int age_start;   //시작 나이
-        int age_end;  //종료 나이
-        boolean age_care = true;  //나이가 상관 있는지
-        int weight_start;  //시작 몸무게
-        int weight_end;  //종료 몸무기
-        boolean weight_care = true;  //몸무게 상관 있는지
-
 
         date_start = (String) bt_start.getText();
         date_end = (String) bt_end.getText();
-        date_care = !(cb_period_doncare.isChecked());
-
-        dogType = (String) et_dogtype.getText().toString();
-        type_care = !(cb_type_doncare.isChecked());
 
         switch (spinner_distance.getSelectedItemPosition()){
             case 0:
@@ -131,11 +115,9 @@ public class SearchFilterDogsActivity extends AppCompatActivity implements Searc
         else
             sex = null;
 
-
-
         presenter.setData("start_date", date_start);
         presenter.setData("end_date", date_end);
-        presenter.setData("species_code",dogType);
+        presenter.setData("species_code",et_dogTypecode.getText().toString());
         presenter.setData("sex",sex);
         presenter.setData("distance",distance);
 
@@ -169,7 +151,6 @@ public class SearchFilterDogsActivity extends AppCompatActivity implements Searc
 
         public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
             monthOfYear = monthOfYear + 1;
-
             bt_start.setText(year + "-" + monthOfYear + "-" + dayOfMonth);
         }
 
@@ -180,7 +161,6 @@ public class SearchFilterDogsActivity extends AppCompatActivity implements Searc
 
         public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
             monthOfYear = monthOfYear + 1;
-
             bt_end.setText(year + "-" + monthOfYear + "-" + dayOfMonth);
         }
 
@@ -196,6 +176,15 @@ public class SearchFilterDogsActivity extends AppCompatActivity implements Searc
             case R.id.fd_address:
                 Intent mapIntent = new Intent(this, MapViewActivity.class);
                 startActivityForResult(mapIntent, ADDRESS);
+                break;
+            case R.id.et_dog_typecode:
+                new SpeciesCodeInputDialog(this, new SpeciesCodeInputDialog.OnSpeciesCodeSelectListener() {
+                    @Override
+                    public void onSpeciesCode(String[] result) {
+                        et_dogTypecode.setText(result[0]);
+                        et_dogtype.setText(result[1]);
+                    }
+                }).showDialog();
                 break;
         }
     }

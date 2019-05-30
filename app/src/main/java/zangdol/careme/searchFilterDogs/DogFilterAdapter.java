@@ -86,7 +86,7 @@ public class DogFilterAdapter extends ArrayAdapter<FoundAnimal> {
         // ImageView dogImg;
         //////////////////
 
-        viewHolder.tv_species_code.setText(foundAnimal.getSpecies_code());
+        viewHolder.tv_species_code.setText(ConvertManager.getSpecies(foundAnimal.getSpecies_code()));
         viewHolder.tv_date.setText(ConvertManager.date(foundAnimal.getDate(),ConvertManager.DATETIME));
         viewHolder.tv_discoredSpot.setText(foundAnimal.getSpot());
         NullChecker.image(foundAnimal.getPicture(), viewHolder.dogImg);

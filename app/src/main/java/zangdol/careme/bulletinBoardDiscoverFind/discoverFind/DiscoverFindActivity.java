@@ -90,7 +90,7 @@ public class DiscoverFindActivity extends AppCompatActivity implements DiscoverF
                 status.setBackgroundColor(0x90FFA500);
 
                 NullChecker.image(find.getUrl_picture(), doggyImage);
-                NullChecker.text(find.getSpeciesCode(), type);
+                NullChecker.text(ConvertManager.getSpecies(find.getSpeciesCode()), type);
 
                 if(find.getAnimalSex().equals(""))
                     sex.setText("성별 입력안됨");

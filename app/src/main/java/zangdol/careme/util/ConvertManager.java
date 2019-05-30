@@ -44,4 +44,12 @@ public class ConvertManager {
         }
         return null;
     }
+
+    public static String getSpecies(String code){
+        for (Object key : species_code.keySet()) {
+            if(((String)key).equals(code))
+                return species_code.get(key);
+        }
+        return "없음";
+    }
 }

@@ -46,7 +46,7 @@ public class GetAnimalInfo implements RestUtil.OnRestApiListener {
 
         try {
             JSONObject animalInfo = result.getJSONObject("animalInfo");
-            animal.setDiscoveredSpot(animalInfo.getString("discover_idx"));
+            animal.setDiscoveredSpot(animalInfo.getString("discovered_spot"));
             animal.setEstimatedBirthAge(animalInfo.getString("estimated_birth_age"));
             animal.setIdx(animalInfo.getString("idx"));
             animal.setDescription(animalInfo.getString("description"));
@@ -57,7 +57,7 @@ public class GetAnimalInfo implements RestUtil.OnRestApiListener {
             else
                 animal.setSex(animalInfo.getString("sex").charAt(0));
 
-            animal.setShelterIdx(animalInfo.getString("shelter_idx"));
+            animal.setShelterIdx(animalInfo.getString("shelter_name"));
             animal.setSpeciesCode(animalInfo.getString("species_code"));
             animal.setUrlPicture(animalInfo.getString("url_picture"));
             return animal;

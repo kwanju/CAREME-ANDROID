@@ -79,7 +79,7 @@ public class AnimalListAdapter extends BaseAdapter{
             //new ImageDownloader(animalSummary.getImageURL(), iv_dogImage,animalSummary.getIdx());
 
         tv_dogName.setText(animalSummary.getName());
-        tv_species.setText(animalSummary.getSpeciesCode());
+        tv_species.setText(ConvertManager.getSpecies(animalSummary.getSpeciesCode()));
         tv_idx.setText(animalSummary.getIdx());
 
         convertView.setOnClickListener(new View.OnClickListener() {

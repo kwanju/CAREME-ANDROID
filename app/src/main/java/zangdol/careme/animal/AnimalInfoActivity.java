@@ -12,6 +12,7 @@ import com.beardedhen.androidbootstrap.BootstrapButton;
 
 import zangdol.careme.R;
 import zangdol.careme.model.Animal;
+import zangdol.careme.util.ConvertManager;
 import zangdol.careme.util.NullChecker;
 
 public class AnimalInfoActivity extends AppCompatActivity implements AnimalInfoContract.View, View.OnClickListener {
@@ -65,7 +66,7 @@ public class AnimalInfoActivity extends AppCompatActivity implements AnimalInfoC
             public void run() {
                 NullChecker.image(animal.getUrlPicture(), iv_image);
                 NullChecker.text(animal.getName(), tv_name);
-                NullChecker.text(animal.getSpeciesCode(), tv_species);
+                NullChecker.text(ConvertManager.getSpecies(animal.getSpeciesCode()), tv_species);
                 NullChecker.text(animal.getDiscoveredSpot(), tv_discovered_spot);
                 NullChecker.text(animal.getShelterIdx(), tv_shelterIdx);
                 NullChecker.text(animal.getDescription(), tv_description);
