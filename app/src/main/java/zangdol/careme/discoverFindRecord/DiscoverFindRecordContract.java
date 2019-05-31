@@ -1,11 +1,11 @@
-package zangdol.careme.discoverRecord;
+package zangdol.careme.discoverFindRecord;
 
 import android.app.Activity;
 
-public class DiscoverRecordContract {
+public class DiscoverFindRecordContract {
     public interface View {
         Activity getActivity();
-        void setAdapter(DiscoverRecordAdapter adapter);
+        void setAdapter(DiscoverFindRecordAdapter adapter);
     }
 
     public interface Presenter {

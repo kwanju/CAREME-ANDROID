@@ -10,17 +10,19 @@ import java.util.ArrayList;
 
 import zangdol.careme.Config;
 import zangdol.careme.model.Discover;
+import zangdol.careme.model.DiscoverFind;
+import zangdol.careme.model.Find;
 import zangdol.careme.restapi.core.Parameters;
 import zangdol.careme.restapi.core.RestFactory;
 import zangdol.careme.restapi.core.RestUtil;
 
 public class GetDiscoverRecord implements RestUtil.OnRestApiListener {
 
-    private final String URL = Config.SERVERIP+"android/discover/json/getDiscoverRecord";
+    private final String URL = Config.SERVERIP+"android/discoverFind/json/getDiscoverFindRecord";
     private OnGetDiscoverRecordListener listener;
 
     public interface OnGetDiscoverRecordListener {
-        void OnGetDiscoverRecord(ArrayList<Discover> discovers);
+        void OnGetDiscoverRecord(ArrayList<DiscoverFind> discovers);
     }
 
     public GetDiscoverRecord(final String user_idx, OnGetDiscoverRecordListener listener) {
@@ -41,7 +43,7 @@ public class GetDiscoverRecord implements RestUtil.OnRestApiListener {
     @Override
     public void OnResult(JSONObject result) {
         Log.d("TEST",result.toString());
-        listener.OnGetDiscoverRecord(json2discovers(result));
+        listener.OnGetDiscoverRecord(json2discoverFinds(result));
     }
 
     private ArrayList<Discover> json2discovers(JSONObject result) {
@@ -70,5 +72,49 @@ public class GetDiscoverRecord implements RestUtil.OnRestApiListener {
             e.printStackTrace();
         }
         return discovers;
+    }
+
+    private ArrayList<DiscoverFind> json2discoverFinds(JSONObject result) {
+        ArrayList<DiscoverFind> discoverFinds = new ArrayList<>();
+
+        try {
+            JSONArray list = result.getJSONArray("list");
+            for (int i = 0; i < list.length(); i++) {
+                JSONObject discoverFind = list.getJSONObject(i);
+
+                DiscoverFind df;
+                if (isDiscoverJSONObject(discoverFind)){
+                    df = new Discover();
+                    df.setIdx(discoverFind.getString("idx"));
+                    df.setSpeciesCode(discoverFind.getString("species_code"));
+                    df.setAnimalSex(discoverFind.getString("animal_sex"));
+                    df.setUrl_picture(discoverFind.getString("url_picture"));
+                    df.setEventSpot(discoverFind.getString("discovered_spot"));
+                    df.setEventDateTime(discoverFind.getString("discover_datetime"));
+                    ((Discover) df).setMatchingShelterIdx(discoverFind.getString("matching_shelter_idx"));
+                    ((Discover) df).setShelterName(discoverFind.getString("shelterName"));
+                }
+                else{
+                    df = new Find();
+                    df.setIdx(discoverFind.getString("idx"));
+                    df.setSpeciesCode(discoverFind.getString("species_code"));
+                    df.setAnimalSex(discoverFind.getString("animal_sex"));
+                    df.setUrl_picture(discoverFind.getString("url_picture"));
+                    df.setEventSpot(discoverFind.getString("lost_spot"));
+                    df.setEventDateTime(discoverFind.getString("lost_datetime"));
+                }
+                discoverFinds.add(df);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return discoverFinds;
+    }
+
+    private boolean isDiscoverJSONObject(JSONObject discoverFind) throws JSONException {
+        if (discoverFind.getString("code").equals("0"))
+            return true;
+        else
+            return false;
     }
 }

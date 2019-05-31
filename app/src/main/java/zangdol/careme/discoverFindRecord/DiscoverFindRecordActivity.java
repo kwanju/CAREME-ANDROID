@@ -1,4 +1,4 @@
-package zangdol.careme.discoverRecord;
+package zangdol.careme.discoverFindRecord;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -7,9 +7,9 @@ import android.widget.ListView;
 
 import zangdol.careme.R;
 
-public class DiscoverRecordActivity extends AppCompatActivity implements DiscoverRecordContract.View {
+public class DiscoverFindRecordActivity extends AppCompatActivity implements DiscoverFindRecordContract.View {
 
-    private DiscoverRecordContract.Presenter presenter;
+    private DiscoverFindRecordContract.Presenter presenter;
 
     private ListView listView;
 
@@ -17,7 +17,7 @@ public class DiscoverRecordActivity extends AppCompatActivity implements Discove
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_discover_record);
-        presenter = new DiscoverRecordPresenter(this);
+        presenter = new DiscoverFindRecordPresenter(this);
         setElements();
         presenter.getDiscoverRecord();
     }
@@ -32,7 +32,7 @@ public class DiscoverRecordActivity extends AppCompatActivity implements Discove
     }
 
     @Override
-    public void setAdapter(final DiscoverRecordAdapter adapter) {
+    public void setAdapter(final DiscoverFindRecordAdapter adapter) {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {

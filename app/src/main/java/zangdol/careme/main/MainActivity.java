@@ -9,19 +9,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
 
 import zangdol.careme.R;
 import zangdol.careme.SearchShelter.SearchShelterCategoryActivity;
 import zangdol.careme.bulletinBoardDiscoverFind.BulletinBoardDiscoverFindActivity;
-import zangdol.careme.discoverRecord.DiscoverRecordActivity;
-import zangdol.careme.registerDiscoverFind.RegisterDiscoverFindActivity;
+import zangdol.careme.discoverFindRecord.DiscoverFindRecordActivity;
 import zangdol.careme.login.LoginActivity;
+import zangdol.careme.registerDiscoverFind.RegisterDiscoverFindActivity;
 import zangdol.careme.searchFilterDogs.SearchFilterDogsActivity;
+import zangdol.careme.util.DBHelper;
 import zangdol.careme.util.SaveSharedPreference;
-import zangdol.careme.util.speciesCodeInputDialog.SpeciesCodeInputDialog;
 import zangdol.careme.volunteerRecord.VolunteerRecordActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, MainContract.View {
@@ -45,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private LinearLayout layout_login;
     private LinearLayout layout_logout;
 
+    private DBHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +55,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mainPresenter = new MainPresenter(this);
 
         contextOfApplication = getApplicationContext();
+        dbHelper = new DBHelper(getApplicationContext(), DBHelper.DBNAME, null, DBHelper.DBVERSION);
+
 
         mainPresenter.checkLogin();
         mainPresenter.getSpeciesCode();
@@ -68,8 +70,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bt_searchSheter = (Button) findViewById(R.id.button_search_shelter);
         bt_test = (Button) findViewById(R.id.button_test);
         bt_volunteerRecord = (BootstrapButton) findViewById(R.id.button_volunteer_record);
-        bt_myPage = (Button) findViewById( R.id.mypage );
-        bt_test2 = (Button)findViewById(R.id.testtest);
+        bt_myPage = (Button) findViewById(R.id.mypage);
+        bt_test2 = (Button) findViewById(R.id.testtest);
         bt_BulletinBoardDiscoverFind = (BootstrapButton) findViewById(R.id.button_discover_find_bulletin_board);
         bt_discoverRecord = (BootstrapButton) findViewById(R.id.button_discover_record);
         bt_findAnimal = (BootstrapButton) findViewById(R.id.button_find_animal);
@@ -112,12 +114,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.button_test:
-                new SpeciesCodeInputDialog(this, new SpeciesCodeInputDialog.OnSpeciesCodeSelectListener() {
-                    @Override
-                    public void onSpeciesCode(String[] result) {
-                        Toast.makeText(MainActivity.this, result[0]+" / "+result[1], Toast.LENGTH_SHORT).show();
-                    }
-                }).showDialog();
                 break;
             case R.id.button_volunteer_record:
                 startActivity(new Intent(this, VolunteerRecordActivity.class));
@@ -126,13 +122,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(new Intent(this, RegisterDiscoverFindActivity.class));
                 break;
             case R.id.button_discover_find_bulletin_board:
-                startActivity(new Intent(this,BulletinBoardDiscoverFindActivity.class));
+                startActivity(new Intent(this, BulletinBoardDiscoverFindActivity.class));
                 break;
             case R.id.button_discover_record:
-                startActivity(new Intent(this,DiscoverRecordActivity.class));
+                startActivity(new Intent(this, DiscoverFindRecordActivity.class));
                 break;
             case R.id.button_find_animal:
-                startActivity(new Intent(this,SearchFilterDogsActivity.class));
+                startActivity(new Intent(this, SearchFilterDogsActivity.class));
                 break;
         }
     }
