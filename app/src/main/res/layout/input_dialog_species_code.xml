@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -7,17 +8,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginHorizontal="10dp"
-        android:orientation="vertical">
+        android:background="#FFFFFF"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="10dp">
+
         <TextView
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="30dp"
             android:text="유기동물 종 선택"
-            android:textStyle="bold"
             android:textAlignment="center"
+            android:textColor="@color/colorBlack"
             android:textSize="20dp"
-            android:textColor="@color/colorBlack"/>
+            android:textStyle="bold" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -35,6 +40,7 @@
                 android:id="@+id/idsc_search"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@color/bootstrap_brand_primary"
                 android:text="검색"
                 android:textColor="@color/colorBlack"
                 android:textStyle="bold" />
@@ -43,7 +49,8 @@
         <ListView
             android:id="@+id/idsc_list"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"></ListView>
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_species_list"></ListView>
 
 
     </LinearLayout>

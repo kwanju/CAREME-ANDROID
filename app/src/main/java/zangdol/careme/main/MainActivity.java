@@ -16,6 +16,7 @@ import zangdol.careme.R;
 import zangdol.careme.SearchShelter.SearchShelterCategoryActivity;
 import zangdol.careme.bulletinBoardDiscoverFind.BulletinBoardDiscoverFindActivity;
 import zangdol.careme.discoverFindRecord.DiscoverFindRecordActivity;
+import zangdol.careme.myPage.FavoriteDogsListActivity;
 import zangdol.careme.myPage.MyPageActivity;
 import zangdol.careme.newMain.NewMainActivity;
 import zangdol.careme.login.LoginActivity;
