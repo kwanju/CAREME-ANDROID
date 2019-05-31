@@ -53,7 +53,8 @@ public class GetUserSchedule implements RestUtil.OnRestApiListener {
                         volunteer.getString("animalName"),
                         volunteer.getString("date"),
                         volunteer.getString("permit"),
-                        volunteer.getString("url_picture"));
+                        volunteer.getString("url_picture"),
+                        volunteer.getString("animal_idx"));
                 volunteerRecords.add(vr);
             }
         } catch (Exception e) {

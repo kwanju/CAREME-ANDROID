@@ -6,13 +6,19 @@ public class VolunteerRecord {
     private String date;
     private String permission;
     private String imageUrl;
+    private String animalIdx;
 
-    public VolunteerRecord(String shelter_name, String dog_name, String date, String permission, String imageUrl) {
+    public VolunteerRecord(String shelter_name, String dog_name, String date, String permission, String imageUrl, String animalIdx) {
         this.shelter_name = shelter_name;
         this.dog_name = dog_name;
         this.date = date;
         this.permission = permission;
         this.imageUrl = imageUrl;
+        this.animalIdx = animalIdx;
+    }
+
+    public String getAnimalIdx() {
+        return animalIdx;
     }
 
     public String getShelterName() {
@@ -25,15 +31,15 @@ public class VolunteerRecord {
 
     public String getDate() {
 
-        return date.substring(0,10);
+        return date.substring(0, 10);
     }
 
     public String getPermission() {
-        if(permission.equals("1"))
+        if (permission.equals("1"))
             return "허가";
-        else if(permission.equals("0"))
+        else if (permission.equals("0"))
             return "보류";
-        else if(permission.equals("-1"))
+        else if (permission.equals("-1"))
             return "거절";
         return null;
     }

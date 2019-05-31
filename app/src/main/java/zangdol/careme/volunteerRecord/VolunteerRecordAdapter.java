@@ -1,6 +1,7 @@
 package zangdol.careme.volunteerRecord;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 import zangdol.careme.R;
+import zangdol.careme.animal.AnimalInfoActivity;
 import zangdol.careme.model.VolunteerRecord;
 import zangdol.careme.util.ConvertManager;
 import zangdol.careme.util.NullChecker;
@@ -42,7 +44,7 @@ public class VolunteerRecordAdapter extends ArrayAdapter<VolunteerRecord> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         // Get the data item for this position
-        VolunteerRecord volunteerRecord = getItem(position);
+        final VolunteerRecord volunteerRecord = getItem(position);
         // Check if an existing view is being reused, otherwise inflate the view
         ViewHolder viewHolder; // view lookup cache stored in tag
 
@@ -88,7 +90,14 @@ public class VolunteerRecordAdapter extends ArrayAdapter<VolunteerRecord> {
 
         NullChecker.image(volunteerRecord.getImageUrl(),viewHolder.dog);
 
-
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext,AnimalInfoActivity.class);
+                intent.putExtra("idx",Integer.parseInt(volunteerRecord.getAnimalIdx()));
+                mContext.startActivity(intent);
+            }
+        });
         // Return the completed view to render on screen
         return convertView;
     }
