@@ -65,7 +65,7 @@ public class ShelterInfoActivity extends AppCompatActivity implements ShelterInf
         iv_shelterImage = (ImageView) findViewById(R.id.si_sf_shelter_image);
         animalListBt.setOnClickListener(this);
 
-        map = new ShowMapWithMarker(this);
+        map = new ShowMapWithMarker(this,R.id.si_map);
 /*
         mapFragment = (MapFragment) getSupportFragmentManager().findFragmentById(R.id.si_map);
         if (mapFragment == null) {

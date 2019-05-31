@@ -19,13 +19,13 @@ public class ShowMapWithMarker implements OnMapReadyCallback {
     private OnMapLoadListener listener;
 
 
-    public ShowMapWithMarker(AppCompatActivity callingActivity) {
+    public ShowMapWithMarker(AppCompatActivity callingActivity,int id) {
         this.callingActivity = callingActivity;
 
-        mapFragment = (MapFragment) callingActivity.getSupportFragmentManager().findFragmentById(R.id.si_map);
+        mapFragment = (MapFragment) callingActivity.getSupportFragmentManager().findFragmentById(id);
         if (mapFragment == null) {
             mapFragment = MapFragment.newInstance();
-            callingActivity.getSupportFragmentManager().beginTransaction().add(R.id.si_map, mapFragment).commit();
+            callingActivity.getSupportFragmentManager().beginTransaction().add(id, mapFragment).commit();
         }
     }
 
