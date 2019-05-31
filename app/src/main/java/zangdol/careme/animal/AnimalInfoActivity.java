@@ -18,6 +18,8 @@ import zangdol.careme.shelter.ShelterInfoActivity;
 import zangdol.careme.util.ConvertManager;
 import zangdol.careme.util.DBHelper;
 import zangdol.careme.util.NullChecker;
+import zangdol.careme.util.mapMarker.OnMapLoadListener;
+import zangdol.careme.util.mapMarker.ShowMapWithMarker;
 
 public class AnimalInfoActivity extends AppCompatActivity implements AnimalInfoContract.View, View.OnClickListener {
     private AnimalInfoPresenter presenter;
@@ -42,6 +44,8 @@ public class AnimalInfoActivity extends AppCompatActivity implements AnimalInfoC
 
     private int animal_idx;
 
+    private ShowMapWithMarker map;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +57,10 @@ public class AnimalInfoActivity extends AppCompatActivity implements AnimalInfoC
 
         dbHelper = new DBHelper(this, DBHelper.DBNAME, null, DBHelper.DBVERSION);
         animal_idx = getIntent().getIntExtra("idx", 0);
+        map = new ShowMapWithMarker(this, R.id.ai_map);
         presenter.getAnimalInfo(animal_idx); // 동물 정보를 가져옴
+
+
     }
 
     private void setElements() {
@@ -91,6 +98,24 @@ public class AnimalInfoActivity extends AppCompatActivity implements AnimalInfoC
                 NullChecker.text(animal.getDiscoveredSpot(), tv_discovered_spot);
                 NullChecker.text(animal.getShelterName(), tv_shelterIdx);
                 NullChecker.text(animal.getDescription(), tv_description);
+
+                map.initialize(new OnMapLoadListener() {
+                    @Override
+                    public ShowMapWithMarker getShowMapWithMarker() {
+                        return map;
+                    }
+
+                    @Override
+                    public String getLatitude() {
+                        return animal.getDiscoveredSpotLatitude();
+                    }
+
+                    @Override
+                    public String getLongitude() {
+                        return animal.getDiscoveredSpotLongitude();
+                    }
+                });
+
                 if (animal.getSex() == 'm')
                     tv_sex.setText("남");
                 else if (animal.getSex() == 'w')

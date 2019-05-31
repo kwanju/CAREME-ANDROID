@@ -16,6 +16,24 @@ public class Animal {
     private String shelterIdx;
     private String shelterName;
     private String description;
+    private String discoveredSpotLatitude;
+    private String discoveredSpotLongitude;
+
+    public String getDiscoveredSpotLatitude() {
+        return discoveredSpotLatitude;
+    }
+
+    public void setDiscoveredSpotLatitude(String discoveredSpotLatitude) {
+        this.discoveredSpotLatitude = discoveredSpotLatitude;
+    }
+
+    public String getDiscoveredSpotLongitude() {
+        return discoveredSpotLongitude;
+    }
+
+    public void setDiscoveredSpotLongitude(String discoveredSpotLongitude) {
+        this.discoveredSpotLongitude = discoveredSpotLongitude;
+    }
 
     public String getShelterName() {
         return shelterName;

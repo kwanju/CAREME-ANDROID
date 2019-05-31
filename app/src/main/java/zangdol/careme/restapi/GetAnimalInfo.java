@@ -61,6 +61,9 @@ public class GetAnimalInfo implements RestUtil.OnRestApiListener {
             animal.setShelterIdx(animalInfo.getString("shelter_idx"));
             animal.setSpeciesCode(animalInfo.getString("species_code"));
             animal.setUrlPicture(animalInfo.getString("url_picture"));
+
+            animal.setDiscoveredSpotLatitude(animalInfo.getString("discovered_spot_latitude"));
+            animal.setDiscoveredSpotLongitude(animalInfo.getString("discovered_spot_longitude"));
             return animal;
         } catch (Exception e) {
             e.printStackTrace();
