@@ -7,13 +7,11 @@
     android:layout_marginTop="15dp"
     android:layout_marginRight="15dp"
     android:layout_marginBottom="5dp"
-    android:background="#FFFFFF"
     android:orientation="vertical">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#FFFFFF"
         android:scrollbars="vertical">
 
         <LinearLayout
@@ -136,7 +134,7 @@
                 android:id="@+id/bt_edit_profile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#FF7F00"
+                android:background="@color/bootstrap_brand_primary"
                 android:onClick="onClickEdit"
                 android:text="프로필 수정하기" />
         </LinearLayout>

@@ -200,12 +200,15 @@
 
 
                 </android.support.constraint.ConstraintLayout>
+
                     <Button
                         android:id="@+id/filterButton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@color/bootstrap_brand_primary"
                         android:onClick="onButtonFilterClick"
-                        android:text="검색하기" />
+                        android:text="검색하기"
+                        android:textColor="#FFFFFF" />
                 </LinearLayout>
 
             </android.support.design.widget.CollapsingToolbarLayout>

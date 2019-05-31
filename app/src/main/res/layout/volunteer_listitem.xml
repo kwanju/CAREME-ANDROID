@@ -26,7 +26,7 @@
         <TextView
             android:id="@+id/shelterName"
             android:layout_width="100dp"
-            android:layout_height="80dp"
+            android:layout_height="40dp"
             android:layout_weight="1"
             android:gravity="center_horizontal|center_vertical"
             android:text="TextView"
@@ -36,7 +36,7 @@
         <TextView
             android:id="@+id/dogName"
             android:layout_width="100dp"
-            android:layout_height="80dp"
+            android:layout_height="40dp"
             android:layout_weight="1"
             android:gravity="center_horizontal|center_vertical"
             android:text="TextView"

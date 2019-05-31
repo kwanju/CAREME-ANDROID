@@ -113,6 +113,12 @@
             android:id="@+id/testtest"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="뉴메인" />
+
+        <Button
+            android:id="@+id/bt_test2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="테스트2" />
     </LinearLayout>
 
