@@ -1,6 +1,5 @@
 package zangdol.careme.shelter;
 
-import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -10,7 +9,10 @@ import android.widget.TextView;
 
 import zangdol.careme.R;
 import zangdol.careme.model.Shelter;
+import zangdol.careme.util.ConvertManager;
 import zangdol.careme.util.NullChecker;
+import zangdol.careme.util.mapMarker.OnMapLoadListener;
+import zangdol.careme.util.mapMarker.ShowMapWithMarker;
 
 public class ShelterInfoActivity extends AppCompatActivity implements ShelterInfoContract.View, View.OnClickListener {
     private ShelterInfoPresenter presenter;
@@ -22,11 +24,21 @@ public class ShelterInfoActivity extends AppCompatActivity implements ShelterInf
 
     private Button enrollFavoriteBt;
     private Button animalListBt;
+    private ShelterInfoActivity me;
 
     private ImageView iv_shelterImage;
 
+    private ShowMapWithMarker map;
 
+    /*
+        private MapFragment mapFragment;
+        private NaverMap naverMap;
 
+        private OnNaverMapListener listener;
+        private interface OnNaverMapListener{
+            void onNaverMap();
+        }
+    */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,31 +46,34 @@ public class ShelterInfoActivity extends AppCompatActivity implements ShelterInf
 
         presenter = new ShelterInfoPresenter(this);
 
-
+        me = this;
         setItem();
 
         presenter.getShelter();
-//////////이전 화면에서 선택된 유기견보호소의 이름을 추출하고 서버에 보내 보호소의 정보를 받아온다.//////////////////
-////////// 유기견 정보에는 유기견보호소명, 주소, 전화번호, 사진이 되겠다.////////////////////////////////////////////
-        //여기서는 임의의 유기견보호소 정보를 적겠다.
-        name.setText(" 유기견 보호 센터 ");
-        address.setText("Blah Bla Bla Blah");
-        phoneNumber.setText("xxx-xxx-xxxx");
-
     }
 
     public void setItem() {
         name = (TextView) findViewById(R.id.name);
         address = (TextView) findViewById(R.id.address);
         phoneNumber = (TextView) findViewById(R.id.phoneNumber);
-        workingHours = (TextView)findViewById(R.id.textView33);
-        description = (TextView)findViewById(R.id.textView35);
+        workingHours = (TextView) findViewById(R.id.textView33);
+        description = (TextView) findViewById(R.id.textView35);
 
         enrollFavoriteBt = (Button) findViewById(R.id.enrollFavoriteBt);
         animalListBt = (Button) findViewById(R.id.animalListBt);
 
         iv_shelterImage = (ImageView) findViewById(R.id.si_sf_shelter_image);
         animalListBt.setOnClickListener(this);
+
+        map = new ShowMapWithMarker(this);
+/*
+        mapFragment = (MapFragment) getSupportFragmentManager().findFragmentById(R.id.si_map);
+        if (mapFragment == null) {
+            mapFragment = MapFragment.newInstance();
+            getSupportFragmentManager().beginTransaction().add(R.id.si_map, mapFragment).commit();
+        }
+*/
+
     }
 
     @Override
@@ -69,17 +84,63 @@ public class ShelterInfoActivity extends AppCompatActivity implements ShelterInf
                 name.setText(shelter.getName());
                 address.setText(shelter.getPosition());
                 phoneNumber.setText(shelter.getPnum());
-                NullChecker.image(shelter.getUrl_picture(),iv_shelterImage);
+                NullChecker.image(shelter.getUrl_picture(), iv_shelterImage);
+
+                if (!shelter.getStartTime().equals("null") && !shelter.getEndTime().equals("null"))
+                    workingHours.setText(ConvertManager.time(shelter.getStartTime()) + " ~ " + ConvertManager.time(shelter.getEndTime()));
+
+                NullChecker.text(shelter.getDescription(), description, "입력안됨");
+
+                map.initialize(new OnMapLoadListener() {
+
+                    @Override
+                    public ShowMapWithMarker getShowMapWithMarker() {
+                        return map;
+                    }
+
+                    @Override
+                    public String getLatitude() {
+                        return shelter.getLatitude();
+                    }
+
+                    @Override
+                    public String getLongitude() {
+                        return shelter.getLongitude();
+                    }
+                });
+/*
+                listener = new OnNaverMapListener() {
+                    @Override
+                    public void onNaverMap() {
+                        CameraUpdate cameraUpdate = CameraUpdate.scrollTo(new LatLng(Double.parseDouble(shelter.getLatitude()), Double.parseDouble(shelter.getLongitude())));
+                        naverMap.moveCamera(cameraUpdate);
+
+                        Marker marker = new Marker();
+                        marker.setPosition(new LatLng(Double.parseDouble(shelter.getLatitude()), Double.parseDouble(shelter.getLongitude())));
+                        marker.setMap(naverMap);
+                    }
+                };
+                mapFragment.getMapAsync(me);
+*/
+
+
             }
         });
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.animalListBt:
                 presenter.moveAnimalList();
                 break;
         }
     }
+/*
+    @Override
+    public void onMapReady(@NonNull NaverMap naverMap) {
+        this.naverMap = naverMap;
+
+        listener.onNaverMap();
+    }*/
 }

@@ -15,6 +15,24 @@ public class Shelter implements Serializable {
     private String description;
 
     private String url_picture;
+    private String latitude;
+    private String longitude;
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
 
     public String getUrl_picture() {
         return url_picture;

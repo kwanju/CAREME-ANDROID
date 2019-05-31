@@ -49,6 +49,9 @@ public class GetShelter implements RestUtil.OnRestApiListener {
             shelter.setEndTime(resultShelter.getString("end_time"));
             shelter.setDescription(resultShelter.getString("description"));
             shelter.setUrl_picture(resultShelter.getString("url_picture"));
+            shelter.setLatitude(resultShelter.getString("latitude"));
+            shelter.setLongitude(resultShelter.getString("longitude"));
+
         } catch (Exception e) {
             e.printStackTrace();
         }
