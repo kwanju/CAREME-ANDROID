@@ -1,13 +1,19 @@
 package zangdol.careme.bulletinBoardDiscoverFind.discoverFind;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import zangdol.careme.R;
 import zangdol.careme.model.Discover;
 import zangdol.careme.model.Find;
+import zangdol.careme.shelter.ShelterInfoActivity;
 import zangdol.careme.util.ConvertManager;
 import zangdol.careme.util.NullChecker;
 
@@ -28,6 +34,11 @@ public class DiscoverFindActivity extends AppCompatActivity implements DiscoverF
     private TextView phoneNumber;
     private TextView detailDescription;
 
+    private LinearLayout ll_matching;
+    private TextView tv_shelter;
+
+    private DiscoverFindActivity me;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +46,7 @@ public class DiscoverFindActivity extends AppCompatActivity implements DiscoverF
         presenter = new DiscoverFindPresenter(this);
         setItem();
         presenter.getData();
+        me = this;
 
     }
 
@@ -49,7 +61,8 @@ public class DiscoverFindActivity extends AppCompatActivity implements DiscoverF
         phoneNumber = (TextView) findViewById(R.id.tv_phone_owner);
         detailDescription = (TextView) findViewById(R.id.tv_detail);
 
-
+        ll_matching = (LinearLayout) findViewById(R.id.adi_ll_matching);
+        tv_shelter = (TextView) findViewById(R.id.adi_tv_shelter);
     }
 
 
@@ -64,7 +77,7 @@ public class DiscoverFindActivity extends AppCompatActivity implements DiscoverF
                 NullChecker.image(discover.getUrl_picture(), doggyImage);
                 NullChecker.text(discover.getSpeciesCode(), type);
 
-                if(discover.getAnimalSex().equals(""))
+                if (discover.getAnimalSex().equals(""))
                     sex.setText("성별 입력안됨");
                 else if (discover.getAnimalSex().equals("w"))
                     sex.setText("암컷");
@@ -72,10 +85,25 @@ public class DiscoverFindActivity extends AppCompatActivity implements DiscoverF
                     sex.setText("수컷");
 
                 NullChecker.text(discover.getDescription(), detailDescription);
-                lostDate.setText(ConvertManager.date(discover.getEventDateTime(),ConvertManager.DATETIME));
+                lostDate.setText(ConvertManager.date(discover.getEventDateTime(), ConvertManager.DATETIME));
                 NullChecker.text(discover.getEventSpot(), lostPlace);
-                NullChecker.text(discover.getRegisterNickname(),id);
-                NullChecker.text(discover.getRegisterPhoneNumber(),phoneNumber);
+                NullChecker.text(discover.getRegisterNickname(), id);
+                NullChecker.text(discover.getRegisterPhoneNumber(), phoneNumber);
+
+                NullChecker.text(discover.getShelterName(), tv_shelter, "매칭중");
+
+                if (!discover.getShelterName().equals("null")) {
+                    tv_shelter.setTextColor(Color.BLUE);
+                    tv_shelter.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(me, ShelterInfoActivity.class);
+                            intent.putExtra("idx", discover.getMatchingShelterIdx());
+                            me.startActivity(intent);
+                        }
+                    });
+                }
+
             }
         });
 
@@ -92,7 +120,7 @@ public class DiscoverFindActivity extends AppCompatActivity implements DiscoverF
                 NullChecker.image(find.getUrl_picture(), doggyImage);
                 NullChecker.text(ConvertManager.getSpecies(find.getSpeciesCode()), type);
 
-                if(find.getAnimalSex().equals(""))
+                if (find.getAnimalSex().equals(""))
                     sex.setText("성별 입력안됨");
                 else if (find.getAnimalSex().equals("w"))
                     sex.setText("암컷");
@@ -100,11 +128,18 @@ public class DiscoverFindActivity extends AppCompatActivity implements DiscoverF
                     sex.setText("수컷");
 
                 NullChecker.text(find.getDescription(), detailDescription);
-                lostDate.setText(ConvertManager.date(find.getEventDateTime(),ConvertManager.DATETIME));
+                lostDate.setText(ConvertManager.date(find.getEventDateTime(), ConvertManager.DATETIME));
                 NullChecker.text(find.getEventSpot(), lostPlace);
-                NullChecker.text(find.getRegisterNickname(),id);
-                NullChecker.text(find.getRegisterPhoneNumber(),phoneNumber);
+                NullChecker.text(find.getRegisterNickname(), id);
+                NullChecker.text(find.getRegisterPhoneNumber(), phoneNumber);
+
+                ll_matching.setVisibility(View.GONE);
             }
         });
+    }
+
+    @Override
+    public Activity getActivity() {
+        return this;
     }
 }

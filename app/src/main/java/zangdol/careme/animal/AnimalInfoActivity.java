@@ -1,5 +1,7 @@
 package zangdol.careme.animal;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -12,6 +14,7 @@ import com.beardedhen.androidbootstrap.BootstrapButton;
 
 import zangdol.careme.R;
 import zangdol.careme.model.Animal;
+import zangdol.careme.shelter.ShelterInfoActivity;
 import zangdol.careme.util.ConvertManager;
 import zangdol.careme.util.DBHelper;
 import zangdol.careme.util.NullChecker;
@@ -86,7 +89,7 @@ public class AnimalInfoActivity extends AppCompatActivity implements AnimalInfoC
                 NullChecker.text(animal.getName(), tv_name);
                 NullChecker.text(ConvertManager.getSpecies(animal.getSpeciesCode()), tv_species);
                 NullChecker.text(animal.getDiscoveredSpot(), tv_discovered_spot);
-                NullChecker.text(animal.getShelterIdx(), tv_shelterIdx);
+                NullChecker.text(animal.getShelterName(), tv_shelterIdx);
                 NullChecker.text(animal.getDescription(), tv_description);
                 if (animal.getSex() == 'm')
                     tv_sex.setText("남");
@@ -94,6 +97,16 @@ public class AnimalInfoActivity extends AppCompatActivity implements AnimalInfoC
                     tv_sex.setText("여");
                 else
                     tv_sex.setText("입력안됨");
+
+                tv_shelterIdx.setTextColor(Color.BLUE);
+                tv_shelterIdx.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(me, ShelterInfoActivity.class);
+                        intent.putExtra("idx", animal.getShelterIdx());
+                        me.startActivity(intent);
+                    }
+                });
             }
         });
 
@@ -107,7 +120,7 @@ public class AnimalInfoActivity extends AppCompatActivity implements AnimalInfoC
                 presenter.moveApplyVolunteer();
                 break;
             case R.id.ai_ll_like:
-                Log.d("TEST","IN");
+                Log.d("TEST", "IN");
                 if (dbHelper.IsExist(String.valueOf(animal_idx))) {
                     dbHelper.delete(String.valueOf(animal_idx));
                     iv_like.setImageDrawable(getApplicationContext().getDrawable(R.drawable.like_empty));

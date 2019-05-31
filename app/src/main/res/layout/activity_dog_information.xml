@@ -187,7 +187,26 @@
                     app:layout_constraintStart_toEndOf="@+id/textView13"
                     app:layout_constraintTop_toBottomOf="@+id/tv_id_owner" />
             </android.support.constraint.ConstraintLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/adi_ll_matching">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="- 매칭된 보호소:"
+                    android:textSize="16sp" />
+                <TextView
+                    android:id="@+id/adi_tv_shelter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="매칭중인지?"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
 
+            </LinearLayout>
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -59,6 +59,7 @@ public class GetDiscover implements RestUtil.OnRestApiListener {
             discover.setLatitude(jsonDiscover.getString("latitude"));
             discover.setRegisterNickname(jsonDiscover.getString("nickname"));
             discover.setRegisterPhoneNumber(jsonDiscover.getString("phone_number"));
+            discover.setShelterName(jsonDiscover.getString("shelterName"));
 
         } catch (JSONException e) {
             e.printStackTrace();
