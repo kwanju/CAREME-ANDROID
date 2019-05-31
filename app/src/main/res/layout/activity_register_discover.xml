@@ -70,9 +70,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="견종코드를 입력하세요"
-                    android:inputType="textPersonName"
+                    android:hint="종을 입력하세요"
+                    android:clickable="false"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
                     android:padding="5dp" />
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/register_discover_species_code_real"
+                    android:visibility="gone"/>
             </LinearLayout>
 
             <LinearLayout style="@style/box">
@@ -81,14 +89,27 @@
                     style="@style/register_discover_label"
                     android:text="성별" />
 
-                <EditText
-                    android:id="@+id/register_discover_sex"
+                <RadioGroup
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="유기동물의 성별을 입력하세요"
-                    android:inputType="textPersonName"
-                    android:padding="5dp" />
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rd_sex_m"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="수컷" />
+
+                    <RadioButton
+                        android:id="@+id/rd_sex_w"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="암컷" />
+
+
+                </RadioGroup>
             </LinearLayout>
 
             <LinearLayout style="@style/box">

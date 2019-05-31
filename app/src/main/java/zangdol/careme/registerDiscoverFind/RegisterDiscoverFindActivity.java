@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 
 import com.jzxiang.pickerview.TimePickerDialog;
 import com.jzxiang.pickerview.data.Type;
@@ -27,6 +28,7 @@ import java.util.List;
 
 import zangdol.careme.R;
 import zangdol.careme.map.MapViewActivity;
+import zangdol.careme.util.speciesCodeInputDialog.SpeciesCodeInputDialog;
 
 public class RegisterDiscoverFindActivity extends AppCompatActivity implements RegisterDiscoverFindContract.View, View.OnClickListener, OnDateSetListener {
 
@@ -40,12 +42,15 @@ public class RegisterDiscoverFindActivity extends AppCompatActivity implements R
     private EditText tv_address;
     private EditText tv_datetime;
     private EditText tv_des;
-    private EditText tv_sex;
     private EditText tv_species;
+    private EditText tv_speciesCodeReal;
 
     private NiceSpinner ns_distinguish;
 
     private TimePickerDialog mDialogAll;
+
+    private RadioButton rb_sex_m;
+    private RadioButton rb_sex_w;
 
     private final static int IMAGE = 0;
     private final static int ADDRESS = 1;
@@ -75,10 +80,14 @@ public class RegisterDiscoverFindActivity extends AppCompatActivity implements R
         tv_address = (EditText) findViewById(R.id.register_discover_address);
         tv_datetime = (EditText) findViewById(R.id.register_discover_datetime);
         tv_des = (EditText) findViewById(R.id.register_discover_description);
-        tv_sex = (EditText) findViewById(R.id.register_discover_sex);
         tv_species = (EditText) findViewById(R.id.register_discover_species_code);
+        tv_speciesCodeReal = (EditText) findViewById(R.id.register_discover_species_code_real);
+
 
         ns_distinguish = (NiceSpinner) findViewById(R.id.register_discover_distinguish);
+
+        rb_sex_m = (RadioButton) findViewById(R.id.rd_sex_m);
+        rb_sex_w = (RadioButton) findViewById(R.id.rd_sex_w);
 
         dogImage.setOnClickListener(this);
         tv_address.setOnClickListener(this);
@@ -88,6 +97,8 @@ public class RegisterDiscoverFindActivity extends AppCompatActivity implements R
 
         List<String> dataset = new LinkedList<>(Arrays.asList("발견했어요", "찾아요"));
         ns_distinguish.attachDataSource(dataset);
+
+        tv_species.setOnClickListener(this);
     }
 
     private void setDateTimePicker() {
@@ -168,13 +179,22 @@ public class RegisterDiscoverFindActivity extends AppCompatActivity implements R
                 break;
             case R.id.register_discover_btn_register: // 등록버튼을 눌렀을 때.
                 presenter.setData("description", tv_des.getText().toString());
-                presenter.setData("sex", tv_sex.getText().toString());
-                presenter.setData("species_code", tv_species.getText().toString());
+                presenter.setData("sex", rb_sex_m.isChecked() ? "m" : "w");
+                presenter.setData("species_code", tv_speciesCodeReal.getText().toString());
 
-                if(isDiscover())
+                if (isDiscover())
                     presenter.register(RegisterType.DISCOVER);
                 else
                     presenter.register(RegisterType.FIND);
+                break;
+            case R.id.register_discover_species_code:
+                new SpeciesCodeInputDialog(this, new SpeciesCodeInputDialog.OnSpeciesCodeSelectListener() {
+                    @Override
+                    public void onSpeciesCode(String[] result) {
+                        tv_speciesCodeReal.setText(result[0]);
+                        tv_species.setText(result[1]);
+                    }
+                }).showDialog();
                 break;
         }
     }
@@ -191,8 +211,8 @@ public class RegisterDiscoverFindActivity extends AppCompatActivity implements R
         return this;
     }
 
-    private boolean isDiscover(){
-        if(ns_distinguish.getSelectedItem().equals("발견했어요"))
+    private boolean isDiscover() {
+        if (ns_distinguish.getSelectedItem().equals("발견했어요"))
             return true;
         else
             return false;
