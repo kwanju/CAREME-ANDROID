@@ -43,7 +43,7 @@
         <activity android:name=".bulletinBoard.PostActivity" />
         <activity android:name=".myPage.MyPageActivity" />
         <activity android:name=".myPage.ProfileEditActivity" />
-        <activity android:name=".myPage.FavoriteDogsListActivity" />
+        <activity android:name=".myPage.FavoriteAnimal.FavoriteAnimalListActivity" />
         <activity android:name=".newMain.NewMainActivity" />
         <activity android:name=".searchFilterDogs.SearchFilterDogsActivity" />
         <activity android:name=".animal.applyVolunteer.ApplyVolunteerActivity" />
