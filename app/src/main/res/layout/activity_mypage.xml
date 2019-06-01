@@ -54,14 +54,6 @@
                     android:textColor="#FFFFFF"
                     android:textStyle="bold" />
 
-                <ImageView
-                    android:id="@+id/profileImg"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_gravity="center"
-                    android:keepScreenOn="false"
-                    app:srcCompat="@drawable/profile_img" />
-
                 <Button
                     android:id="@+id/bt_profile_edit"
                     style="@style/PrimaryButton"

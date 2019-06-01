@@ -15,7 +15,6 @@ import zangdol.careme.myPage.FavoriteAnimal.FavoriteAnimalListActivity;
 public class MyPageActivity extends AppCompatActivity
 {
     private FrameLayout fl;
-    private ImageView profile_image;
     private TextView profile_nickname;
     private TextView profile_email;
     private TextView profile_phone;
@@ -41,8 +40,6 @@ public class MyPageActivity extends AppCompatActivity
     public void setItem()
     {
         fl = (FrameLayout)findViewById( R.id.framelayout_profile );
-        profile_image = (ImageView)findViewById(R.id.profileImg);
-        fl.bringChildToFront(profile_image);
         profile_nickname = (TextView)findViewById(R.id.tv_profile_nickname);
         fl.bringChildToFront(profile_nickname);
         profile_email = (TextView)findViewById(R.id.tv_profile_email);
