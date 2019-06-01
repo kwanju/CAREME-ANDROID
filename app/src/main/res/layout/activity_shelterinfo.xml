@@ -177,16 +177,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/imageView14" />
 
-                <Button
-                    android:id="@+id/enrollFavoriteBt"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:background="#6495ed"
-                    android:text="관심보호소 등록(즐겨찾기)"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/animalListBt" />
-
                 <TextView
                     android:id="@+id/textView5"
                     android:layout_width="wrap_content"
@@ -200,13 +190,20 @@
                     app:layout_constraintStart_toEndOf="@+id/imageView14"
                     app:layout_constraintTop_toBottomOf="@+id/textView33" />
 
+
                 <Button
                     android:id="@+id/animalListBt"
                     android:layout_width="match_parent"
                     android:layout_height="44dp"
                     android:layout_marginTop="20dp"
-                    android:background="#6496ed"
-                    android:text="유기견보러가기"
+                    android:background="@drawable/buttonshape"
+                    android:shadowColor="#A8A8A8"
+                    android:shadowDx="0"
+                    android:shadowDy="0"
+                    android:shadowRadius="5"
+                    android:text="유기견 보러가기"
+                    android:textColor="#000000"
+                    android:textSize="25sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView35" />
 

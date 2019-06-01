@@ -1,6 +1,7 @@
 package zangdol.careme.SearchShelter.shelterList;
 
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -23,6 +24,7 @@ public class ShelterListActivity extends AppCompatActivity implements ShelterLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shelterlist);
+
 ////////인텐트에서 해당 지역 받아오기/////////////////////////////////////////////////////////////
 //////////String location;에 저장//////////////////////////////////////////////////////////////////
 

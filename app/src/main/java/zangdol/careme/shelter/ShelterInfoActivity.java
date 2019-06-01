@@ -1,6 +1,7 @@
 package zangdol.careme.shelter;
 
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -22,7 +23,6 @@ public class ShelterInfoActivity extends AppCompatActivity implements ShelterInf
     private TextView workingHours;
     private TextView description;
 
-    private Button enrollFavoriteBt;
     private Button animalListBt;
     private ShelterInfoActivity me;
 
@@ -44,6 +44,9 @@ public class ShelterInfoActivity extends AppCompatActivity implements ShelterInf
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shelterinfo);
 
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.actionbar_shelter_info);
+
         presenter = new ShelterInfoPresenter(this);
 
         me = this;
@@ -59,7 +62,6 @@ public class ShelterInfoActivity extends AppCompatActivity implements ShelterInf
         workingHours = (TextView) findViewById(R.id.textView33);
         description = (TextView) findViewById(R.id.textView35);
 
-        enrollFavoriteBt = (Button) findViewById(R.id.enrollFavoriteBt);
         animalListBt = (Button) findViewById(R.id.animalListBt);
 
         iv_shelterImage = (ImageView) findViewById(R.id.si_sf_shelter_image);

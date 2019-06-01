@@ -2,6 +2,7 @@ package zangdol.careme.SearchShelter.shelterListNew;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -18,6 +19,9 @@ public class ShelterListNewActivity extends AppCompatActivity implements Shelter
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shelterlist);
+
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.actionbar_shelter_list);
 
         presenter = new ShelterListNewPresenter(this);
         setElements();

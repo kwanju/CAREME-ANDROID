@@ -2,6 +2,7 @@ package zangdol.careme.SearchShelter;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -32,6 +33,9 @@ public class SearchShelterCategoryActivity extends AppCompatActivity implements 
         setContentView(R.layout.activity_search_shelter_category);
 
         presenter = new SearchShelterCategoryPresenter(this);
+
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.actionbar_locations_category);
 
         setElements();
     }

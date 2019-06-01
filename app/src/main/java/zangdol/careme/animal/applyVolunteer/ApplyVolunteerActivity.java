@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.style.ForegroundColorSpan;
 import android.util.Log;
@@ -46,6 +47,10 @@ public class ApplyVolunteerActivity extends AppCompatActivity implements OnMonth
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_apply_volunteer);
+
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.actionbar_volunteer_apply);
+
         presenter = new ApplyVolunteerPresenter(this);
         me = this;
         setElements();

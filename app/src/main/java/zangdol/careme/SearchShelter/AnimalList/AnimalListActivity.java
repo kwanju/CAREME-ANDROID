@@ -1,6 +1,7 @@
 package zangdol.careme.SearchShelter.AnimalList;
 
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.GridView;
 
@@ -15,6 +16,9 @@ public class AnimalListActivity extends AppCompatActivity implements AnimalListC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_animal_list);
+
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.actionbar_animal_list);
 
         animalListPresenter = new AnimalListPresenter(this);
 

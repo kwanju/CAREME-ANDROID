@@ -3,6 +3,7 @@ package zangdol.careme.animal;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -51,6 +52,10 @@ public class AnimalInfoActivity extends AppCompatActivity implements AnimalInfoC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_animal_info);
+
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.actionbar_animal_info);
+
         me = this;
         presenter = new AnimalInfoPresenter(this);
         setElements();
