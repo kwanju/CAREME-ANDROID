@@ -11,7 +11,6 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -28,7 +27,7 @@ import zangdol.careme.SearchShelter.SearchShelterCategoryActivity;
 import zangdol.careme.bulletinBoardDiscoverFind.BulletinBoardDiscoverFindActivity;
 import zangdol.careme.login.LoginActivity;
 import zangdol.careme.model.ItemForMain;
-import zangdol.careme.myPage.MyPageActivity;
+import zangdol.careme.myPage.myPage.MyPageActivity;
 import zangdol.careme.searchFilterDogs.SearchFilterDogsActivity;
 import zangdol.careme.util.SaveSharedPreference;
 

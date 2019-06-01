@@ -41,7 +41,7 @@
         <activity android:name=".bulletinBoardDiscoverFind.ReportLostActivity" />
         <activity android:name=".bulletinBoard.BulletinActivity" />
         <activity android:name=".bulletinBoard.PostActivity" />
-        <activity android:name=".myPage.MyPageActivity" />
+        <activity android:name=".myPage.myPage.MyPageActivity" />
         <activity android:name=".myPage.ProfileEditActivity" />
         <activity android:name=".myPage.FavoriteAnimal.FavoriteAnimalListActivity" />
         <activity android:name=".newMain.NewMainActivity" />
