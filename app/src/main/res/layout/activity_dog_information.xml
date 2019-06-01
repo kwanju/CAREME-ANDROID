@@ -121,6 +121,14 @@
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView16" />
+                <fragment
+                    android:id="@+id/di_map"
+                    android:name="com.naver.maps.map.MapFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="170dp"
+                    android:layout_gravity="bottom"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView15"/>
 
                 <TextView
                     android:id="@+id/textView14"
@@ -130,7 +138,7 @@
                     android:text="- 아이디:"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView15" />
+                    app:layout_constraintTop_toBottomOf="@+id/di_map" />
 
                 <TextView
                     android:id="@+id/textView13"
@@ -174,7 +182,7 @@
                     android:textColor="#000000"
                     android:textSize="16sp"
                     app:layout_constraintStart_toEndOf="@+id/textView14"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_lostplace_dog" />
+                    app:layout_constraintTop_toBottomOf="@+id/di_map" />
 
                 <TextView
                     android:id="@+id/tv_phone_owner"

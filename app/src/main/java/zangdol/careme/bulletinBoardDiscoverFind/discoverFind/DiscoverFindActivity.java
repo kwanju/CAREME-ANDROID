@@ -17,6 +17,8 @@ import zangdol.careme.model.Find;
 import zangdol.careme.shelter.ShelterInfoActivity;
 import zangdol.careme.util.ConvertManager;
 import zangdol.careme.util.NullChecker;
+import zangdol.careme.util.mapMarker.OnMapLoadListener;
+import zangdol.careme.util.mapMarker.ShowMapWithMarker;
 
 public class DiscoverFindActivity extends AppCompatActivity implements DiscoverFindContract.View {
     private DiscoverFindContract.Presenter presenter;
@@ -40,6 +42,8 @@ public class DiscoverFindActivity extends AppCompatActivity implements DiscoverF
 
     private DiscoverFindActivity me;
 
+    private ShowMapWithMarker map;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,8 +54,10 @@ public class DiscoverFindActivity extends AppCompatActivity implements DiscoverF
 
         presenter = new DiscoverFindPresenter(this);
         setItem();
+        map = new ShowMapWithMarker(this, R.id.di_map);
         presenter.getData();
         me = this;
+
 
     }
 
@@ -109,6 +115,23 @@ public class DiscoverFindActivity extends AppCompatActivity implements DiscoverF
                     });
                 }
 
+                map.initialize(new OnMapLoadListener() {
+                    @Override
+                    public ShowMapWithMarker getShowMapWithMarker() {
+                        return map;
+                    }
+
+                    @Override
+                    public String getLatitude() {
+                        return discover.getLatitude();
+                    }
+
+                    @Override
+                    public String getLongitude() {
+                        return discover.getLongitude();
+                    }
+                });
+
             }
         });
 
@@ -139,6 +162,23 @@ public class DiscoverFindActivity extends AppCompatActivity implements DiscoverF
                 NullChecker.text(find.getRegisterPhoneNumber(), phoneNumber);
 
                 ll_matching.setVisibility(View.GONE);
+
+                map.initialize(new OnMapLoadListener() {
+                    @Override
+                    public ShowMapWithMarker getShowMapWithMarker() {
+                        return map;
+                    }
+
+                    @Override
+                    public String getLatitude() {
+                        return find.getLatitude();
+                    }
+
+                    @Override
+                    public String getLongitude() {
+                        return find.getLongitude();
+                    }
+                });
             }
         });
     }
