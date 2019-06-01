@@ -47,11 +47,13 @@
 
                         <TextView
                             android:text="시작시간"
-                            android:textAlignment="center" />
+                            android:textAlignment="center"
+                            android:textColor="@color/colorWhite"/>
 
                         <TextView
                             android:text="종료시간"
-                            android:textAlignment="center" />
+                            android:textAlignment="center"
+                            android:textColor="@color/colorWhite"/>
                     </TableRow>
 
                     <TableRow

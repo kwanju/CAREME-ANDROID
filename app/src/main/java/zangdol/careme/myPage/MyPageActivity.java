@@ -39,7 +39,6 @@ public class MyPageActivity extends AppCompatActivity
         getSupportActionBar().setCustomView(R.layout.actionbar_mypage);
 
         setItem();
-
     }
     public void setItem()
     {
