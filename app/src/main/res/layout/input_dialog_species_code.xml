@@ -49,8 +49,7 @@
         <ListView
             android:id="@+id/idsc_list"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/background_species_list"></ListView>
+            android:layout_height="wrap_content"></ListView>
 
 
     </LinearLayout>
