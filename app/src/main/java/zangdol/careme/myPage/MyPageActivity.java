@@ -4,18 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-
 import zangdol.careme.R;
-import zangdol.careme.model.FavoriteDog;
-import zangdol.careme.model.FavoriteShelter;
+import zangdol.careme.myPage.FavoriteAnimal.FavoriteAnimalListActivity;
 
 public class MyPageActivity extends AppCompatActivity
 {
@@ -68,7 +63,7 @@ public class MyPageActivity extends AppCompatActivity
         iv_favorite_dog.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MyPageActivity.this, FavoriteDogsListActivity.class));
+                startActivity(new Intent(MyPageActivity.this, FavoriteAnimalListActivity.class));
             }
         }) ;
 

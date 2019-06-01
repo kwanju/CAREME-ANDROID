@@ -47,12 +47,5 @@
             android:text="보호소명"
             android:textColor="#000033" />
 
-        <TextView
-            android:id="@+id/favorite_dog_shelter_place"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="7dp"
-            android:text="보호소주소"
-            android:textColor="#000033" />
     </LinearLayout>
 </LinearLayout>
