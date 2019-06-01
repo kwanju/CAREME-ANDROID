@@ -1,6 +1,7 @@
 package zangdol.careme.login.register;
 
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -31,6 +32,10 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.actionbar_register);
+
         presenter = new RegisterPresenter(this);
 
         setElements();
