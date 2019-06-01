@@ -27,9 +27,9 @@ public class MyPageActivity extends AppCompatActivity
     private Button bt_profile_edit;
     private ImageView profile_background_image;
 
-    private TextView tv_favorite_dog; // 클릭시 관심동물 리스트 화면으로 넘어가는 텍스트뷰
-    private TextView volunteer_status; // 클릭시 봉사활동 목록 화면으로 넘어가는 텍스트뷰
-    private TextView lost_found_mylist; // 클릭시 나의 찾아요/발견했어요 목록 화면으로 넘어가는 텍스트뷰
+    private ImageView tv_favorite_dog; // 클릭시 관심동물 리스트 화면으로 넘어가는 이미지뷰
+    private ImageView volunteer_status; // 클릭시 봉사활동 목록 화면으로 넘어가는 이미지뷰
+    private ImageView lost_found_mylist; // 클릭시 나의 찾아요/발견했어요 목록 화면으로 넘어가는 이미지뷰
 
     private TextView intro_myself;
 
@@ -60,9 +60,9 @@ public class MyPageActivity extends AppCompatActivity
         intro_myself = (TextView)findViewById(R.id.intro_myself);
 //////////////////////////////소개글 박아넣는다//////////////////////////////////
 
-        tv_favorite_dog = (TextView)findViewById(R.id.favorite_dog);
-        volunteer_status = (TextView)findViewById(R.id.volunteer_status);
-        lost_found_mylist = (TextView)findViewById(R.id.lost_found_mylist);
+        tv_favorite_dog = (ImageView)findViewById(R.id.favorite_dog);
+        volunteer_status = (ImageView)findViewById(R.id.volunteer_status);
+        lost_found_mylist = (ImageView)findViewById(R.id.lost_found_mylist);
 
         tv_favorite_dog.setOnClickListener(new Button.OnClickListener() {
             @Override
