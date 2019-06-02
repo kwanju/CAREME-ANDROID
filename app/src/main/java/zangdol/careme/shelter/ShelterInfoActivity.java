@@ -1,5 +1,6 @@
 package zangdol.careme.shelter;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import zangdol.careme.R;
+import zangdol.careme.chat.ChatActivity;
 import zangdol.careme.model.Shelter;
 import zangdol.careme.util.ConvertManager;
 import zangdol.careme.util.NullChecker;
@@ -30,6 +32,8 @@ public class ShelterInfoActivity extends AppCompatActivity implements ShelterInf
 
     private ShowMapWithMarker map;
 
+    private String shelterName;
+
     /*
         private MapFragment mapFragment;
         private NaverMap naverMap;
@@ -46,6 +50,7 @@ public class ShelterInfoActivity extends AppCompatActivity implements ShelterInf
 
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.actionbar_shelter_info);
+        getSupportActionBar().getCustomView().findViewById(R.id.ab_si_btn_chat).setOnClickListener(this);
 
         presenter = new ShelterInfoPresenter(this);
 
@@ -67,7 +72,7 @@ public class ShelterInfoActivity extends AppCompatActivity implements ShelterInf
         iv_shelterImage = (ImageView) findViewById(R.id.si_sf_shelter_image);
         animalListBt.setOnClickListener(this);
 
-        map = new ShowMapWithMarker(this,R.id.si_map);
+        map = new ShowMapWithMarker(this, R.id.si_map);
 /*
         mapFragment = (MapFragment) getSupportFragmentManager().findFragmentById(R.id.si_map);
         if (mapFragment == null) {
@@ -83,6 +88,7 @@ public class ShelterInfoActivity extends AppCompatActivity implements ShelterInf
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
+                shelterName = shelter.getName();
                 name.setText(shelter.getName());
                 address.setText(shelter.getPosition());
                 phoneNumber.setText(shelter.getPnum());
@@ -135,6 +141,12 @@ public class ShelterInfoActivity extends AppCompatActivity implements ShelterInf
         switch (v.getId()) {
             case R.id.animalListBt:
                 presenter.moveAnimalList();
+                break;
+            case R.id.ab_si_btn_chat:
+                Intent intent = new Intent(this, ChatActivity.class);
+                intent.putExtra("shelter_idx", getIntent().getStringExtra("idx"));
+                intent.putExtra("shelter_name", shelterName);
+                startActivity(intent);
                 break;
         }
     }

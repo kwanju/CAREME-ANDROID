@@ -17,6 +17,7 @@ import com.beardedhen.androidbootstrap.BootstrapButton;
 import zangdol.careme.R;
 import zangdol.careme.SearchShelter.SearchShelterCategoryActivity;
 import zangdol.careme.bulletinBoardDiscoverFind.BulletinBoardDiscoverFindActivity;
+import zangdol.careme.chat.ChatActivity;
 import zangdol.careme.discoverFindRecord.DiscoverFindRecordActivity;
 import zangdol.careme.login.LoginActivity;
 import zangdol.careme.myPage.myPage.MyPageActivity;
@@ -153,6 +154,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.button_test:
+                startActivity(new Intent(this, ChatActivity.class));
                 break;
             case R.id.button_volunteer_record:
                 startActivity(new Intent(this, VolunteerRecordActivity.class));

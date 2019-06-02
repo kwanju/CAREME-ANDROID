@@ -62,7 +62,8 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".discoverFindRecord.DiscoverFindRecordActivity"></activity>
+        <activity android:name=".discoverFindRecord.DiscoverFindRecordActivity" />
+        <activity android:name=".chat.ChatActivity"></activity>
     </application>
 
 </manifest>
