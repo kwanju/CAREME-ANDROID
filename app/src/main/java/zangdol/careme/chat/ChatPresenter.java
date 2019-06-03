@@ -47,8 +47,8 @@ public class ChatPresenter implements ChatContract.Presenter{
         HashMap<String,String> data = new HashMap<>();
 
         data.put("message",message);
-        data.put("sender",SaveSharedPreference.getIdx());
-        data.put("receiver",shelterIdx); // 쉘터 idx 추가 필요.
+        data.put("user_idx",SaveSharedPreference.getIdx());
+        data.put("shelter_idx",shelterIdx); // 쉘터 idx 추가 필요.
         data.put("type","0");
 
         chatManager.sendMessage(data);
