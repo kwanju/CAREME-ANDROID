@@ -5,9 +5,10 @@ import android.icu.util.Calendar;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import zangdol.careme.restapi.GetChat;
 import zangdol.careme.util.SaveSharedPreference;
 
-public class ChatPresenter implements ChatContract.Presenter, ChatManager.OnChatListener {
+public class ChatPresenter implements ChatContract.Presenter, ChatManager.OnChatListener, GetChat.OnGetChatListener {
     private ChatContract.View view;
     private ChatManager chatManager;
     private MessageListAdapter mMessageAdapter;
@@ -22,11 +23,10 @@ public class ChatPresenter implements ChatContract.Presenter, ChatManager.OnChat
 
     @Override
     public void getData() {
-        ArrayList<HashMap<String, String>> list = new ArrayList<>();
-        mMessageAdapter = new MessageListAdapter(view.getActivity(), list);
-
-
-        view.setAdapter(mMessageAdapter);
+        HashMap<String, String> data = new HashMap<>();
+        data.put("user_idx", SaveSharedPreference.getIdx());
+        data.put("shelter_idx", shelterIdx);
+        new GetChat(this, data);
     }
 
     @Override
@@ -69,6 +69,19 @@ public class ChatPresenter implements ChatContract.Presenter, ChatManager.OnChat
             @Override
             public void run() {
                 mMessageAdapter.addItem(data);
+            }
+        });
+    }
+
+    @Override
+    public void onGetChat(ArrayList<HashMap<String, String>> chats) {
+
+        //ArrayList<HashMap<String, String>> list = new ArrayList<>();
+        mMessageAdapter = new MessageListAdapter(view.getActivity(), chats);
+        view.getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                view.setAdapter(mMessageAdapter);
             }
         });
     }

@@ -1,18 +1,17 @@
 package zangdol.careme.chat;
 
 import android.content.Context;
-import android.icu.util.Calendar;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.HashMap;
 import java.util.List;
 
 import zangdol.careme.R;
+import zangdol.careme.util.ConvertManager;
 
 
 public class MessageListAdapter extends RecyclerView.Adapter {
@@ -27,7 +26,7 @@ public class MessageListAdapter extends RecyclerView.Adapter {
         mMessageList = messageList;
     }
 
-    public void addItem(HashMap<String,String> item) {
+    public void addItem(HashMap<String, String> item) {
         mMessageList.add(mMessageList.size(), item);
         notifyDataSetChanged();
     }
@@ -98,7 +97,7 @@ public class MessageListAdapter extends RecyclerView.Adapter {
         void bind(HashMap<String, String> message) {
             messageText.setText(message.get("message"));
             // Format the stored timestamp into a readable String using method.
-            timeText.setText(message.get("time"));
+            timeText.setText(ConvertManager.date(message.get("send_time"), ConvertManager.DATETIME));
         }
     }
 
@@ -116,7 +115,7 @@ public class MessageListAdapter extends RecyclerView.Adapter {
             messageText.setText(message.get("message"));
 
             // Format the stored timestamp into a readable String using method.
-            timeText.setText("날짜");
+            timeText.setText(ConvertManager.date(message.get("send_time"), ConvertManager.DATETIME));
 
             // Insert the profile image from the URL into the ImageView.
             // Utils.displayRoundImageFromUrl(mContext, message.getSender().getProfileUrl(), profileImage);
