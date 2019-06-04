@@ -54,6 +54,9 @@ dependencies {
     implementation 'com.jzxiang.pickerview:TimePickerDialog:1.0.1'
     implementation 'de.hdodenhof:circleimageview:3.0.0'
     implementation 'com.github.arcadefire:nice-spinner:1.4'
+    implementation('io.socket:socket.io-client:1.0.0') {
+        exclude group: 'org.json', module: 'json'
+    }
 
 }
 apply plugin: 'com.google.gms.google-services'
