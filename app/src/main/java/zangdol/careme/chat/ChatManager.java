@@ -1,5 +1,7 @@
 package zangdol.careme.chat;
 
+import android.util.Log;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -8,15 +10,23 @@ import java.util.HashMap;
 
 import io.socket.client.IO;
 import io.socket.client.Socket;
+import io.socket.emitter.Emitter;
 import zangdol.careme.Config;
 
 public class ChatManager {
     private Socket mSocket;
+    private OnChatListener listener;
 
-    public void connect(String idx) {
+    public interface OnChatListener {
+        void onMessage(String message);
+    }
+
+    public void connect(String idx, OnChatListener listener) {
+        this.listener = listener;
         try {
             mSocket = IO.socket(Config.SERVERIP);
             mSocket.connect();
+            setEvent();
             JSONObject data = new JSONObject();
             data.put("type", "user");
             data.put("idx", idx);
@@ -32,8 +42,8 @@ public class ChatManager {
         mSocket.close();
     }
 
-    public void sendMessage(HashMap<String,String> data) {
-        mSocket.emit("message",makeData(data));
+    public void sendMessage(HashMap<String, String> data) {
+        mSocket.emit("message", makeData(data));
     }
 
     private String makeData(HashMap<String, String> data) {
@@ -48,4 +58,21 @@ public class ChatManager {
         }
         return dataJSON.toString();
     }
+
+    private void setEvent() {
+        mSocket.on("message", onMessageListener);
+    }
+
+    private Emitter.Listener onMessageListener = new Emitter.Listener() {
+        @Override
+        public void call(Object... args) {
+            try {
+                JSONObject receivedData = new JSONObject(args[0].toString());
+                String message = receivedData.getString("message");
+                listener.onMessage(message);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    };
 }

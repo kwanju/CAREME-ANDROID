@@ -103,25 +103,20 @@ public class MessageListAdapter extends RecyclerView.Adapter {
     }
 
     private class ReceivedMessageHolder extends RecyclerView.ViewHolder {
-        TextView messageText, timeText, nameText;
-        ImageView profileImage;
+        TextView messageText, timeText;
 
         ReceivedMessageHolder(View itemView) {
             super(itemView);
 
             messageText = (TextView) itemView.findViewById(R.id.text_message_body);
             timeText = (TextView) itemView.findViewById(R.id.text_message_time);
-            nameText = (TextView) itemView.findViewById(R.id.text_message_name);
-            profileImage = (ImageView) itemView.findViewById(R.id.image_message_profile);
         }
 
         void bind(HashMap<String, String> message) {
-            messageText.setText("메시지");
+            messageText.setText(message.get("message"));
 
             // Format the stored timestamp into a readable String using method.
             timeText.setText("날짜");
-
-            nameText.setText("이름");
 
             // Insert the profile image from the URL into the ImageView.
             // Utils.displayRoundImageFromUrl(mContext, message.getSender().getProfileUrl(), profileImage);
