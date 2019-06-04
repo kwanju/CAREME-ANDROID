@@ -161,7 +161,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:orientation="horizontal"
-                android:weightSum="3">
+                android:weightSum="4">
 
                 <ImageView
                     android:id="@+id/favorite_dog"
@@ -183,6 +183,13 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     app:srcCompat="@drawable/lost_found_for_mypage" />
+
+                <ImageView
+                    android:id="@+id/adoption_record"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/adoption_record" />
 
             </LinearLayout>
 

@@ -13,6 +13,7 @@ import android.widget.TextView;
 import java.util.HashMap;
 
 import zangdol.careme.R;
+import zangdol.careme.adoptionRecordList.AdoptionRecordListActivity;
 import zangdol.careme.discoverFindRecord.DiscoverFindRecordActivity;
 import zangdol.careme.myPage.FavoriteAnimal.FavoriteAnimalListActivity;
 import zangdol.careme.myPage.ProfileEditActivity;
@@ -30,6 +31,7 @@ public class MyPageActivity extends AppCompatActivity implements MyPageContract.
     private ImageView tv_favorite_dog; // 클릭시 관심동물 리스트 화면으로 넘어가는 이미지뷰
     private ImageView volunteer_status; // 클릭시 봉사활동 목록 화면으로 넘어가는 이미지뷰
     private ImageView lost_found_mylist; // 클릭시 나의 찾아요/발견했어요 목록 화면으로 넘어가는 이미지뷰
+    private ImageView adoption_record; // 클릭시 나의 입양신청기록 목록 화면으로 넘어가는 이미지뷰
 
     private TextView intro_myself;
 
@@ -66,11 +68,13 @@ public class MyPageActivity extends AppCompatActivity implements MyPageContract.
         tv_favorite_dog = (ImageView) findViewById(R.id.favorite_dog);
         volunteer_status = (ImageView) findViewById(R.id.volunteer_status);
         lost_found_mylist = (ImageView) findViewById(R.id.lost_found_mylist);
+        adoption_record = (ImageView) findViewById(R.id.adoption_record);
 
         tv_favorite_dog.setOnClickListener(this);
         bt_profile_edit.setOnClickListener(this);
         volunteer_status.setOnClickListener(this);
         lost_found_mylist.setOnClickListener(this);
+        adoption_record.setOnClickListener(this);
     }
 
 
@@ -100,6 +104,9 @@ public class MyPageActivity extends AppCompatActivity implements MyPageContract.
                 break;
             case R.id.lost_found_mylist:
                 startActivity(new Intent(this,DiscoverFindRecordActivity.class));
+                break;
+            case R.id.adoption_record:
+                startActivity(new Intent(this, AdoptionRecordListActivity.class));
                 break;
         }
     }
