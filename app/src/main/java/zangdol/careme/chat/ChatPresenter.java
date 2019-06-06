@@ -55,20 +55,26 @@ public class ChatPresenter implements ChatContract.Presenter, ChatManager.OnChat
         chatManager.sendMessage(data);
         data.put("time", new String(Calendar.getInstance().getTime().toString()).substring(10, 16));
         mMessageAdapter.addItem(data);
+        view.setScrollBottom();
     }
 
     @Override
-    public void onMessage(String message) {
-        final HashMap<String, String> data = new HashMap<>();
-        data.put("message", message);
+    public int getChatSize() {
+        return mMessageAdapter.getItemCount();
+    }
+
+    @Override
+    public void onMessage(HashMap<String,String> data) {
+
         data.put("user_idx", SaveSharedPreference.getIdx());
         data.put("shelter_idx", shelterIdx); // 쉘터 idx 추가 필요.
         data.put("type", "1");
-
+        final HashMap<String,String> message = data;
         view.getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                mMessageAdapter.addItem(data);
+                mMessageAdapter.addItem(message);
+                view.setScrollBottom();
             }
         });
     }
@@ -82,6 +88,7 @@ public class ChatPresenter implements ChatContract.Presenter, ChatManager.OnChat
             @Override
             public void run() {
                 view.setAdapter(mMessageAdapter);
+                view.setScrollBottom();
             }
         });
     }

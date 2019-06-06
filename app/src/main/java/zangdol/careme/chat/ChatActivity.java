@@ -77,4 +77,11 @@ public class ChatActivity extends AppCompatActivity implements ChatContract.View
     public void setAdapter(MessageListAdapter adapter) {
         mMessageRecycler.setAdapter(adapter);
     }
+
+    @Override
+    public void setScrollBottom() {
+        mMessageRecycler.scrollToPosition(presenter.getChatSize() - 1);
+    }
+
+
 }

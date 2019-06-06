@@ -11,6 +11,7 @@ import zangdol.careme.Config;
 import zangdol.careme.restapi.core.Parameters;
 import zangdol.careme.restapi.core.RestFactory;
 import zangdol.careme.restapi.core.RestUtil;
+import zangdol.careme.util.ConvertManager;
 
 public class GetChat implements RestUtil.OnRestApiListener {
 
@@ -56,7 +57,7 @@ public class GetChat implements RestUtil.OnRestApiListener {
 
                 chat.put("type", chatJSON.getString("type"));
                 chat.put("message", chatJSON.getString("message"));
-                chat.put("send_time", chatJSON.getString("send_time"));
+                chat.put("send_time", ConvertManager.date(chatJSON.getString("send_time"),ConvertManager.DATETIME));
 
                 chats.add(chat);
             }

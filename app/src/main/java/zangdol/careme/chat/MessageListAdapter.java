@@ -97,7 +97,7 @@ public class MessageListAdapter extends RecyclerView.Adapter {
         void bind(HashMap<String, String> message) {
             messageText.setText(message.get("message"));
             // Format the stored timestamp into a readable String using method.
-            timeText.setText(ConvertManager.date(message.get("send_time"), ConvertManager.DATETIME));
+            timeText.setText(message.get("time"));
         }
     }
 
@@ -115,7 +115,7 @@ public class MessageListAdapter extends RecyclerView.Adapter {
             messageText.setText(message.get("message"));
 
             // Format the stored timestamp into a readable String using method.
-            timeText.setText(ConvertManager.date(message.get("send_time"), ConvertManager.DATETIME));
+            timeText.setText(message.get("send_time"));
 
             // Insert the profile image from the URL into the ImageView.
             // Utils.displayRoundImageFromUrl(mContext, message.getSender().getProfileUrl(), profileImage);
