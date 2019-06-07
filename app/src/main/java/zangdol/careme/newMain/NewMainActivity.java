@@ -25,6 +25,7 @@ import java.util.Objects;
 import zangdol.careme.R;
 import zangdol.careme.SearchShelter.SearchShelterCategoryActivity;
 import zangdol.careme.bulletinBoardDiscoverFind.BulletinBoardDiscoverFindActivity;
+import zangdol.careme.chat.ChatRoomListActivity;
 import zangdol.careme.login.LoginActivity;
 import zangdol.careme.model.ItemForMain;
 import zangdol.careme.myPage.myPage.MyPageActivity;
@@ -74,10 +75,12 @@ public class NewMainActivity extends AppCompatActivity implements NewMainContrac
         Bitmap shelterIcon = BitmapFactory.decodeResource(this.getResources(), R.drawable.shelter_main);
         Bitmap dogIcon = BitmapFactory.decodeResource(this.getResources(), R.drawable.dog_main);
         Bitmap lost_found_Icon = BitmapFactory.decodeResource(this.getResources(), R.drawable.lost_found_main);
+        Bitmap chatroom_icon = BitmapFactory.decodeResource(this.getResources(), R.drawable.chatroom_main);
 //////////////////////각각의 기능의 아이콘을 만들어 아래 gridArray에 기능명과 함께 add한다. /////////////////////
         gridArray.add(new ItemForMain(shelterIcon, "보호소찾기"));
         gridArray.add(new ItemForMain(lost_found_Icon, "발견했어요/찾아요"));
         gridArray.add(new ItemForMain(dogIcon, "유기동물 검색"));
+        gridArray.add(new ItemForMain(chatroom_icon, "보호소 채팅방"));
 
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -91,6 +94,8 @@ public class NewMainActivity extends AppCompatActivity implements NewMainContrac
                     startActivity(new Intent(NewMainActivity.this, BulletinBoardDiscoverFindActivity.class));
                 else if (position == 2)
                     startActivity(new Intent(NewMainActivity.this, SearchFilterDogsActivity.class));
+                else if (position == 3)
+                    startActivity(new Intent(NewMainActivity.this, ChatRoomListActivity.class));
             }
         });
 
