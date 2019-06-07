@@ -3,6 +3,7 @@ package zangdol.careme.animal;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -89,7 +90,7 @@ public class AnimalInfoActivity extends AppCompatActivity implements AnimalInfoC
 
     @Override
     public void setAnimalInfo(final Animal animal) {
-
+        Log.d("TEST입니다", " : " + animal.getDiscoveredSpot());
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -104,22 +105,25 @@ public class AnimalInfoActivity extends AppCompatActivity implements AnimalInfoC
                 NullChecker.text(animal.getShelterName(), tv_shelterIdx);
                 NullChecker.text(animal.getDescription(), tv_description);
 
-                map.initialize(new OnMapLoadListener() {
-                    @Override
-                    public ShowMapWithMarker getShowMapWithMarker() {
-                        return map;
-                    }
+                if (animal.getDiscoveredSpot().equals(""))
+                    findViewById(R.id.ai_map).setVisibility(View.GONE);
+                else
+                    map.initialize(new OnMapLoadListener() {
+                        @Override
+                        public ShowMapWithMarker getShowMapWithMarker() {
+                            return map;
+                        }
 
-                    @Override
-                    public String getLatitude() {
-                        return animal.getDiscoveredSpotLatitude();
-                    }
+                        @Override
+                        public String getLatitude() {
+                            return animal.getDiscoveredSpotLatitude();
+                        }
 
-                    @Override
-                    public String getLongitude() {
-                        return animal.getDiscoveredSpotLongitude();
-                    }
-                });
+                        @Override
+                        public String getLongitude() {
+                            return animal.getDiscoveredSpotLongitude();
+                        }
+                    });
 
                 if (animal.getSex() == 'm')
                     tv_sex.setText("남");

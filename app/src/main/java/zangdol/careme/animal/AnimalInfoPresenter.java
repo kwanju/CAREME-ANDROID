@@ -5,6 +5,8 @@ import android.content.Intent;
 import zangdol.careme.animal.applyVolunteer.ApplyVolunteerActivity;
 import zangdol.careme.model.Animal;
 import zangdol.careme.restapi.GetAnimalInfo;
+import zangdol.careme.restapi.GetSpeciesCode;
+import zangdol.careme.util.ConvertManager;
 
 public class AnimalInfoPresenter implements AnimalInfoContract.Presenter,GetAnimalInfo.OnAnimalInfoListener {
 
@@ -18,6 +20,9 @@ public class AnimalInfoPresenter implements AnimalInfoContract.Presenter,GetAnim
 
     @Override
     public void getAnimalInfo(int idx) {
+        if(!ConvertManager.hasSpecies())
+            new GetSpeciesCode(ConvertManager.instance);
+
         getAnimalInfo = new GetAnimalInfo(""+idx,this); // 동물 정보 가져오기
     }
 

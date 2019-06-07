@@ -3,13 +3,20 @@ package zangdol.careme.util;
 import java.util.HashMap;
 
 import zangdol.careme.Config;
+import zangdol.careme.restapi.GetSpeciesCode;
 
-public class ConvertManager {
+public class ConvertManager implements GetSpeciesCode.OnGetSpeciesCodeListener {
     public final static int DATE = 0;
     public final static int DATETIME = 1;
 
-    public static HashMap<String, String> species_code;
+    public static ConvertManager instance = new ConvertManager();
 
+    public static HashMap<String, String> species_code = null;
+
+
+    public static boolean hasSpecies(){
+        return species_code !=null;
+    }
     public static String url(String url) {
         return Config.SERVERIP + url;
     }
@@ -55,5 +62,10 @@ public class ConvertManager {
                 return species_code.get(key);
         }
         return "없음";
+    }
+
+    @Override
+    public void onGetSpeciesCode(HashMap<String, String> speciesCodes) {
+        ConvertManager.species_code = speciesCodes;
     }
 }

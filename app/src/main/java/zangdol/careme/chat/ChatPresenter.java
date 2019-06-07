@@ -24,21 +24,21 @@ public class ChatPresenter implements ChatContract.Presenter, ChatManager.OnChat
     @Override
     public void getData() {
         HashMap<String, String> data = new HashMap<>();
-        data.put("user_idx", SaveSharedPreference.getIdx());
+        data.put("user_idx", SaveSharedPreference.getIdx(view.getAppContext()));
         data.put("shelter_idx", shelterIdx);
         new GetChat(this, data);
     }
 
     @Override
     public void connect() {
-        if (!SaveSharedPreference.isLogin())
+        if (!SaveSharedPreference.isLogin(view.getAppContext()))
             return;
-        chatManager.connect(SaveSharedPreference.getIdx(), this);
+        chatManager.connect(SaveSharedPreference.getIdx(view.getAppContext()), this);
     }
 
     @Override
     public void disconnect() {
-        if (!SaveSharedPreference.isLogin())
+        if (!SaveSharedPreference.isLogin(view.getAppContext()))
             return;
         chatManager.disconnect();
     }
@@ -48,7 +48,7 @@ public class ChatPresenter implements ChatContract.Presenter, ChatManager.OnChat
         HashMap<String, String> data = new HashMap<>();
 
         data.put("message", message);
-        data.put("user_idx", SaveSharedPreference.getIdx());
+        data.put("user_idx", SaveSharedPreference.getIdx(view.getAppContext()));
         data.put("shelter_idx", shelterIdx); // 쉘터 idx 추가 필요.
         data.put("type", "0");
 
@@ -66,7 +66,7 @@ public class ChatPresenter implements ChatContract.Presenter, ChatManager.OnChat
     @Override
     public void onMessage(HashMap<String,String> data) {
 
-        data.put("user_idx", SaveSharedPreference.getIdx());
+        data.put("user_idx", SaveSharedPreference.getIdx(view.getAppContext()));
         data.put("shelter_idx", shelterIdx); // 쉘터 idx 추가 필요.
         data.put("type", "1");
         final HashMap<String,String> message = data;

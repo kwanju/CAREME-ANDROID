@@ -1,5 +1,6 @@
 package zangdol.careme.util;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
@@ -12,6 +13,10 @@ public class SaveSharedPreference {
 
     static SharedPreferences getSharedPreferences() {
         return PreferenceManager.getDefaultSharedPreferences(MainActivity.getContextOfApplication());
+    }
+
+    static SharedPreferences getSharedPreferences(Context context) {
+        return PreferenceManager.getDefaultSharedPreferences(context);
     }
 
     //로그인 성공시 로그인 정보 저장
@@ -27,8 +32,16 @@ public class SaveSharedPreference {
         return getSharedPreferences().getString("id", "");
     }
 
+    public static String getID(Context context) {
+        return getSharedPreferences(context).getString("id", "");
+    }
+
     public static String getIdx() {
         return getSharedPreferences().getString("idx", "");
+    }
+
+    public static String getIdx(Context context) {
+        return getSharedPreferences(context).getString("idx", "");
     }
 
     public static String getNickname() {
@@ -42,6 +55,10 @@ public class SaveSharedPreference {
         editor.clear();
         editor.commit();
         setToken(token);
+    }
+
+    public static boolean isLogin(Context context) {
+        return SaveSharedPreference.getID(context).length() != 0;
     }
 
     public static boolean isLogin() {

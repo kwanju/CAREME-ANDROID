@@ -1,6 +1,7 @@
 package zangdol.careme.chat;
 
 import android.app.Activity;
+import android.content.Context;
 
 public class ChatContract {
 
@@ -8,6 +9,7 @@ public class ChatContract {
         Activity getActivity();
         void setAdapter(MessageListAdapter adapter);
         void setScrollBottom();
+        Context getAppContext();
     }
     public interface Presenter{
         void getData();

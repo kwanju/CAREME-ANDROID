@@ -1,6 +1,7 @@
 package zangdol.careme.chat;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -81,6 +82,11 @@ public class ChatActivity extends AppCompatActivity implements ChatContract.View
     @Override
     public void setScrollBottom() {
         mMessageRecycler.scrollToPosition(presenter.getChatSize() - 1);
+    }
+
+    @Override
+    public Context getAppContext() {
+        return getApplicationContext();
     }
 
 

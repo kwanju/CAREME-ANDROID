@@ -5,6 +5,8 @@ import android.util.Log;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
+import java.util.HashMap;
+
 import zangdol.careme.util.NotificationManager;
 
 
@@ -19,13 +21,16 @@ public class FCMService extends FirebaseMessagingService {
         Log.d(TAG, "From: " + remoteMessage.getFrom());
 
         if (remoteMessage.getData().size() > 0) {
-            sendNotification(remoteMessage.getData().get("body"));
-
+            Log.d(TAG,remoteMessage.getData().toString());
+            HashMap<String, String> data = new HashMap<>();
+            data.put("mode", remoteMessage.getData().get("mode"));
+            data.put("extradata", remoteMessage.getData().get("extradata"));
+            sendNotification(data);
         }
 
     }
 
-    private void sendNotification(String messageBody) {
-        NotificationManager.notification(this, "임시 제목",messageBody);
+    private void sendNotification(HashMap<String, String> data) {
+        NotificationManager.notification(this, data);
     }
 }

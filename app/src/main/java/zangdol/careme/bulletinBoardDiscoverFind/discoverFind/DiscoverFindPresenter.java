@@ -5,6 +5,8 @@ import zangdol.careme.model.Find;
 import zangdol.careme.restapi.GetDiscover;
 import zangdol.careme.restapi.GetDiscoverFind;
 import zangdol.careme.restapi.GetFind;
+import zangdol.careme.restapi.GetSpeciesCode;
+import zangdol.careme.util.ConvertManager;
 
 public class DiscoverFindPresenter implements DiscoverFindContract.Presenter, GetDiscover.OnGetDiscoverListener,GetFind.OnGetFindListener {
 
@@ -17,6 +19,9 @@ public class DiscoverFindPresenter implements DiscoverFindContract.Presenter, Ge
 
     @Override
     public void getData() {
+        if(!ConvertManager.hasSpecies())
+            new GetSpeciesCode(ConvertManager.instance);
+
         String idx = view.getIntent().getStringExtra("idx");
         int code = view.getIntent().getIntExtra("code", 0);
         if (code == DISCOVER)

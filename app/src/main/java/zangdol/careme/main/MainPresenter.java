@@ -8,7 +8,7 @@ import zangdol.careme.restapi.Logout;
 import zangdol.careme.util.ConvertManager;
 import zangdol.careme.util.SaveSharedPreference;
 
-public class MainPresenter implements MainContract.Presenter, Logout.OnLogoutListener, GetSpeciesCode.OnGetSpeciesCodeListener {
+public class MainPresenter implements MainContract.Presenter, Logout.OnLogoutListener {
     private MainActivity mainActivity;
 
     public MainPresenter(MainActivity view) {
@@ -34,7 +34,7 @@ public class MainPresenter implements MainContract.Presenter, Logout.OnLogoutLis
 
     @Override
     public void getSpeciesCode() {
-        new GetSpeciesCode(this);
+        new GetSpeciesCode(ConvertManager.instance);
     }
 
     @Override
@@ -48,8 +48,4 @@ public class MainPresenter implements MainContract.Presenter, Logout.OnLogoutLis
 
     }
 
-    @Override
-    public void onGetSpeciesCode(HashMap<String, String> speciesCodes) {
-        ConvertManager.species_code = speciesCodes;
-    }
 }

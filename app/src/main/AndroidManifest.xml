@@ -64,7 +64,8 @@
         </service>
 
         <activity android:name=".discoverFindRecord.DiscoverFindRecordActivity" />
-        <activity android:name=".chat.ChatActivity"></activity>
+        <activity android:name=".chat.ChatActivity"
+            android:parentActivityName=".main.MainActivity"></activity>
     </application>
 
 </manifest>
