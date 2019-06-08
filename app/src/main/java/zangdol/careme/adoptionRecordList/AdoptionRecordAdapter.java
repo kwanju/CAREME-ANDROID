@@ -9,13 +9,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import zangdol.careme.R;
 import zangdol.careme.model.AdoptionRecord;
+import zangdol.careme.util.ConvertManager;
+import zangdol.careme.util.NullChecker;
 
-public class AdoptionRecordAdapter extends ArrayAdapter<AdoptionRecord>
+public class AdoptionRecordAdapter extends ArrayAdapter<HashMap<String,String>>
 {
-    private ArrayList<AdoptionRecord> dataSet;
+    private ArrayList<HashMap<String,String>> dataSet;
     Context mContext;
 
     private static class ViewHolder {
@@ -27,7 +30,7 @@ public class AdoptionRecordAdapter extends ArrayAdapter<AdoptionRecord>
         ImageView dog_pic;
     }
 
-    public AdoptionRecordAdapter(ArrayList<AdoptionRecord> data, Context context) {
+    public AdoptionRecordAdapter(ArrayList<HashMap<String,String>> data, Context context) {
         super(context, R.layout.adoption_record_listitem, data);
         this.dataSet = data;
         this.mContext=context;
@@ -42,7 +45,7 @@ public class AdoptionRecordAdapter extends ArrayAdapter<AdoptionRecord>
     public View getView(int position, View convertView, ViewGroup parent)
     {
         // Get the data item for this position
-        AdoptionRecord adoptionRecord = getItem(position);
+        HashMap<String,String> adoptionRecord = getItem(position);
         // Check if an existing view is being reused, otherwise inflate the view
         ViewHolder viewHolder; // view lookup cache stored in tag
 
@@ -89,11 +92,21 @@ public class AdoptionRecordAdapter extends ArrayAdapter<AdoptionRecord>
         //dog_pic;
         //////////////////
 
-        viewHolder.tv_dog_name_adopt.setText(adoptionRecord.getDog_name());
-        viewHolder.tv_dog_type_adopt.setText(adoptionRecord.getDog_type());
-        viewHolder.tv_shelter_name_adopt.setText(adoptionRecord.getShelter_name());
-        viewHolder.tv_date_adopt.setText(adoptionRecord.getDate());
-        viewHolder.tv_status_adopt.setText(adoptionRecord.getStatus());
+        NullChecker.text(adoptionRecord.get("animalName"),viewHolder.tv_dog_name_adopt);
+        NullChecker.text(ConvertManager.getSpecies(adoptionRecord.get("species_code")),viewHolder.tv_dog_type_adopt);
+        NullChecker.text(adoptionRecord.get("shelterName"),viewHolder.tv_shelter_name_adopt);
+        NullChecker.text(ConvertManager.date(adoptionRecord.get("datetime"),ConvertManager.DATETIME),viewHolder.tv_date_adopt);
+        NullChecker.image(adoptionRecord.get("url_picture"),viewHolder.dog_pic);
+
+        String permit = adoptionRecord.get("permit");
+
+        if(permit.equals("0"))
+            viewHolder.tv_status_adopt.setText("서류 검토중");
+        else if(permit.equals("1"))
+            viewHolder.tv_status_adopt.setText("입양허가");
+        else if(permit.equals("-1"))
+            viewHolder.tv_status_adopt.setText("입양거절");
+
         viewHolder.dog_pic.setTag(position);
         // Return the completed view to render on screen
         return convertView;
