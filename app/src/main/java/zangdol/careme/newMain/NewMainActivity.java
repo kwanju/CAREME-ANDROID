@@ -25,7 +25,7 @@ import java.util.Objects;
 import zangdol.careme.R;
 import zangdol.careme.SearchShelter.SearchShelterCategoryActivity;
 import zangdol.careme.bulletinBoardDiscoverFind.BulletinBoardDiscoverFindActivity;
-import zangdol.careme.chat.ChatRoomListActivity;
+import zangdol.careme.chat.ChatList.ChatListActivity;
 import zangdol.careme.login.LoginActivity;
 import zangdol.careme.model.ItemForMain;
 import zangdol.careme.myPage.myPage.MyPageActivity;
@@ -95,7 +95,7 @@ public class NewMainActivity extends AppCompatActivity implements NewMainContrac
                 else if (position == 2)
                     startActivity(new Intent(NewMainActivity.this, SearchFilterDogsActivity.class));
                 else if (position == 3)
-                    startActivity(new Intent(NewMainActivity.this, ChatRoomListActivity.class));
+                    startActivity(new Intent(NewMainActivity.this, ChatListActivity.class));
             }
         });
 

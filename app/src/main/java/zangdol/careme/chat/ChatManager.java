@@ -18,7 +18,7 @@ public class ChatManager {
     private OnChatListener listener;
 
     public interface OnChatListener {
-        void onMessage(HashMap<String,String> message);
+        void onMessage(HashMap<String, String> message);
     }
 
     public void connect(String idx, OnChatListener listener) {
@@ -46,6 +46,10 @@ public class ChatManager {
         mSocket.emit("message", makeData(data));
     }
 
+    public void ackMessage(HashMap<String, String> data) {
+        mSocket.emit("ack", makeData(data));
+    }
+
     private String makeData(HashMap<String, String> data) {
         JSONObject dataJSON = new JSONObject();
 
@@ -68,10 +72,13 @@ public class ChatManager {
         public void call(Object... args) {
             try {
                 JSONObject receivedData = new JSONObject(args[0].toString());
-                Log.d("Test",receivedData.toString());
-                HashMap<String,String> message =new HashMap<>();
-                message.put("message",receivedData.getString("message"));
-                message.put("send_time",receivedData.getString("send_time"));
+                Log.d("Test", receivedData.toString());
+                HashMap<String, String> message = new HashMap<>();
+                message.put("message", receivedData.getString("message"));
+                message.put("send_time", receivedData.getString("send_time"));
+                message.put("shelter_idx", receivedData.getString("shelter_idx"));
+                message.put("message_idx", receivedData.getString("message_idx"));
+
                 listener.onMessage(message);
             } catch (JSONException e) {
                 e.printStackTrace();

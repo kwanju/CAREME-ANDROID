@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import zangdol.careme.R;
+import zangdol.careme.model.Shelter;
 
 
 public class ChatActivity extends AppCompatActivity implements ChatContract.View, View.OnClickListener {
@@ -27,14 +28,11 @@ public class ChatActivity extends AppCompatActivity implements ChatContract.View
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
-        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setCustomView(R.layout.actionbar_chat);
-        ((TextView) getSupportActionBar().getCustomView().findViewById(R.id.ab_chat_shelter_name)).setText(getIntent().getStringExtra("shelter_name"));
-
         presenter = new ChatPresenter(this);
 
         setItem();
         presenter.getData();
+        presenter.getShelter();
 
 
     }
@@ -87,6 +85,18 @@ public class ChatActivity extends AppCompatActivity implements ChatContract.View
     @Override
     public Context getAppContext() {
         return getApplicationContext();
+    }
+
+    @Override
+    public void setShelter(final Shelter shelter) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+                getSupportActionBar().setCustomView(R.layout.actionbar_chat);
+                ((TextView) getSupportActionBar().getCustomView().findViewById(R.id.ab_chat_shelter_name)).setText(shelter.getName());
+            }
+        });
     }
 
 

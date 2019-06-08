@@ -18,10 +18,9 @@ import zangdol.careme.R;
 import zangdol.careme.SearchShelter.SearchShelterCategoryActivity;
 import zangdol.careme.bulletinBoardDiscoverFind.BulletinBoardDiscoverFindActivity;
 import zangdol.careme.chat.ChatActivity;
-import zangdol.careme.chat.ChatRoomListActivity;
+import zangdol.careme.chat.ChatList.ChatListActivity;
 import zangdol.careme.discoverFindRecord.DiscoverFindRecordActivity;
 import zangdol.careme.login.LoginActivity;
-import zangdol.careme.myPage.myPage.MyPageActivity;
 import zangdol.careme.newMain.NewMainActivity;
 import zangdol.careme.searchFilterDogs.SearchFilterDogsActivity;
 import zangdol.careme.util.DBHelper;
@@ -173,7 +172,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(new Intent(this, SearchFilterDogsActivity.class));
                 break;
             case R.id.bt_test2:
-                startActivity(new Intent(this, ChatRoomListActivity.class));
+                startActivity(new Intent(this, ChatListActivity.class));
                 break;
         }
     }

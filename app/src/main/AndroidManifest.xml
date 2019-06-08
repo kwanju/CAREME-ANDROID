@@ -51,7 +51,7 @@
         <activity android:name=".login.register.RegisterActivity" />
         <activity android:name=".volunteerRecord.VolunteerRecordActivity" />
         <activity android:name=".map.MapViewActivity" />
-        <activity android:name=".chat.ChatRoomListActivity" />
+        <activity android:name=".chat.ChatList.ChatListActivity" />
 
         <service android:name=".util.FCM.FCMService">
             <intent-filter>
