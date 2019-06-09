@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layout_marginHorizontal="8dp">
 
     <ScrollView
         android:id="@+id/scrollView_doggyInfo"

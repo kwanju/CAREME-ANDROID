@@ -102,34 +102,6 @@
                     android:layout_height="wrap_content"
                     app:srcCompat="@drawable/divisionline" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="2">
-
-                    <TextView
-                        style="@style/animal_info_textview"
-                        android:layout_weight="1"
-                        android:text="발견장소" />
-
-                    <TextView
-                        android:id="@+id/animal_info_discovered_spot"
-                        style="@style/animal_info_textview"
-                        android:layout_weight="1" />
-                </LinearLayout>
-
-                <fragment
-                    android:id="@+id/ai_map"
-                    android:name="com.naver.maps.map.MapFragment"
-                    android:layout_width="match_parent"
-                    android:layout_height="170dp"
-                    android:layout_gravity="bottom" />
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/divisionline" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -170,6 +142,34 @@
                         android:layout_weight="1" />
                 </LinearLayout>
 
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/divisionline" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <TextView
+                        style="@style/animal_info_textview"
+                        android:layout_weight="1"
+                        android:text="발견장소" />
+
+                    <TextView
+                        android:id="@+id/animal_info_discovered_spot"
+                        style="@style/animal_info_textview"
+                        android:layout_weight="1" />
+                </LinearLayout>
+
+                <fragment
+                    android:id="@+id/ai_map"
+                    android:name="com.naver.maps.map.MapFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="170dp"
+                    android:layout_gravity="bottom" />
 
             </LinearLayout>
 
