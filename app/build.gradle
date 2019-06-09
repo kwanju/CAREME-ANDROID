@@ -18,10 +18,10 @@ android {
     }
     splits {
         abi {
-            enable true
+            enable false
             reset()
             include 'x86', 'x86_64', 'armeabi-v7a', 'armeabi'
-            universalApk false
+            universalApk true
         }
     }
     packagingOptions {

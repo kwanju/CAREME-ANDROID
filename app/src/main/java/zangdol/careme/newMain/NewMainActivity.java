@@ -3,6 +3,7 @@ package zangdol.careme.newMain;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -30,10 +31,14 @@ import zangdol.careme.login.LoginActivity;
 import zangdol.careme.model.ItemForMain;
 import zangdol.careme.myPage.myPage.MyPageActivity;
 import zangdol.careme.searchFilterDogs.SearchFilterDogsActivity;
+import zangdol.careme.util.PermissionCheck;
 import zangdol.careme.util.SaveSharedPreference;
 
 public class NewMainActivity extends AppCompatActivity implements NewMainContract.View, View.OnClickListener {
     public static Context contextOfApplication; // 공통의 정보를 저장하기 위해서.
+
+    private PermissionCheck permissionCheck;
+
 
     private Button bt_login;
     private Button bt_mypage;
@@ -56,6 +61,9 @@ public class NewMainActivity extends AppCompatActivity implements NewMainContrac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alternativemain);
+
+        permissionCheck = new PermissionCheck(this);
+        permissionCheck.checkPermissions();
 
         setItem();
         contextOfApplication = getApplicationContext();
@@ -87,7 +95,6 @@ public class NewMainActivity extends AppCompatActivity implements NewMainContrac
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                 ItemForMain itemForMain = gridArray.get(position);
-                Toast.makeText(NewMainActivity.this, "index" + position + "" + itemForMain.getFunctionName(), Toast.LENGTH_SHORT).show();
                 if (position == 0)
                     startActivity(new Intent(NewMainActivity.this, SearchShelterCategoryActivity.class));
                 else if (position == 1)
@@ -169,4 +176,34 @@ public class NewMainActivity extends AppCompatActivity implements NewMainContrac
 
         }
     }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case PermissionCheck.MULTIPLE_PERMISSIONS: {
+                if (grantResults.length > 0) {
+                    for (int i = 0; i < permissions.length; i++) {
+                        if (permissions[i].equals(permissionCheck.getPermissions())) {
+                            if (grantResults[i] != PackageManager.PERMISSION_GRANTED) {
+                                showToast_PermissionDeny();
+                            }
+                        }
+                    }
+                } else {
+                    showToast_PermissionDeny();
+                }
+                return;
+            }
+        }
+
+    }
+    private void showToast_PermissionDeny() {
+        Toast.makeText(this, "권한 요청에 동의 해주셔야 이용 가능합니다. 설정에서 권한 허용 하시기 바랍니다.", Toast.LENGTH_SHORT).show();
+        finish();
+    }
+    public static Context getContextOfApplication() {
+        return contextOfApplication;
+    }
+
+
 }

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-import zangdol.careme.main.MainActivity;
+import zangdol.careme.newMain.NewMainActivity;
 
 /*
  * 자동 로그인 기능을 만들기 위해서 로그인 값들을 저장시킴.
@@ -12,7 +12,7 @@ import zangdol.careme.main.MainActivity;
 public class SaveSharedPreference {
 
     static SharedPreferences getSharedPreferences() {
-        return PreferenceManager.getDefaultSharedPreferences(MainActivity.getContextOfApplication());
+        return PreferenceManager.getDefaultSharedPreferences(NewMainActivity.getContextOfApplication());
     }
 
     static SharedPreferences getSharedPreferences(Context context) {

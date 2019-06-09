@@ -1,17 +1,18 @@
 package zangdol.careme.login.register;
 
-import android.content.Intent;
-import android.support.v7.app.AlertDialog;
-import android.widget.Toast;
+        import android.content.Intent;
+        import android.support.v7.app.AlertDialog;
+        import android.widget.Toast;
 
-import java.util.HashMap;
+        import java.util.HashMap;
 
-import zangdol.careme.main.MainActivity;
-import zangdol.careme.model.User;
-import zangdol.careme.restapi.CheckDuplicatedID;
-import zangdol.careme.restapi.Register;
-import zangdol.careme.util.AlarmManager;
-import zangdol.careme.util.SaveSharedPreference;
+        import zangdol.careme.main.MainActivity;
+        import zangdol.careme.model.User;
+        import zangdol.careme.newMain.NewMainActivity;
+        import zangdol.careme.restapi.CheckDuplicatedID;
+        import zangdol.careme.restapi.Register;
+        import zangdol.careme.util.AlarmManager;
+        import zangdol.careme.util.SaveSharedPreference;
 
 
 public class RegisterPresenter implements RegisterContract.Presenter, CheckDuplicatedID.OnCheckDupIDListener, Register.OnRegisterListener {
@@ -105,7 +106,7 @@ public class RegisterPresenter implements RegisterContract.Presenter, CheckDupli
                     User.setSession(results); // Session 설정.
 
                     // 메인엑티비티로 이동.
-                    Intent intent = new Intent(activity, MainActivity.class);
+                    Intent intent = new Intent(activity, NewMainActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     activity.startActivity(intent);
                 } else
