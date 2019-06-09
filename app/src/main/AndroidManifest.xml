@@ -9,11 +9,11 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
-        android:hardwareAccelerated="false"
-        android:largeHeap="true"
         android:allowBackup="true"
+        android:hardwareAccelerated="false"
         android:icon="@drawable/app_mark"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
@@ -22,7 +22,7 @@
             android:name="com.naver.maps.map.CLIENT_ID"
             android:value="3055hkch3h" />
 
-        <activity android:name=".main.MainActivity"></activity>
+        <activity android:name=".main.MainActivity" />
         <activity android:name=".login.LoginActivity" />
         <activity android:name=".SearchShelter.SearchShelterCategoryActivity" />
         <activity android:name=".SearchShelter.shelterList.ShelterListActivity" />
@@ -42,10 +42,7 @@
         <activity android:name=".myPage.ProfileEditActivity" />
         <activity android:name=".myPage.FavoriteAnimal.FavoriteAnimalListActivity" />
         <activity android:name=".newMain.NewMainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
         <activity android:name=".searchFilterDogs.SearchFilterDogsActivity" />
         <activity android:name=".animal.applyVolunteer.ApplyVolunteerActivity" />
@@ -68,7 +65,15 @@
         <activity android:name=".discoverFindRecord.DiscoverFindRecordActivity" />
         <activity
             android:name=".chat.ChatActivity"
-            android:parentActivityName=".newMain.NewMainActivity"></activity>
+            android:parentActivityName=".newMain.NewMainActivity" />
+        <activity
+            android:name=".newMain.SplashActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
