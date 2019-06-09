@@ -34,8 +34,13 @@ public class FavoriteAnimalListActivity extends AppCompatActivity implements Fav
 
         presenter = new FavoriteAnimalListPresenter(this);
 
-        presenter.getFavoriteAnimalList();
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        presenter.getFavoriteAnimalList();
     }
 
     @Override
