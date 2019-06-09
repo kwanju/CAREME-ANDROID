@@ -48,7 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:bootstrapText="회원가입"
-                style="@style/SmallSuccessButton"
+                app:bootstrapBrand="success"
                 android:id="@+id/login_registration"
                 />
         </LinearLayout>
