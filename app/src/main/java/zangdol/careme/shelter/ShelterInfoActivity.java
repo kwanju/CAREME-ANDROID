@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.beardedhen.androidbootstrap.BootstrapButton;
+
 import zangdol.careme.R;
 import zangdol.careme.chat.ChatActivity;
 import zangdol.careme.model.Shelter;
@@ -25,7 +27,7 @@ public class ShelterInfoActivity extends AppCompatActivity implements ShelterInf
     private TextView workingHours;
     private TextView description;
 
-    private Button animalListBt;
+    private BootstrapButton animalListBt;
     private ShelterInfoActivity me;
 
     private ImageView iv_shelterImage;
@@ -67,7 +69,7 @@ public class ShelterInfoActivity extends AppCompatActivity implements ShelterInf
         workingHours = (TextView) findViewById(R.id.textView33);
         description = (TextView) findViewById(R.id.textView35);
 
-        animalListBt = (Button) findViewById(R.id.animalListBt);
+        animalListBt = (BootstrapButton) findViewById(R.id.animalListBt);
 
         iv_shelterImage = (ImageView) findViewById(R.id.si_sf_shelter_image);
         animalListBt.setOnClickListener(this);

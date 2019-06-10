@@ -191,18 +191,16 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView33" />
 
 
-                <Button
+                <com.beardedhen.androidbootstrap.BootstrapButton
                     android:id="@+id/animalListBt"
                     android:layout_width="match_parent"
                     android:layout_height="44dp"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/buttonshape"
-                    android:shadowColor="#A8A8A8"
-                    android:shadowDx="0"
-                    android:shadowDy="0"
-                    android:shadowRadius="5"
+                    style="@style/PrimaryButton"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginHorizontal="12dp"
                     android:text="유기견 보러가기"
                     android:textColor="#000000"
+                    android:textStyle="bold"
                     android:textSize="25sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/si_map" />
