@@ -14,6 +14,7 @@ import com.rengwuxian.materialedittext.MaterialEditText;
 
 import zangdol.careme.R;
 import zangdol.careme.main.MainActivity;
+import zangdol.careme.newMain.NewMainActivity;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener, LoginContract.View {
 
@@ -68,7 +69,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void moveMainActivity() {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, NewMainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         finish();

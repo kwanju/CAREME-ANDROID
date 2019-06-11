@@ -17,6 +17,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 
 import zangdol.careme.R;
+import zangdol.careme.adoptionRecordList.AdoptionRecordListActivity;
 import zangdol.careme.animal.AnimalInfoActivity;
 import zangdol.careme.bulletinBoardDiscoverFind.discoverFind.DiscoverFindActivity;
 import zangdol.careme.chat.ChatActivity;
@@ -30,6 +31,7 @@ public class NotificationManager {
     public final static String ANIMALFIND = "2";
     public final static String SCHEDULE = "3";
     public final static String DISCOVERMATHCING = "4";
+    public final static String ADOPT = "5";
 
     public static void notification(Context context, HashMap<String, String> data) {
         Intent intent = setIntent(data, context);
@@ -107,6 +109,9 @@ public class NotificationManager {
                 e.printStackTrace();
             }
             return intent;
+        } else if (mode.equals(ADOPT)) {
+            Intent intent = new Intent(context, AdoptionRecordListActivity.class);
+            return intent;
         }
 
         return new Intent(context, MainActivity.class);
@@ -145,6 +150,15 @@ public class NotificationManager {
             try {
                 JSONObject extraData = new JSONObject(data.get("extradata"));
                 builder.setContentTitle("발견했어요(보호소매칭)")
+                        .setContentText(extraData.getString("message"));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            return;
+        } else if(mode.equals(ADOPT)){
+            try {
+                JSONObject extraData = new JSONObject(data.get("extradata"));
+                builder.setContentTitle("입양")
                         .setContentText(extraData.getString("message"));
             } catch (JSONException e) {
                 e.printStackTrace();

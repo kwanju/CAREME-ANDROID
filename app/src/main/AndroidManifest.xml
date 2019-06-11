@@ -29,10 +29,13 @@
         <activity android:name=".shelter.ShelterInfoActivity" />
         <activity android:name=".SearchShelter.shelterListNew.ShelterListNewActivity" />
         <activity android:name=".TestActivity.TestActivity" />
-        <activity android:name=".registerDiscoverFind.RegisterDiscoverFindActivity" />
+        <activity android:name=".registerDiscoverFind.RegisterDiscoverFindActivity"
+            android:parentActivityName=".newMain.NewMainActivity"/>
         <activity android:name=".SearchShelter.AnimalList.AnimalListActivity" />
-        <activity android:name=".animal.AnimalInfoActivity" />
-        <activity android:name=".adoptionRecordList.AdoptionRecordListActivity" />
+        <activity android:name=".animal.AnimalInfoActivity"
+            android:parentActivityName=".newMain.NewMainActivity"/>
+        <activity android:name=".adoptionRecordList.AdoptionRecordListActivity"
+            android:parentActivityName=".newMain.NewMainActivity"/>
         <activity android:name=".bulletinBoardDiscoverFind.BulletinBoardDiscoverFindActivity" />
         <activity android:name=".bulletinBoardDiscoverFind.discoverFind.DiscoverFindActivity" />
         <activity android:name=".bulletinBoardDiscoverFind.ReportLostActivity" />
@@ -47,7 +50,8 @@
         <activity android:name=".searchFilterDogs.SearchFilterDogsActivity" />
         <activity android:name=".animal.applyVolunteer.ApplyVolunteerActivity" />
         <activity android:name=".login.register.RegisterActivity" />
-        <activity android:name=".volunteerRecord.VolunteerRecordActivity" />
+        <activity android:name=".volunteerRecord.VolunteerRecordActivity"
+            android:parentActivityName=".newMain.NewMainActivity"/>
         <activity android:name=".map.MapViewActivity" />
         <activity android:name=".chat.ChatList.ChatListActivity" />
 
