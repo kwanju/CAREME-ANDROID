@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import com.jzxiang.pickerview.TimePickerDialog;
 import com.jzxiang.pickerview.data.Type;
@@ -186,6 +187,9 @@ public class RegisterDiscoverFindActivity extends AppCompatActivity implements R
                 presenter.setData("sex", rb_sex_m.isChecked() ? "m" : "w");
                 presenter.setData("species_code", tv_speciesCodeReal.getText().toString());
 
+                if (!checkForm())
+                    return;
+
                 if (isDiscover())
                     presenter.register(RegisterType.DISCOVER);
                 else
@@ -220,5 +224,25 @@ public class RegisterDiscoverFindActivity extends AppCompatActivity implements R
             return true;
         else
             return false;
+    }
+
+    private boolean checkForm() {
+        if (tv_address.getText().toString().equals("")) {
+            Toast.makeText(this, "주소가 비어있습니다.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (tv_datetime.getText().toString().equals("")) {
+            Toast.makeText(this, "날짜가 비어있습니다.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (tv_speciesCodeReal.getText().toString().equals("")) {
+            Toast.makeText(this, "견종이 비어있습니다.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (!rb_sex_m.isChecked() && !rb_sex_w.isChecked()) {
+            Toast.makeText(this, "성별이 비어있습니다.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
     }
 }

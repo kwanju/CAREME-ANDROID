@@ -6,15 +6,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -31,6 +31,9 @@ public class SearchFilterDogsActivity extends AppCompatActivity implements Searc
     private Spinner spinner_distance;
     private Button bt_start;
     private Button bt_end;
+    private boolean isBt_start_check = false;
+    private boolean isBt_end_check = false;
+
 
     private EditText et_dogTypecode;
     private EditText et_dogtype;
@@ -94,6 +97,10 @@ public class SearchFilterDogsActivity extends AppCompatActivity implements Searc
 
     /////////////////////////////////////// 이 사이에 검색조건을 모두 입력받는다. 서버에 보내 강아지 리스트를 받아온다.//////////////////////////////////////
     public void onButtonFilterClick() {
+        if (!checkForm()){
+            return;
+        }
+
         String date_start = null;   // 시작일
         String date_end = null;   // 종료일
         String distance = null;  //지역(시도 단위)
@@ -102,15 +109,15 @@ public class SearchFilterDogsActivity extends AppCompatActivity implements Searc
         date_start = (String) bt_start.getText();
         date_end = (String) bt_end.getText();
 
-        switch (spinner_distance.getSelectedItemPosition()){
+        switch (spinner_distance.getSelectedItemPosition()) {
             case 0:
-                distance="1";
+                distance = "1";
                 break;
             case 1:
-                distance="5";
+                distance = "5";
                 break;
             case 2:
-                distance="10";
+                distance = "10";
                 break;
         }
         if (rb_male.isChecked())
@@ -122,9 +129,9 @@ public class SearchFilterDogsActivity extends AppCompatActivity implements Searc
 
         presenter.setData("start_date", date_start);
         presenter.setData("end_date", date_end);
-        presenter.setData("species_code",et_dogTypecode.getText().toString());
-        presenter.setData("sex",sex);
-        presenter.setData("distance",distance);
+        presenter.setData("species_code", et_dogTypecode.getText().toString());
+        presenter.setData("sex", sex);
+        presenter.setData("distance", distance);
 
         presenter.search();
     }
@@ -136,7 +143,7 @@ public class SearchFilterDogsActivity extends AppCompatActivity implements Searc
         int mMonth = c.get(Calendar.MONTH);
         int mDay = c.get(Calendar.DAY_OF_MONTH);
         DatePickerDialog dialog = new DatePickerDialog(this, listener1, mYear, mMonth, mDay);
-
+        isBt_start_check = true;
         dialog.show();
     }
 
@@ -146,7 +153,7 @@ public class SearchFilterDogsActivity extends AppCompatActivity implements Searc
         int mMonth = c.get(Calendar.MONTH);
         int mDay = c.get(Calendar.DAY_OF_MONTH);
         DatePickerDialog dialog = new DatePickerDialog(this, listener2, mYear, mMonth, mDay);
-
+        isBt_end_check = true;
         dialog.show();
     }
 
@@ -223,5 +230,29 @@ public class SearchFilterDogsActivity extends AppCompatActivity implements Searc
                 break;
         }
 
+    }
+
+    private boolean checkForm() {
+        if (!isBt_start_check) {
+            Toast.makeText(this, "기간 시작을 선택해주세요", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (!isBt_end_check) {
+            Toast.makeText(this, "기간 종료를 선택해주세요", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (et_dogtype.getText().toString().equals("")) {
+            Toast.makeText(this, "견종을 선택해주세요", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (et_address.getText().toString().equals("")) {
+            Toast.makeText(this, "지역을 입력해주세요.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (!rb_male.isChecked() && !rb_female.isChecked()) {
+            Toast.makeText(this, "성별을 선택해주세요", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
     }
 }
