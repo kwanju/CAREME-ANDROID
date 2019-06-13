@@ -32,7 +32,8 @@
                     android:background="#FF7F00"
                     android:text="프로필 수정"
                     android:textColor="#FFFFFF"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:visibility="gone"/>
 
                 <ImageView
                     android:id="@+id/profile_background"
